@@ -5,13 +5,14 @@ public class Nutzer {
     private String passwort;
     public String benutzername, email, telefonnummer, ort, postleitzahl, bio;
 
-    public Nutzer(String benutzername, String passwort, String email, String telefonnummer, String ort, String postleitzahl){
+    public Nutzer(String benutzername, String passwort, String email, String telefonnummer, String ort, String postleitzahl, String bio){
         benutzername = this.benutzername;
         passwort = this.passwort;
         email = this.email;
         telefonnummer = this.telefonnummer;
         ort = this.ort;
         postleitzahl = this.postleitzahl;
+        bio = this.bio;
     }
 
     public void schreibeDB(){
@@ -45,7 +46,11 @@ public class Nutzer {
                 //todo schreibeDB()
                 break;
             case "postleitzahl":
-                this.benutzername = data;
+                this.postleitzahl = data;
+                //todo schreibeDB()
+                break;
+            case "bio":
+                this.bio = data;
                 //todo schreibeDB()
                 break;
         }
