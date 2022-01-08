@@ -2,18 +2,19 @@ package com.example.myapplication;
 
 public class UserHelperClass {
 
-    String vorname, nachname, email, postleitzahl, telefonnummer, bio;
+    private String vorname, nachname, email, postleitzahl, telefonnummer, bio, passwort;
 
     public UserHelperClass() {
     }
 
-    public UserHelperClass(String vorname, String nachname, String email, String postleitzahl, String telefonnummer, String bio) {
+    public UserHelperClass( String vorname, String nachname, String email, String postleitzahl, String telefonnummer, String bio, String passwort) {
         this.vorname = vorname;
         this.nachname = nachname;
         this.email = email;
         this.postleitzahl = postleitzahl;
         this.telefonnummer = telefonnummer;
         this.bio = bio;
+        this.passwort = passwort;
     }
 
     public String getVorname() {
@@ -62,5 +63,13 @@ public class UserHelperClass {
 
     public void setBio(String bio) {
         this.bio = bio;
+    }
+
+    public String getPasswort() {
+        return passwort;
+    }
+
+    public void setPasswort(String passwort) {
+        this.passwort = passwort;
     }
 }

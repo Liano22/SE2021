@@ -15,7 +15,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class SignUp extends AppCompatActivity {
 
-    TextInputLayout vorname, nachname, email, postleitzahl, telefonnummer, bio;
+    TextInputLayout benutzername, vorname, nachname, email, postleitzahl, telefonnummer, bio, passwort;
     Button regBtn;
 
     FirebaseDatabase rootNode;
@@ -26,28 +26,32 @@ public class SignUp extends AppCompatActivity {
         setContentView(R.layout.sign_up);
 
         regBtn = findViewById(R.id.regBtn);
+        benutzername = findViewById(R.id.BenutzernameTxt);
         vorname = findViewById(R.id.VornameTxt);
         nachname = findViewById(R.id.NachnameTxt);
         email = findViewById(R.id.EmailTxt);
         postleitzahl = findViewById(R.id.PostleitzahlTxt);
         telefonnummer = findViewById(R.id.TelefonnummerTxt);
         bio = findViewById(R.id.BiografieTxt);
+        passwort = findViewById(R.id.PasswortTxt);
 
         regBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view){
                 rootNode = FirebaseDatabase.getInstance();
-                reference = rootNode.getReference("Test");
+                reference = rootNode.getReference("NutzerTest/");
 
-                String vornameUser = vorname.getEditText().toString();
-                String nachnameUser = nachname.getEditText().toString();
-                String emailUser = email.getEditText().toString();
-                String postleitzahlUser = postleitzahl.getEditText().toString();
-                String telefonnummerUser = telefonnummer.getEditText().toString();
-                String bioUser = bio.getEditText().toString();
+                String benutzernameUser = benutzername.getEditText().getText().toString();
+                String vornameUser = vorname.getEditText().getText().toString();
+                String nachnameUser = nachname.getEditText().getText().toString();
+                String emailUser = email.getEditText().getText().toString();
+                String postleitzahlUser = postleitzahl.getEditText().getText().toString();
+                String telefonnummerUser = telefonnummer.getEditText().getText().toString();
+                String bioUser = bio.getEditText().getText().toString();
+                String passwortUser = passwort.getEditText().getText().toString();
 
-                UserHelperClass helperClass = new UserHelperClass(vornameUser,nachnameUser,emailUser,postleitzahlUser,telefonnummerUser,bioUser);
+                UserHelperClass helperClass = new UserHelperClass(vornameUser,nachnameUser,emailUser,postleitzahlUser,telefonnummerUser,bioUser, passwortUser);
 
-                reference.setValue(helperClass);
+                reference.child(benutzernameUser).setValue(helperClass);
                 regBtn.setText("Geklickt");
             }
         });
