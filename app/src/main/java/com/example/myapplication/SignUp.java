@@ -40,6 +40,8 @@ public class SignUp extends AppCompatActivity {
                 rootNode = FirebaseDatabase.getInstance();
                 reference = rootNode.getReference("NutzerTest/");
 
+                validateUsername(benutzername);
+
                 String benutzernameUser = benutzername.getEditText().getText().toString();
                 String vornameUser = vorname.getEditText().getText().toString();
                 String nachnameUser = nachname.getEditText().getText().toString();
@@ -55,6 +57,42 @@ public class SignUp extends AppCompatActivity {
                 regBtn.setText("Geklickt");
             }
         });
+
+    }
+
+    private Boolean validateUsername(TextInputLayout benutzername){
+
+        String val = benutzername.getEditText().getText().toString();
+        String noSpace = "\\A\\w{4,20}\\z";
+
+        if(val.isEmpty()){
+            benutzername.setError("Benutzername darf nicht leer sein");
+            return false;
+        } else if (val.length() >= 20){
+            benutzername.setError("Benutzernaem zu lang");
+            return false;
+        } else if(!val.matches(noSpace)) {
+            benutzername.setError("Es sind keine Leerzeichen erlaubt");
+            return false;
+        } else {
+            benutzername.setError(null);
+            benutzername.setErrorEnabled(false);
+            return true;
+        }
+    }
+
+    private Boolean validatePassword(TextInputLayout passwort) {
+
+        String val = passwort.getEditText().getText().toString();
+
+        if(val.isEmpty()){
+            passwort.setError("Passwort darf nicht leer sein");
+            return false;
+        } else {
+            passwort.setError(null);
+            passwort.setErrorEnabled(false);
+            return true;
+        }
 
     }
 
