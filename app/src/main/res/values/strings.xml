@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">My Application</string>
+    <string name="login_registrieren"><u>hier registrieren</u></string>
+    <string name="registrierung_anmelden"><u>hier anmelden</u></string>
 </resources>
