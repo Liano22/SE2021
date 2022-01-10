@@ -2,4 +2,6 @@
     <string name="app_name">My Application</string>
     <string name="login_registrieren"><u>hier registrieren</u></string>
     <string name="registrierung_anmelden"><u>hier anmelden</u></string>
+    <string name="besitzt_du_schon_einen_account"><![CDATA[Besitzt du schon einen Account? ->]]></string>
+    <string name="jetzt_registrieren">jetzt registrieren</string>
 </resources>
