@@ -3,7 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Kilian/Documents/GitHub/SE2021/app/src/main/res/drawable/button.xml" value="0.26666666666666666" />
+        <entry key="..\:/Users/Kilian/Documents/GitHub/SE2021/app/src/main/res/drawable/input_field.xml" value="0.26666666666666666" />
         <entry key="..\:/Users/Kilian/Documents/GitHub/SE2021/app/src/main/res/layout/activity_main.xml" value="0.160546875" />
+        <entry key="..\:/Users/Kilian/Documents/GitHub/SE2021/app/src/main/res/layout/login_activity.xml" value="0.25" />
+        <entry key="..\:/Users/Kilian/Documents/GitHub/SE2021/app/src/main/res/layout/register_activity.xml" value="0.33" />
       </map>
     </option>
   </component>
