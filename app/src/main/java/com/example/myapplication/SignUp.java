@@ -51,7 +51,7 @@ public class SignUp extends AppCompatActivity {
                 String bioUser = bio.getEditText().getText().toString();
                 String passwortUser = passwort.getEditText().getText().toString();
 
-                UserHelperClass helperClass = new UserHelperClass(vornameUser,nachnameUser,emailUser,postleitzahlUser,telefonnummerUser,bioUser, passwortUser);
+                UserHelperClass helperClass = new UserHelperClass(benutzernameUser,vornameUser,nachnameUser,emailUser,postleitzahlUser,telefonnummerUser,bioUser, passwortUser);
 
                 reference.child(benutzernameUser).setValue(helperClass);
                 regBtn.setText("Geklickt");

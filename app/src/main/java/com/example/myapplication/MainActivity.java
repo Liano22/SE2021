@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
         Button startBtn = findViewById(R.id.startBtn);
 
-        Intent intent = new Intent(this, SignUp.class);
+        Intent intent = new Intent(this, LogIn.class);
 
         /*startBtn.setOnClickListener(new View.OnClickListener(){
             @Override

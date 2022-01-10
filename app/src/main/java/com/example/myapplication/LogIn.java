@@ -3,6 +3,7 @@ package com.example.myapplication;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -20,14 +21,33 @@ public class LogIn extends AppCompatActivity {
 
     TextInputLayout benutzername, passwort;
 
-    Intent intent = new Intent(this, Dashboard.class);
+    Button goToSignUp, letTheUserLogIn;
+
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.log_in);
 
+        Intent intentSignUp = new Intent(this, SignUp.class);
+
+        letTheUserLogIn = findViewById(R.id.letTheUserLogIn);
+        goToSignUp = findViewById(R.id.regBtnLogIn);
         benutzername = findViewById(R.id.benutzernameLogIn);
         passwort = findViewById(R.id.passwortLogIn);
+
+        letTheUserLogIn.setOnClickListener( new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                LogIn(view);
+            }
+        });
+
+        goToSignUp.setOnClickListener( new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                startActivity(intentSignUp);
+            }
+        });
     }
 
     private Boolean validateUsername(){
@@ -73,7 +93,7 @@ public class LogIn extends AppCompatActivity {
 
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("NutzerTest");
 
-        Query checkUser = reference.orderByChild("username").equalTo(benutzernameInput);
+        Query checkUser = reference.orderByChild("benutzername").equalTo(benutzernameInput);
 
         checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -85,10 +105,11 @@ public class LogIn extends AppCompatActivity {
 
                     String passwortAusDB = snapshot.child(benutzernameInput).child("passwort").getValue(String.class);
 
-                    if(passwortAusDB.equals(benutzernameInput)){
+                    if(passwortAusDB.equals(passwortInput)){
                         passwort.setError(null);
                         passwort.setErrorEnabled(false);
-                        startActivity(intent);
+                        Intent intentDashboard = new Intent(getApplicationContext(),Dashboard.class);
+                        startActivity(intentDashboard);
                     }
                     else{
                         passwort.setError("Falsches Passwort");

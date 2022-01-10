@@ -2,12 +2,13 @@ package com.example.myapplication;
 
 public class UserHelperClass {
 
-    private String vorname, nachname, email, postleitzahl, telefonnummer, bio, passwort;
+    private String benutzername, vorname, nachname, email, postleitzahl, telefonnummer, bio, passwort;
 
     public UserHelperClass() {
     }
 
-    public UserHelperClass( String vorname, String nachname, String email, String postleitzahl, String telefonnummer, String bio, String passwort) {
+    public UserHelperClass(String benutzername, String vorname, String nachname, String email, String postleitzahl, String telefonnummer, String bio, String passwort) {
+        this.benutzername = benutzername;
         this.vorname = vorname;
         this.nachname = nachname;
         this.email = email;
@@ -16,6 +17,10 @@ public class UserHelperClass {
         this.bio = bio;
         this.passwort = passwort;
     }
+
+    public String getBenutzername(){return benutzername;}
+
+    public void setBenutzername(String benutzername){this.benutzername = benutzername;}
 
     public String getVorname() {
         return vorname;
