@@ -15,6 +15,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class SignUp extends AppCompatActivity {
 
+    //Variablen:
     TextInputLayout benutzername, vorname, nachname, email, postleitzahl, telefonnummer, bio, passwort;
     Button regBtn;
 
@@ -25,6 +26,7 @@ public class SignUp extends AppCompatActivity {
         super.onCreate(savedinstanceState);
         setContentView(R.layout.sign_up);
 
+        //Zuweisungen:
         regBtn = findViewById(R.id.regBtn);
         benutzername = findViewById(R.id.BenutzernameTxt);
         vorname = findViewById(R.id.VornameTxt);
@@ -35,6 +37,7 @@ public class SignUp extends AppCompatActivity {
         bio = findViewById(R.id.BiografieTxt);
         passwort = findViewById(R.id.PasswortTxt);
 
+        //Senden des neuen Nutzers an die Datenbank:
         regBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view){
                 rootNode = FirebaseDatabase.getInstance();
@@ -60,16 +63,27 @@ public class SignUp extends AppCompatActivity {
 
     }
 
+    /**
+     * Validierung des Benutzernamens.
+     * Benutzername darf nicht leer oder zu lang sein
+     * und darf keine Leerzeichen enthalten.
+     * TextInputLayout ermöglicht Error-Ausgaben, wird der Name akzeptiert,
+     * werden eventuelle vorherige Fehler und Ausgaben gelöscht.
+     * @param benutzername Eingabe aus Textfeld Benutzername
+     * @return Boolean-Wert. True, wenn Name akzeptiert. False, wenn nicht.
+     */
     private Boolean validateUsername(TextInputLayout benutzername){
 
         String val = benutzername.getEditText().getText().toString();
         String noSpace = "\\A\\w{4,20}\\z";
 
+        //todo Muss noch Anforderungen als Verzeichnis für Firebase erfüllen
+
         if(val.isEmpty()){
             benutzername.setError("Benutzername darf nicht leer sein");
             return false;
         } else if (val.length() >= 20){
-            benutzername.setError("Benutzernaem zu lang");
+            benutzername.setError("Benutzername zu lang");
             return false;
         } else if(!val.matches(noSpace)) {
             benutzername.setError("Es sind keine Leerzeichen erlaubt");
@@ -81,6 +95,14 @@ public class SignUp extends AppCompatActivity {
         }
     }
 
+    /**
+     * Validierung des Passworts.
+     * Passwort darf nicht leer sein.
+     * TextInputLayout ermöglicht Error-Ausgaben, wird das Passwort akzeptiert,
+     * werden eventuelle vorherige Fehler und Ausgaben gelöscht.
+     * @param passwort Eingabe aus Textfeld passwort
+     * @return Boolean-Wert. True, wenn Passwort akzeptiert. False, wenn nicht.
+     */
     private Boolean validatePassword(TextInputLayout passwort) {
 
         String val = passwort.getEditText().getText().toString();
