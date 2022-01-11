@@ -1,12 +1,12 @@
 package com.example.myapplication;
 
-public class Hund {
+public class Dog {
     private String name, alter, rasse, bild, bio, preis;
     private boolean mischling, papiere;
     // TODO Instanzen der Klassen Suche, Likes, Historie hinzufügen
 
 
-    public Hund(String name, String alter, String rasse, String bild, String bio, String preis, boolean mischling, boolean papiere) {
+    public Dog(String name, String alter, String rasse, String bild, String bio, String preis, boolean mischling, boolean papiere) {
         this.name = name;
         this.alter = alter;
         this.rasse = rasse;
