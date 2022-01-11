@@ -13,10 +13,10 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/BiografieTxt" />
+        app:layout_constraintTop_toBottomOf="@+id/bioReg" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/VornameTxt"
+        android:id="@+id/firstNameReg"
         android:layout_width="409dp"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -26,115 +26,116 @@
         app:layout_constraintVertical_bias="0.089999974">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/Vorname"
+            android:id="@+id/firstNameTxt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Vorname" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/NachnameTxt"
+        android:id="@+id/nameReg"
         android:layout_width="409dp"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/VornameTxt">
+        app:layout_constraintTop_toBottomOf="@+id/firstNameReg">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/Nachname"
+            android:id="@+id/nameTxt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Nachname" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/EmailTxt"
+        android:id="@+id/emailReg"
         android:layout_width="409dp"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/NachnameTxt">
+        app:layout_constraintTop_toBottomOf="@+id/nameReg">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/Email"
+            android:id="@+id/emailTxt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Email" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/TelefonnummerTxt"
+        android:id="@+id/phoneNumberReg"
         android:layout_width="409dp"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/EmailTxt">
+        app:layout_constraintTop_toBottomOf="@+id/emailReg">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/Telefonnummer"
+            android:id="@+id/phoneNumberTxt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Telefonnummer" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/PostleitzahlTxt"
+        android:id="@+id/postalCodeReg"
         android:layout_width="409dp"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TelefonnummerTxt">
+        app:layout_constraintTop_toBottomOf="@+id/phoneNumberReg">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/Postleitzahl"
+            android:id="@+id/postalCodeTxt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Postleitzahl" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/BiografieTxt"
+        android:id="@+id/bioReg"
         android:layout_width="409dp"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/PostleitzahlTxt">
+        app:layout_constraintTop_toBottomOf="@+id/postalCodeReg">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/Biografie"
+            android:id="@+id/bioTxt"
             android:layout_width="match_parent"
             android:layout_height="184dp"
             android:hint="Biografie" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/PasswortTxt"
+        android:id="@+id/passwordReg"
         android:layout_width="409dp"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toTopOf="@+id/regBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/BiografieTxt"
+        app:layout_constraintTop_toBottomOf="@+id/bioReg"
         app:layout_constraintVertical_bias="0.0">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/Passwort"
+            android:id="@+id/passwordTxt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Passwort" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/BenutzernameTxt"
+        android:id="@+id/usernameReg"
         android:layout_width="409dp"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/VornameTxt"
+        app:layout_constraintBottom_toTopOf="@+id/firstNameReg"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/usernameTxt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Benutzername" />

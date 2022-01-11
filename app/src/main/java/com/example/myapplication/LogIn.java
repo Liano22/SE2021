@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,7 +19,7 @@ import com.google.firebase.database.ValueEventListener;
 public class LogIn extends AppCompatActivity {
 
     //Variablen:
-    TextInputLayout benutzername, passwort;
+    TextInputLayout username, password;
 
     Button goToSignUp, letTheUserLogIn;
 
@@ -32,8 +31,8 @@ public class LogIn extends AppCompatActivity {
         //Zuweisungen:
         letTheUserLogIn = findViewById(R.id.letTheUserLogIn);
         goToSignUp = findViewById(R.id.regBtnLogIn);
-        benutzername = findViewById(R.id.benutzernameLogIn);
-        passwort = findViewById(R.id.passwortLogIn);
+        username = findViewById(R.id.benutzernameLogIn);
+        password = findViewById(R.id.passwortLogIn);
 
         //Intent: Wechsel zur Registrierung
         Intent intentSignUp = new Intent(this, SignUp.class);
@@ -61,14 +60,14 @@ public class LogIn extends AppCompatActivity {
      * @return Boolean. True, wenn akzeptiert. False, wenn nicht.
      */
     private Boolean validateUsername(){
-        String val = benutzername.getEditText().getText().toString();
+        String val = username.getEditText().getText().toString();
 
         if(val.isEmpty()){
-            benutzername.setError("Benutzername darf nicht leer sein");
+            username.setError("Benutzername darf nicht leer sein");
             return false;
         } else {
-            benutzername.setError(null);
-            benutzername.setErrorEnabled(false);
+            username.setError(null);
+            username.setErrorEnabled(false);
             return true;
         }
     }
@@ -82,14 +81,14 @@ public class LogIn extends AppCompatActivity {
      */
     private Boolean validatePassword() {
 
-        String val = passwort.getEditText().getText().toString();
+        String val = password.getEditText().getText().toString();
 
         if(val.isEmpty()){
-            passwort.setError("Passwort darf nicht leer sein");
+            password.setError("Passwort darf nicht leer sein");
             return false;
         } else {
-            passwort.setError(null);
-            passwort.setErrorEnabled(false);
+            password.setError(null);
+            password.setErrorEnabled(false);
             return true;
         }
 
@@ -121,36 +120,36 @@ public class LogIn extends AppCompatActivity {
     private void userExists(){
 
         //Texteingaben:
-        String benutzernameInput = benutzername.getEditText().getText().toString();
-        String passwortInput = passwort.getEditText().getText().toString();
+        String usernameInput = username.getEditText().getText().toString();
+        String passwordInput = password.getEditText().getText().toString();
 
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("NutzerTest");
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("users");
 
-        Query checkUser = reference.orderByChild("benutzername").equalTo(benutzernameInput); //Zwischenspeichern des Nutzers aus DB
+        Query checkUser = reference.orderByChild("username").equalTo(usernameInput); //Zwischenspeichern des Nutzers aus DB
 
         checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(snapshot.exists()){ //Konnte ein Nutzer gefunden und gespeichert werden?
 
-                    benutzername.setError(null); //Falls es mehrere Versuche/Fehler gab, muss die Ausgabe entfernt werden
-                    benutzername.setErrorEnabled(false);
+                    username.setError(null); //Falls es mehrere Versuche/Fehler gab, muss die Ausgabe entfernt werden
+                    username.setErrorEnabled(false);
 
-                    String passwortAusDB = snapshot.child(benutzernameInput).child("passwort").getValue(String.class); //Passwort aus DB
+                    String passwortAusDB = snapshot.child(usernameInput).child("password").getValue(String.class); //Passwort aus DB
 
-                    if(passwortAusDB.equals(passwortInput)){ //Gleichen die Passwörter einander?
-                        passwort.setError(null);
-                        passwort.setErrorEnabled(false);
+                    if(passwortAusDB.equals(passwordInput)){ //Gleichen die Passwörter einander?
+                        password.setError(null);
+                        password.setErrorEnabled(false);
                         Intent intentDashboard = new Intent(getApplicationContext(),Dashboard.class);
                         startActivity(intentDashboard);
                     }
                     else{
-                        passwort.setError("Falsches Passwort");
+                        password.setError("Falsches Passwort");
                     }
                 }
                 else {
-                    benutzername.setError("Dieser Nutzer existiert nicht");
-                    benutzername.requestFocus();
+                    username.setError("Dieser Nutzer existiert nicht");
+                    username.requestFocus();
                 }
             }
 
