@@ -10,27 +10,31 @@ public class DatabaseConnector {
     DatabaseReference reference;
 
     //write user to Database
-    public void writeUserToDatabase(String path, User newUser, String usernameInput){
+    public void writeUserToDatabase(User newUser, String usernameInput){
         rootNode = FirebaseDatabase.getInstance();
-        reference = rootNode.getReference(path);
+        reference = rootNode.getReference("users");
         reference.child(usernameInput).setValue(newUser);
     }
 
     //write dog to Database
-    public void writeDogToDatabase(String path, Dog newDog, String dogId){
+    public void writeDogToDatabase(Dog newDog, String dogId){
         rootNode = FirebaseDatabase.getInstance();
-        reference = rootNode.getReference(path);
+        reference = rootNode.getReference("dogs");
         reference.child(dogId).setValue(newDog);
     }
 
     //read user from Database
-    public Query readUserFromDatabase(String path, String username, String childName){
+    public Query readUserFromDatabase(String username, String childName){
+        rootNode = FirebaseDatabase.getInstance();
+        reference = rootNode.getReference("users");
         Query checkUser = reference.orderByChild(childName).equalTo(username);
         return checkUser;
     }
 
     //read dog from Database
-    public Query readDogFromDatabase(String path, String dogId, String childName){
+    public Query readDogFromDatabase(String dogId, String childName){
+        rootNode = FirebaseDatabase.getInstance();
+        reference = rootNode.getReference("dogs");
         Query checkDog = reference.orderByChild(childName).equalTo(dogId);
         return checkDog;
     }

@@ -23,6 +23,8 @@ public class LogIn extends AppCompatActivity {
 
     Button goToSignUp, letTheUserLogIn;
 
+    DatabaseConnector dbConnector;
+
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +35,8 @@ public class LogIn extends AppCompatActivity {
         goToSignUp = findViewById(R.id.regBtnLogIn);
         username = findViewById(R.id.benutzernameLogIn);
         password = findViewById(R.id.passwortLogIn);
+
+        dbConnector = new DatabaseConnector();
 
         //Intent: Wechsel zur Registrierung
         Intent intentSignUp = new Intent(this, SignUp.class);
@@ -123,9 +127,11 @@ public class LogIn extends AppCompatActivity {
         String usernameInput = username.getEditText().getText().toString();
         String passwordInput = password.getEditText().getText().toString();
 
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("users");
+        //DatabaseReference reference = FirebaseDatabase.getInstance().getReference("users");
 
-        Query checkUser = reference.orderByChild("username").equalTo(usernameInput); //Zwischenspeichern des Nutzers aus DB
+        //Query checkUser = reference.orderByChild("username").equalTo(usernameInput); //Zwischenspeichern des Nutzers aus DB
+
+        Query checkUser = dbConnector.readUserFromDatabase("users",usernameInput,"username");
 
         checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override

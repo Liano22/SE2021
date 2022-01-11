@@ -16,8 +16,10 @@ public class SignUp extends AppCompatActivity {
     TextInputLayout username, firstName, name, email, postalCode, phoneNumber, bio, password;
     Button regBtn;
 
-    FirebaseDatabase rootNode;
-    DatabaseReference reference;
+    //FirebaseDatabase rootNode;
+    //DatabaseReference reference;
+
+    DatabaseConnector dbConnector = new DatabaseConnector();
 
     protected void onCreate(Bundle savedinstanceState) {
         super.onCreate(savedinstanceState);
@@ -37,8 +39,9 @@ public class SignUp extends AppCompatActivity {
         //Senden des neuen Nutzers an die Datenbank:
         regBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view){
-                rootNode = FirebaseDatabase.getInstance();
-                reference = rootNode.getReference("users/");
+                //rootNode = FirebaseDatabase.getInstance();
+                //reference = rootNode.getReference("users/");
+
 
                 validateUsername(username);
 
@@ -53,7 +56,10 @@ public class SignUp extends AppCompatActivity {
 
                 User newUser = new User(usernameInput,firstNameInput,nameInput,emailInput,postalCodeInput,phoneNumberInput,bioInput, passwordInput);
 
-                reference.child(usernameInput).setValue(newUser);
+                //reference.child(usernameInput).setValue(newUser);
+
+                dbConnector.writeUserToDatabase("users/",newUser,usernameInput);
+
                 regBtn.setText("Geklickt");
             }
         });
