@@ -131,7 +131,7 @@ public class LogIn extends AppCompatActivity {
 
         //Query checkUser = reference.orderByChild("username").equalTo(usernameInput); //Zwischenspeichern des Nutzers aus DB
 
-        Query checkUser = dbConnector.readUserFromDatabase("users",usernameInput,"username");
+        Query checkUser = dbConnector.readUserFromDatabase(usernameInput,"username");
 
         checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override

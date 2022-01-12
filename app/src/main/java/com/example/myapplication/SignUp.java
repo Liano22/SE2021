@@ -58,7 +58,7 @@ public class SignUp extends AppCompatActivity {
 
                 //reference.child(usernameInput).setValue(newUser);
 
-                dbConnector.writeUserToDatabase("users/",newUser,usernameInput);
+                dbConnector.writeUserToDatabase(newUser,usernameInput);
 
                 regBtn.setText("Geklickt");
             }
