@@ -147,6 +147,7 @@ public class LogIn extends AppCompatActivity {
                         password.setError(null);
                         password.setErrorEnabled(false);
                         Intent intentDashboard = new Intent(getApplicationContext(),Dashboard.class);
+                        intentDashboard.putExtra("currentUser", usernameInput);
                         startActivity(intentDashboard);
                     }
                     else{

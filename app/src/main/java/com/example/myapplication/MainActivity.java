@@ -12,7 +12,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends AppCompatActivity {
+
+    User currentUser;
+
     protected void onCreate(Bundle savedInstanceState) {
+
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -34,6 +38,11 @@ public class MainActivity extends AppCompatActivity {
                 //startBtn.setText("Gestartet");
             }
         });
+
+    }
+
+    public void setCurrentUser(User user){
+        this.currentUser = user;
     }
 
 }
