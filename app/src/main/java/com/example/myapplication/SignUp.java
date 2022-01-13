@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -7,8 +8,12 @@ import android.view.View;
 import android.widget.Button;
 
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 public class SignUp extends AppCompatActivity {
 
@@ -82,6 +87,23 @@ public class SignUp extends AppCompatActivity {
 
         //todo muss noch Anforderungen als Verzeichnis für Firebase erfüllen
         //todo muss einzigartig sein
+
+        //----------Karls kram-----------------------------------
+        String usernameInput = username.getEditText().getText().toString();
+        Query checkUser = dbConnector.readUserFromDatabase(usernameInput, "username");
+        checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(!snapshot.exists()){
+                    username.setError("Nutzername bereits vergeben");
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                
+            }
+        });
+        //----------Karls kram------------------------------------
 
         if(val.isEmpty()){
             username.setError("Benutzername darf nicht leer sein");
