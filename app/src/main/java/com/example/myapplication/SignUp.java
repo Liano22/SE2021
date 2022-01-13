@@ -89,6 +89,7 @@ public class SignUp extends AppCompatActivity {
         //todo muss einzigartig sein
 
         //----------Karls kram-----------------------------------
+        //TODO Bei bereits vergebenem Nutzername dürfen die Daten nicht überschrieben werden
         String usernameInput = username.getEditText().getText().toString();
         Query checkUser = dbConnector.readUserFromDatabase(usernameInput, "username");
         checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
