@@ -9,14 +9,15 @@ import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.firebase.database.FirebaseDatabase;
+//import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.register_activity);
 
+        /*
         Button startBtn = findViewById(R.id.startBtn);
 
         Intent intent = new Intent(this, LogIn.class);
@@ -28,12 +29,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });*/
 
+        /*
         startBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view){
                 startActivity(intent);
                 //startBtn.setText("Gestartet");
             }
         });
+        */
+
+
     }
 
 }
