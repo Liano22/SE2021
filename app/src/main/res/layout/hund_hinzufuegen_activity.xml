@@ -21,7 +21,7 @@
     <EditText
         android:id="@+id/benutzernameEingabefeld11"
         android:layout_width="328dp"
-        android:layout_height="80dpdp"
+        android:layout_height="140dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="140dp"
         android:background="@drawable/input_field"
