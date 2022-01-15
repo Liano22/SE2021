@@ -1,9 +1,11 @@
-package com.example.myapplication;
+package com.example.myapplication.dashboard;
 
 import android.os.Bundle;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.myapplication.R;
 
 public class Dashboard extends AppCompatActivity {
 
