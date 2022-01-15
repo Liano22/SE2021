@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.dogCreation;
 
 public class Dog {
     private String name, alter, rasse, bild, bio, preis;

@@ -9,6 +9,7 @@ import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.myapplication.logIn.LogInView;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends AppCompatActivity {
@@ -23,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
         Button startBtn = findViewById(R.id.startBtn);
 
-        Intent intent = new Intent(this, LogIn.class);
+        Intent intent = new Intent(this, LogInView.class);
 
         /*startBtn.setOnClickListener(new View.OnClickListener(){
             @Override
