@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.R;
 
-public class Dashboard extends AppCompatActivity {
+public class DashboardPresenter extends AppCompatActivity {
 
     TextView welcome;
 

@@ -1,4 +1,5 @@
 package com.example.myapplication.search;
 
-public class SearchView {
+public class SearchView implements SearchContract.Presenter{
+
 }

@@ -8,7 +8,7 @@ import android.widget.Button;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.myapplication.dashboard.Dashboard;
+import com.example.myapplication.dashboard.DashboardPresenter;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -145,7 +145,7 @@ public class LogIn extends AppCompatActivity {
                     if(passwortAusDB.equals(passwordInput)){ //Gleichen die Passwörter einander?
                         password.setError(null);
                         password.setErrorEnabled(false);
-                        Intent intentDashboard = new Intent(getApplicationContext(), Dashboard.class);
+                        Intent intentDashboard = new Intent(getApplicationContext(), DashboardPresenter.class);
                         intentDashboard.putExtra("currentUser", usernameInput);
                         startActivity(intentDashboard);
                     }
