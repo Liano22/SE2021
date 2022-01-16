@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import com.example.myapplication.dogCreation.Dog;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;

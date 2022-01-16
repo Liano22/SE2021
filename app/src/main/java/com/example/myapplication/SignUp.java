@@ -80,7 +80,7 @@ public class SignUp extends AppCompatActivity {
      * @param username Eingabe aus Textfeld Benutzername
      * @return Boolean-Wert. True, wenn Name akzeptiert. False, wenn nicht.
      */
-    private Boolean validateUsername(TextInputLayout username){
+    private Boolean validateUsername(TextInputLayout username) {
 
         String val = username.getEditText().getText().toString();
         String noSpace = "\\A\\w{4,20}\\z";
@@ -106,10 +106,10 @@ public class SignUp extends AppCompatActivity {
         });
         //----------Karls kram------------------------------------
 
-        if(val.isEmpty()){
+        if(val.isEmpty()) {
             username.setError("Benutzername darf nicht leer sein");
             return false;
-        } else if (val.length() >= 20){
+        } else if (val.length() >= 20) {
             username.setError("Benutzername zu lang");
             return false;
         } else if(!val.matches(noSpace)) {
@@ -134,7 +134,7 @@ public class SignUp extends AppCompatActivity {
 
         String val = password.getEditText().getText().toString();
 
-        if(val.isEmpty()){
+        if(val.isEmpty()) {
             password.setError("Passwort darf nicht leer sein");
             return false;
         } else {
