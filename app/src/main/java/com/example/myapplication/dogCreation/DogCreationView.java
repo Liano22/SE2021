@@ -15,13 +15,15 @@ import com.example.myapplication.dashboard.DashboardPresenter;
 
 public class DogCreationView extends AppCompatActivity implements IDogCreationContract.IView {
 
+    // Elemente aus der xml
     Button dogSaveBtn;
     EditText name, age, gender, race, pic, bio, price;
     CheckBox hybrid, papers;
 
+    // Verbindung zum Presenter
     DogCreationPresenter dogCreationPresenter = new DogCreationPresenter(this);
 
-    // TODO Intent muss nach Fertigestellung von Dashboard nochmal geändert werden
+    // TODO Intent weiterleiten zu Dashboard
     // Intent intentDashboardFromDogCreation = new Intent(this, DashboardPresenter.class);
 
     @Override
@@ -47,7 +49,7 @@ public class DogCreationView extends AppCompatActivity implements IDogCreationCo
         dogSaveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                // die Einträge des Nutzers werden als Strings an den Presenter weitergereicht
                 dogCreationPresenter.saveDog(name.getText().toString(), age.getText().toString(), gender.getText().toString(), race.getText().toString(),
                         pic.getText().toString(), bio.getText().toString(), price.getText().toString(), hybrid.isChecked(), papers.isChecked());
             }

@@ -15,6 +15,7 @@ public class DashboardPresenter extends AppCompatActivity {
 
     TextView welcome;
 
+    // Button um auf die Seite zum Erstellen neuer Hunde weiterzuleiten
     Button newDogBtn;
 
     @Override
@@ -22,6 +23,7 @@ public class DashboardPresenter extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dashboard);
 
+        // Zuweisung zur Weiterleitung auf dogCreation
         newDogBtn = findViewById(R.id.newDogBtn);
         Intent intentDogCreation = new Intent(this, DogCreationView.class);
 
@@ -43,6 +45,7 @@ public class DashboardPresenter extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //intentDogCreation.putExtra("currentUser", currentUser);
+                // Weiterleitung zur Seite zum Erstellen eines neuen Hundes zu Testzwecken
                 startActivity(intentDogCreation);
             }
         });

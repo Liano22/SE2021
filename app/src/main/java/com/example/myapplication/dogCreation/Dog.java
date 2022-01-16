@@ -9,6 +9,7 @@ public class Dog {
     public Dog() {
     }
 
+    // wird bei der Erstellung eines neuen Hundes verwendet:
     public Dog(String name, String age, String gender, String race, String pic, String bio, String price, boolean hybrid, boolean papers) {
         this.name = name;
         this.age = age;
@@ -20,6 +21,7 @@ public class Dog {
         this.hybrid = hybrid;
         this.papers = papers;
     }
+
 
     public String getGender() {
         return gender;

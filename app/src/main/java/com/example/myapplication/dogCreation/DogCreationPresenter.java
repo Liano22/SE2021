@@ -4,12 +4,12 @@ import com.example.myapplication.DatabaseConnector;
 
 public class DogCreationPresenter implements  IDogCreationContract.IPresenter{
 
-    Dog newDog;
-    DatabaseConnector dbConnector = new DatabaseConnector();
+    Dog newDog; // der neu erstellte Hund, der später in die Datenbank geladen werden soll
+    DatabaseConnector dbConnector = new DatabaseConnector(); // um Verbindung zur Datenbank herstellen zu können
     IDogCreationContract.IView dogCreationView;
 
     public DogCreationPresenter(IDogCreationContract.IView dogCreationView) {
-        this.dogCreationView = dogCreationView;
+        this.dogCreationView = dogCreationView; // Verbindung zur View
     }
 
     @Override
