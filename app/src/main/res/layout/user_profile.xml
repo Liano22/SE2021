@@ -34,8 +34,9 @@
         android:paddingTop="2dp"
         android:text="Gelistete Hunde"
         android:textSize="22sp"
-        app:layout_constraintTop_toBottomOf="@+id/text_owner_bio"
-        tools:layout_editor_absoluteX="0dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_owner_bio" />
 
     <ImageView
         android:id="@+id/owner_image"
@@ -64,31 +65,25 @@
         android:id="@+id/text_owner_status"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
         android:layout_marginTop="10dp"
         android:text="Amateur Züchter seit 3 Jahren"
-        app:layout_constraintStart_toEndOf="@+id/owner_image"
+        app:layout_constraintStart_toStartOf="@+id/text_owner_name"
         app:layout_constraintTop_toBottomOf="@+id/text_owner_name" />
 
     <TextView
         android:id="@+id/text_owner_place"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
         android:layout_marginTop="10dp"
         android:text="aus Ort, PLZ"
-        app:layout_constraintStart_toEndOf="@+id/owner_image"
+        app:layout_constraintStart_toStartOf="@+id/text_owner_status"
         app:layout_constraintTop_toBottomOf="@+id/text_owner_status" />
 
     <TextView
         android:id="@+id/text_owner_phone_number"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
         android:text="Telefonnummer:"
-        app:layout_constraintStart_toEndOf="@+id/owner_image"
+        app:layout_constraintStart_toStartOf="@+id/text_owner_place"
         app:layout_constraintTop_toBottomOf="@+id/text_owner_place" />
 </androidx.constraintlayout.widget.ConstraintLayout>
