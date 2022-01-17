@@ -1,7 +1,6 @@
 package com.example.myapplication.search;
 
 import android.os.Bundle;
-import android.preference.CheckBoxPreference;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -11,7 +10,6 @@ import android.widget.Spinner;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.R;
-import com.google.android.material.textfield.TextInputLayout;
 
 public class SearchView extends AppCompatActivity implements SearchContract.Presenter {
 
@@ -21,7 +19,7 @@ public class SearchView extends AppCompatActivity implements SearchContract.Pres
 
     protected void onCreate(Bundle savedInstanceState) {
         //Zuweisungen
-        updateSearchPreferences = findViewById(R.id.button);
+        updateSearchPreferences = findViewById(R.id.preferences_button);
         Spinner raceSpinner = (Spinner) findViewById(R.id.rasse_spinner);
         String race = raceSpinner.getSelectedItem().toString();
 
@@ -57,7 +55,7 @@ public class SearchView extends AppCompatActivity implements SearchContract.Pres
                     break;
                 }
 
-            case R.id.checkBox2:
+            case R.id.checkbox_papers_optinal:
                 if (checked) {
                     papersAvailable = false;
                     papersOptional = true;
