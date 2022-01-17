@@ -65,9 +65,9 @@ public class LogInPresenter implements ILogInContract.IPresenter{
 
                     logInView.setErrorMessage(null);
 
-                    String passwortAusDB = snapshot.child(username).child("password").getValue(String.class); //Passwort aus DB
+                    String passwordFromDB = snapshot.child(username).child("password").getValue(String.class); //Passwort aus DB
 
-                    if(passwortAusDB.equals(password)){ //Gleichen die Passwörter einander?
+                    if(passwordFromDB.equals(password)){ //Gleichen die Passwörter einander?
                         logInView.setErrorMessage(null);
                         logInView.changeToDashboard(username);
                     }

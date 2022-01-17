@@ -7,6 +7,7 @@ public interface IDogCreationContract {
     }
 
     interface IPresenter{
-        void saveDog(String name, String age, String gender, String race, String pic, String bio, String price, boolean hybrid, boolean papers);
+        void saveDog(String username, String name, String age, String gender, String race, String pic, String bio, String price, boolean hybrid, boolean papers);
+        void linkDogToUser(String username, int dogId);
     }
 }

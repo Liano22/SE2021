@@ -1,9 +1,14 @@
 package com.example.myapplication;
 
+import androidx.annotation.NonNull;
+
 import com.example.myapplication.dogCreation.Dog;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 public class DatabaseConnector {
 
@@ -42,17 +47,35 @@ public class DatabaseConnector {
 
     public Query getNextDogID(){
         rootNode = FirebaseDatabase.getInstance();
-        reference = rootNode.getReference("dogs");
-        Query getDogId = reference.orderByChild("nextId");
+        reference = rootNode.getReference("nextDogId");
+        Query getDogId = reference;
         return getDogId;
     }
 
     public void writeNextDogID(int newDogId){
         rootNode = FirebaseDatabase.getInstance();
-        reference = rootNode.getReference("dogs");
-        reference.child("nextId").setValue(newDogId);
+        reference = rootNode.getReference("nextDogId");
+        reference.setValue(newDogId);
     }
 
-    public void changeUserAttribute(String child, String value){
+    public void changeUserDogList(String username, String dogID){
+        rootNode = FirebaseDatabase.getInstance();
+        reference = rootNode.getReference("users/"+username);
+        Query user = reference;
+        user.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                String dogsFromDB = snapshot.child("myDogs").getValue(String.class);
+                String appendDog = dogsFromDB + dogID + ", ";
+                reference = rootNode.getReference("users/"+username+"/myDogs");
+                reference.setValue(appendDog);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
     }
 }

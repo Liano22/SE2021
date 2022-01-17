@@ -77,7 +77,7 @@ public class DogCreationView extends AppCompatActivity implements IDogCreationCo
             public void onClick(View v) {
 
                 // die Einträge des Nutzers werden als Strings an den Presenter weitergereicht
-                dogCreationPresenter.saveDog(name.getText().toString(), age.getText().toString(), gender, race.getText().toString(),
+                dogCreationPresenter.saveDog(currentUser,name.getText().toString(), age.getText().toString(), gender, race.getText().toString(),
                         pic.getText().toString(), bio.getText().toString(), price.getText().toString(), hybrid.isChecked(), papers.isChecked());
             }
         });

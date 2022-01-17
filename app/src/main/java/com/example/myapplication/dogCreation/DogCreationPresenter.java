@@ -19,17 +19,22 @@ public class DogCreationPresenter implements  IDogCreationContract.IPresenter{
     }
 
     @Override
-    public void saveDog(String name, String age, String gender, String race, String pic, String bio, String price, boolean hybrid, boolean papers) {
+    public void saveDog(String username, String name, String age, String gender, String race, String pic, String bio, String price, boolean hybrid, boolean papers) {
         newDog = new Dog(name, age, gender, race, pic, bio, price, hybrid, papers);
         Query dogId = dbConnector.getNextDogID();
 
         dogId.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                int idFromDB = snapshot.child("nextId").getValue(Integer.class); //Passwort aus DB
+
+                int idFromDB = snapshot.getValue(Integer.class);
                 dbConnector.writeDogToDatabase(newDog, String.valueOf(idFromDB));
+
+                linkDogToUser(username, idFromDB);
+
                 idFromDB++;
                 dbConnector.writeNextDogID(idFromDB);
+
                 dogCreationView.changeToDashboard();
 
             }
@@ -40,7 +45,12 @@ public class DogCreationPresenter implements  IDogCreationContract.IPresenter{
             }
         });
 
+    }
 
-        // TODO dogId muss bei Nutzer unter Hunde eigetragen werden
+    // TODO dogId muss bei Nutzer unter Hunde eigetragen werden
+
+    public void linkDogToUser(String username, int dogId){
+        String dogIdString = String.valueOf(dogId);
+        dbConnector.changeUserDogList(username,dogIdString);
     }
 }
