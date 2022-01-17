@@ -39,4 +39,21 @@ public class DatabaseConnector {
         Query checkDog = reference.orderByChild(childName).equalTo(dogId);
         return checkDog;
     }
+
+    public Query getNextDogID(){
+        rootNode = FirebaseDatabase.getInstance();
+        reference = rootNode.getReference("dogs");
+        Query getDogId = reference.orderByChild("nextId");
+        return getDogId;
+    }
+
+    public void writeNextDogID(int newDogId){
+        rootNode = FirebaseDatabase.getInstance();
+        reference = rootNode.getReference("dogs");
+        reference.child("nextId").setValue(newDogId);
+    }
+
+    public void changeUserAttribute(String child, String value){
+        
+    }
 }

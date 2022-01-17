@@ -1,6 +1,12 @@
 package com.example.myapplication.dogCreation;
 
+import androidx.annotation.NonNull;
+
 import com.example.myapplication.DatabaseConnector;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 public class DogCreationPresenter implements  IDogCreationContract.IPresenter{
 
@@ -15,9 +21,24 @@ public class DogCreationPresenter implements  IDogCreationContract.IPresenter{
     @Override
     public void saveDog(String name, String age, String gender, String race, String pic, String bio, String price, boolean hybrid, boolean papers) {
         newDog = new Dog(name, age, gender, race, pic, bio, price, hybrid, papers);
-        // TODO dogId muss hochgezählt werden, damit die Hunde nicht überschrieben werden
-        int dogId = 42;
-        dbConnector.writeDogToDatabase(newDog, String.valueOf(dogId));
+        Query dogId = dbConnector.getNextDogID();
+
+        dogId.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                int idFromDB = snapshot.child("nextId").getValue(Integer.class); //Passwort aus DB
+                dbConnector.writeDogToDatabase(newDog, String.valueOf(idFromDB));
+                idFromDB++;
+                dbConnector.writeNextDogID(idFromDB);
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
 
         // TODO dogId muss bei Nutzer unter Hunde eigetragen werden
     }
