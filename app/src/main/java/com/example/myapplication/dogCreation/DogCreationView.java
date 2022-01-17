@@ -12,6 +12,7 @@ import android.widget.RadioGroup;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.myapplication.MainActivity;
 import com.example.myapplication.R;
 import com.example.myapplication.dashboard.DashboardPresenter;
 
@@ -30,8 +31,8 @@ public class DogCreationView extends AppCompatActivity implements IDogCreationCo
     // Verbindung zum Presenter
     DogCreationPresenter dogCreationPresenter = new DogCreationPresenter(this);
 
-    // TODO Intent weiterleiten zu Dashboard
-    // Intent intentDashboardFromDogCreation = new Intent(this, DashboardPresenter.class);
+    Intent intentDashboardFromDogCreation;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -53,6 +54,23 @@ public class DogCreationView extends AppCompatActivity implements IDogCreationCo
 
         hybrid = findViewById(R.id.checkDogHybrid);
         papers = findViewById(R.id.checkDogPapers);
+
+        //Aktueller User wird aus Intent ausgelesen
+        String currentUser;
+        if (savedInstanceState == null) {
+            Bundle extras = getIntent().getExtras();
+            if(extras == null) {
+                currentUser= null;
+            } else {
+                currentUser= extras.getString("currentUser");
+            }
+        } else {
+            currentUser= (String) savedInstanceState.getSerializable("currentUser");
+        }
+
+        //Neuer Intent nach Dachboard wir gepackt, User wird beigelegt
+        intentDashboardFromDogCreation = new Intent(this, DashboardPresenter.class);
+        intentDashboardFromDogCreation.putExtra("currentUser", currentUser);
 
         dogSaveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,8 +94,7 @@ public class DogCreationView extends AppCompatActivity implements IDogCreationCo
     }
 
     @Override
-    public void changeToDashboard(String username) {
-        // TODO weiterleiten zu Dashboard
-        //startActivity(intentDashboardFromDogCreation);
+    public void changeToDashboard() {
+        startActivity(intentDashboardFromDogCreation);
     }
 }

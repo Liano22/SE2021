@@ -54,6 +54,5 @@ public class DatabaseConnector {
     }
 
     public void changeUserAttribute(String child, String value){
-        
     }
 }

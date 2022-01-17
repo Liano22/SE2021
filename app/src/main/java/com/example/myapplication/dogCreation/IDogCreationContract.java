@@ -3,7 +3,7 @@ package com.example.myapplication.dogCreation;
 public interface IDogCreationContract {
     interface IView{
         void setErrorMessage(String ErrorMessage);
-        void changeToDashboard(String username);
+        void changeToDashboard();
     }
 
     interface IPresenter{

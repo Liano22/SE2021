@@ -28,6 +28,7 @@ public class DashboardPresenter extends AppCompatActivity {
         Intent intentDogCreation = new Intent(this, DogCreationView.class);
 
         welcome = findViewById(R.id.welcome);
+
         String currentUser;
         if (savedInstanceState == null) {
             Bundle extras = getIntent().getExtras();
@@ -46,6 +47,7 @@ public class DashboardPresenter extends AppCompatActivity {
             public void onClick(View v) {
                 //intentDogCreation.putExtra("currentUser", currentUser);
                 // Weiterleitung zur Seite zum Erstellen eines neuen Hundes zu Testzwecken
+                intentDogCreation.putExtra("currentUser", currentUser);
                 startActivity(intentDogCreation);
             }
         });

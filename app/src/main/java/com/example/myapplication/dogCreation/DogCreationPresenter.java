@@ -30,6 +30,7 @@ public class DogCreationPresenter implements  IDogCreationContract.IPresenter{
                 dbConnector.writeDogToDatabase(newDog, String.valueOf(idFromDB));
                 idFromDB++;
                 dbConnector.writeNextDogID(idFromDB);
+                dogCreationView.changeToDashboard();
 
             }
 

@@ -58,7 +58,7 @@ public class LogInView extends AppCompatActivity implements ILogInContract.IView
 
     @Override
     public void changeToDashboard(String username) {
-        Intent intentDashboard = new Intent(getApplicationContext(), DashboardPresenter.class);
+        Intent intentDashboard = new Intent(this, DashboardPresenter.class);
         intentDashboard.putExtra("currentUser", username);
         startActivity(intentDashboard);
     }
