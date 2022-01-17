@@ -4,20 +4,19 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.myapplication.DatabaseConnector;
 import com.example.myapplication.R;
 import com.example.myapplication.SignUp;
 import com.example.myapplication.dashboard.DashboardPresenter;
-import com.google.android.material.textfield.TextInputLayout;
 
 public class LogInView extends AppCompatActivity implements ILogInContract.IView{
 
-    TextInputLayout username, password;
+    EditText username, password;
 
-    Button goToSignUp, letTheUserLogIn;
+    Button logInBtn, logInToSignUpBtn;
     LogInPresenter logInPresenter = new LogInPresenter(this);
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,24 +24,24 @@ public class LogInView extends AppCompatActivity implements ILogInContract.IView
         setContentView(R.layout.log_in);
 
         //Zuweisungen:
-        letTheUserLogIn = findViewById(R.id.letTheUserLogIn);
-        goToSignUp = findViewById(R.id.regBtnLogIn);
-        username = findViewById(R.id.benutzernameLogIn);
-        password = findViewById(R.id.passwortLogIn);
+        logInBtn = findViewById(R.id.logInBtn);
+        logInToSignUpBtn = findViewById(R.id.logInToSignUpBtn);
+        username = findViewById(R.id.usernameLogIn);
+        password = findViewById(R.id.passwordLogIn);
 
 
 
         //Intent: Wechsel zur Registrierung
         Intent intentSignUp = new Intent(this, SignUp.class);
 
-        letTheUserLogIn.setOnClickListener( new View.OnClickListener(){
+        logInBtn.setOnClickListener( new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                logInPresenter.logIn(view,username.getEditText().getText().toString(), password.getEditText().getText().toString()); //Überprüfen der Log-In-Daten
+                logInPresenter.logIn(view,username.getText().toString(), password.getText().toString()); //Überprüfen der Log-In-Daten
             }
         });
 
-        goToSignUp.setOnClickListener( new View.OnClickListener(){
+        logInToSignUpBtn.setOnClickListener( new View.OnClickListener(){
             @Override
             public void onClick(View view) {
                 startActivity(intentSignUp); //Wechsel zur Registrierung
