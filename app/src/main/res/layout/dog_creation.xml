@@ -136,14 +136,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="weiblich"
-            tools:layout_editor_absoluteX="86dp"
-            tools:layout_editor_absoluteY="181dp" />
+            android:onClick="checkRadioButton"
+            android:checked="true"/>
 
         <RadioButton
             android:id="@+id/maleCheck"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="männlich" />
+            android:text="männlich"
+            android:onClick="checkRadioButton"/>
     </RadioGroup>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

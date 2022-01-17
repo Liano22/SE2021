@@ -22,6 +22,9 @@ public class DogCreationView extends AppCompatActivity implements IDogCreationCo
     EditText name, age, race, pic, bio, price;
     CheckBox hybrid, papers;
 
+    RadioGroup genderCheckGroup;
+    RadioButton genderCheckBtn;
+
     String gender;
 
     // Verbindung zum Presenter
@@ -39,6 +42,8 @@ public class DogCreationView extends AppCompatActivity implements IDogCreationCo
         // Zuweisungen:
         dogSaveBtn = findViewById(R.id.dogSaveBtn);
 
+        genderCheckGroup = findViewById(R.id.dogGenderCheck);
+
         name = findViewById(R.id.dogName);
         age = findViewById(R.id.dogAge);
         race = findViewById(R.id.dogRace);
@@ -52,9 +57,6 @@ public class DogCreationView extends AppCompatActivity implements IDogCreationCo
         dogSaveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                
-                // Status der Radiobuttons wird ausgelesen und gender auf den entsprechenden Wert gesetzt
-                onRadioButtonClicked(v);
 
                 // die Einträge des Nutzers werden als Strings an den Presenter weitergereicht
                 dogCreationPresenter.saveDog(name.getText().toString(), age.getText().toString(), gender, race.getText().toString(),
@@ -62,21 +64,10 @@ public class DogCreationView extends AppCompatActivity implements IDogCreationCo
             }
         });
     }
-    public void onRadioButtonClicked(View view) {
-        // Is the button now checked?
-        boolean checked = ((RadioButton) view).isChecked();
-
-        // Check which radio button was clicked
-        switch(view.getId()) {
-            case R.id.femaleCheck:
-                if (checked)
-                    gender = "weiblich";
-                    break;
-            case R.id.maleCheck:
-                if (checked)
-                    gender = "männlich";
-                    break;
-        }
+    public void checkRadioButton(View view) {
+        int radioId = genderCheckGroup.getCheckedRadioButtonId();
+        genderCheckBtn = findViewById(radioId);
+        gender = genderCheckBtn.getText().toString();
     }
 
     @Override
