@@ -3,18 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Dokumente/Studium/Software Engineering/SE2021/app/src/main/res/layout/dashboard.xml" value="0.3383152173913043" />
-        <entry key="..\:/Dokumente/Studium/Software Engineering/SE2021/app/src/main/res/layout/dashboard_activity.xml" value="0.3383152173913043" />
-        <entry key="..\:/Dokumente/Studium/Software Engineering/SE2021/app/src/main/res/layout/dog_creation.xml" value="0.33" />
         <entry key="..\:/Users/Benni/Documents/GitHub/SE2021/app/src/main/res/layout/activity_main.xml" value="0.30344202898550726" />
         <entry key="..\:/Users/Benni/Documents/GitHub/SE2021/app/src/main/res/layout/dashboard.xml" value="0.30344202898550726" />
-        <entry key="..\:/Users/Benni/Documents/GitHub/SE2021/app/src/main/res/layout/dashboard_activity.xml" value="0.26403985507246375" />
-        <entry key="..\:/Users/Benni/Documents/GitHub/SE2021/app/src/main/res/layout/dog_profile.xml" value="0.26403985507246375" />
         <entry key="..\:/Users/Benni/Documents/GitHub/SE2021/app/src/main/res/layout/item_dashboard.xml" value="0.2907608695652174" />
         <entry key="..\:/Users/Benni/Documents/GitHub/SE2021/app/src/main/res/layout/log_in.xml" value="0.30344202898550726" />
-        <entry key="..\:/Users/Benni/Documents/GitHub/SE2021/app/src/main/res/layout/login_activity.xml" value="0.26403985507246375" />
         <entry key="..\:/Users/Benni/Documents/GitHub/SE2021/app/src/main/res/layout/register_activity.xml" value="0.3211050724637681" />
-        <entry key="..\:/Users/Benni/Documents/GitHub/SE2021/app/src/main/res/layout/search_preferences.xml" value="0.26403985507246375" />
         <entry key="..\:/Users/Benni/Documents/GitHub/SE2021/app/src/main/res/layout/sign_up.xml" value="0.30344202898550726" />
         <entry key="..\:/Users/Kilian/Documents/GitHub/SE2021/app/src/main/res/drawable/button.xml" value="0.26666666666666666" />
         <entry key="..\:/Users/Kilian/Documents/GitHub/SE2021/app/src/main/res/drawable/input_field.xml" value="0.26666666666666666" />
@@ -22,19 +15,15 @@
         <entry key="..\:/Users/Kilian/Documents/GitHub/SE2021/app/src/main/res/layout/activity_main.xml" value="0.160546875" />
         <entry key="..\:/Users/Kilian/Documents/GitHub/SE2021/app/src/main/res/layout/dashboard.xml" value="0.30085470085470084" />
         <entry key="..\:/Users/Kilian/Documents/GitHub/SE2021/app/src/main/res/layout/dashboard_activity.xml" value="0.33" />
+        <entry key="..\:/Users/Kilian/Documents/GitHub/SE2021/app/src/main/res/layout/item_dashboard.xml" value="0.2141025641025641" />
         <entry key="..\:/Users/Kilian/Documents/GitHub/SE2021/app/src/main/res/layout/log_in.xml" value="0.30085470085470084" />
         <entry key="..\:/Users/Kilian/Documents/GitHub/SE2021/app/src/main/res/layout/login_activity.xml" value="0.25" />
         <entry key="..\:/Users/Kilian/Documents/GitHub/SE2021/app/src/main/res/layout/register_activity.xml" value="0.33" />
         <entry key="..\:/Users/Kilian/Documents/GitHub/SE2021/app/src/main/res/layout/sign_up.xml" value="0.30085470085470084" />
-        <entry key="..\:/Users/kbb_r/OneDrive/Dokumente/GitHub/SE2021/app/src/main/res/layout/activity_main.xml" value="0.2520833333333333" />
-        <entry key="..\:/Users/kbb_r/OneDrive/Dokumente/GitHub/SE2021/app/src/main/res/layout/dashboard.xml" value="0.2520833333333333" />
-        <entry key="..\:/Users/kbb_r/OneDrive/Dokumente/GitHub/SE2021/app/src/main/res/layout/dashboard_activity.xml" value="0.2520833333333333" />
-        <entry key="..\:/Users/kbb_r/OneDrive/Dokumente/GitHub/SE2021/app/src/main/res/layout/log_in.xml" value="0.2520833333333333" />
-        <entry key="..\:/Users/kbb_r/OneDrive/Dokumente/GitHub/SE2021/app/src/main/res/layout/suchpraeferenzen.xml" value="0.2520833333333333" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

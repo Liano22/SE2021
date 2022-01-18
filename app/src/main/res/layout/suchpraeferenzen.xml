@@ -138,7 +138,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <CheckBox
-        android:id="@+id/checkbox_papers_present"
+        android:id="@+id/checkBox"
         android:layout_width="wrap_content"
         android:layout_height="24sp"
         android:layout_marginStart="20dp"
@@ -150,7 +150,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
     <CheckBox
-        android:id="@+id/checkbox_papers_optinal"
+        android:id="@+id/checkBox2"
         android:layout_width="wrap_content"
         android:layout_height="24sp"
         android:layout_marginStart="8dp"
@@ -158,11 +158,11 @@
         android:layout_marginTop="8dp"
         android:text="optional"
         android:textColor="@color/black"
-        app:layout_constraintStart_toEndOf="@+id/checkbox_papers_present"
+        app:layout_constraintStart_toEndOf="@+id/checkBox"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
     <Button
-        android:id="@+id/preferences_button"
+        android:id="@+id/button"
         android:layout_width="251sp"
         android:layout_height="47sp"
         android:layout_marginTop="32dp"
@@ -173,5 +173,5 @@
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkbox_papers_optinal" />
+        app:layout_constraintTop_toBottomOf="@+id/checkBox2" />
 </androidx.constraintlayout.widget.ConstraintLayout>

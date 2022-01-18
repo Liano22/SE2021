@@ -2,7 +2,7 @@ package com.example.myapplication;
 
 public class User {
 
-    private String username, firstName, name, email, postalCode, phoneNumber, bio, password, myDogs;
+    private String username, firstName, name, email, postalCode, phoneNumber, bio, password;
 
     public User() {
     }
@@ -16,15 +16,6 @@ public class User {
         this.phoneNumber = phoneNumber;
         this.bio = bio;
         this.password = password;
-        this.myDogs = "";
-    }
-
-    public String getMyDogs() {
-        return myDogs;
-    }
-
-    public void setMyDogs(String myDogs) {
-        this.myDogs = myDogs;
     }
 
     public String getUsername(){return username;}
