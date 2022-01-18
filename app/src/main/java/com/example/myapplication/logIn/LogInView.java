@@ -11,13 +11,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.myapplication.R;
 import com.example.myapplication.SignUp;
 import com.example.myapplication.dashboard.DashboardPresenter;
+import com.google.android.material.textfield.TextInputLayout;
 
 public class LogInView extends AppCompatActivity implements ILogInContract.IView{
 
-    EditText username, password;
+    private TextInputLayout username, password;
 
-    Button logInBtn, logInToSignUpBtn;
-    LogInPresenter logInPresenter = new LogInPresenter(this);
+    private Button logInBtn, logInToSignUpBtn;
+    private LogInPresenter logInPresenter = new LogInPresenter(this);
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,7 +38,7 @@ public class LogInView extends AppCompatActivity implements ILogInContract.IView
         logInBtn.setOnClickListener( new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                logInPresenter.logIn(view,username.getText().toString(), password.getText().toString()); //Überprüfen der Log-In-Daten
+                logInPresenter.logIn(view,username.getEditText().getText().toString(), password.getEditText().getText().toString()); //Überprüfen der Log-In-Daten
             }
         });
 

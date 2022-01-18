@@ -14,8 +14,8 @@ import com.google.firebase.database.ValueEventListener;
 
 public class LogInPresenter implements ILogInContract.IPresenter{
 
-    ILogInContract.IView logInView;
-    DatabaseConnector dbConnector = new DatabaseConnector();
+    private ILogInContract.IView logInView;
+    private DatabaseConnector dbConnector = new DatabaseConnector();
 
     public LogInPresenter(ILogInContract.IView view){
         this.logInView = view;
