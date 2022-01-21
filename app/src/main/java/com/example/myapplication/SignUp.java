@@ -90,12 +90,12 @@ public class SignUp extends AppCompatActivity {
 
         //----------Karls kram-----------------------------------
         //TODO Bei bereits vergebenem Nutzername dürfen die Daten nicht überschrieben werden
-        String usernameInput = username.getEditText().getText().toString();
-        Query checkUser = dbConnector.readUserFromDatabase(usernameInput, "username");
+
+        Query checkUser = dbConnector.readUserFromDatabase(val, "val");
         checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(!snapshot.exists()){
+                if(snapshot.exists()){
                     username.setError("Nutzername bereits vergeben");
                 }
             }
