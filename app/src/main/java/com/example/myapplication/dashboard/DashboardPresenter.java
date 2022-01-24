@@ -8,16 +8,50 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.myapplication.DatabaseConnector;
 import com.example.myapplication.R;
 import com.example.myapplication.dogCreation.DogCreationView;
 
-public class DashboardPresenter extends AppCompatActivity {
+import java.util.ArrayList;
 
-    TextView welcome;
+public class DashboardPresenter extends AppCompatActivity implements IDashboardContract.DashboardPresenter {
+
+    private IDashboardContract.DashboardView dashboardView;
+    private Dashboard dashboard;
+    private DatabaseConnector dbConnector = new DatabaseConnector();
 
     // Button um auf die Seite zum Erstellen neuer Hunde weiterzuleiten
-    Button newDogBtn;
+    //private Button newDogBtn;
 
+    DashboardPresenter(IDashboardContract.DashboardView view) {
+        //dashboard = new Dashboard();
+        dashboardView = view;
+    }
+    @Override
+    public ArrayList getAllItems() {
+
+        ArrayList list = new ArrayList<>();
+
+        //get all Data from Database (through Model) and put into list
+
+        return list;
+    }
+
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+    }
+
+    @Override
+    public void addNewDog() {
+
+        //got to DogCreation
+
+    }
+}
+
+    /*
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,3 +87,5 @@ public class DashboardPresenter extends AppCompatActivity {
         });
     }
 }
+*/
+
