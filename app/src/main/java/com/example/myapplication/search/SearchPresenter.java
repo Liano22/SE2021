@@ -1,13 +1,18 @@
 package com.example.myapplication.search;
 
-import android.os.Bundle;
-import androidx.activity.ComponentActivity;
-import com.example.myapplication.R;
+import com.example.myapplication.DatabaseConnector;
 
-public class SearchPresenter extends ComponentActivity implements ISearchContract.IPresenter {
+public class SearchPresenter implements ISearchContract.IPresenter {
 
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.search_preferences);
+    Search search;
+    ISearchContract.IView searchView;
+
+    DatabaseConnector dbConnector = new DatabaseConnector();
+    public SearchPresenter (ISearchContract.IView searchView) {
+        this.searchView = searchView;
+    }
+    @Override
+    public void filter(String race, String age, String minPrice, String maxPrice, boolean papersAvailable) {
+        search = new Search(race, age, minPrice, maxPrice, papersAvailable);
     }
 }

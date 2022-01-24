@@ -6,6 +6,7 @@ public interface ISearchContract {
     }
 
     interface IPresenter{
+        void filter(String race, String age, String minPrice, String maxPrice, boolean papersAvailable);
 
     }
 }

@@ -1,6 +1,6 @@
 package com.example.myapplication.dogCreation;
 
-public class Dog {
+public class  Dog {
     private String name, age, gender, race, pic, bio, price;
     private boolean hybrid, papers;
 

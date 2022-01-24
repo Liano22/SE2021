@@ -11,8 +11,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.R;
 
-public class SearchView extends AppCompatActivity implements ISearchContract.IPresenter {
+public class SearchView extends AppCompatActivity implements ISearchContract.IView {
 
+    SearchPresenter searchPresenter = new SearchPresenter(this);
     //String race, age, priceFrom, priceUpTo;
     private boolean papersAvailable, papersOptional;
     Button updateSearchPreferences;
@@ -35,13 +36,14 @@ public class SearchView extends AppCompatActivity implements ISearchContract.IPr
         updateSearchPreferences.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //TODO: Daten aus den Eingabefeldern übertragen an den Presenter übergeben
-            }
-        });
 
+                // die Einträge des Nutzers werden als Strings an den Presenter weitergereicht
+                searchPresenter.filter(race, age, minPrice, maxPrice, papersAvailable);
+            }
+
+        });
         super.onCreate(savedInstanceState);
     }
-
 
     public void onCheckboxClicked(View view) {
         boolean checked = ((CheckBox) view).isChecked();
@@ -63,8 +65,14 @@ public class SearchView extends AppCompatActivity implements ISearchContract.IPr
                     break;
                 }
         }
-
-
     }
 
+
 }
+
+
+
+
+
+
+
