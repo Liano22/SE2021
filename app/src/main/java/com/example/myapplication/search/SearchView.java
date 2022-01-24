@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.R;
 
-public class SearchView extends AppCompatActivity implements SearchContract.Presenter {
+public class SearchView extends AppCompatActivity implements ISearchContract.IPresenter {
 
     //String race, age, priceFrom, priceUpTo;
     private boolean papersAvailable, papersOptional;

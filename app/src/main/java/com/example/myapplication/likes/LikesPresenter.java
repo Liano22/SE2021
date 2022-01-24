@@ -1,4 +1,4 @@
 package com.example.myapplication.likes;
 
-public class LikesPresenter implements  LikesContract.Presenter{
+public class LikesPresenter implements  ILikesContract.IPresenter{
 }

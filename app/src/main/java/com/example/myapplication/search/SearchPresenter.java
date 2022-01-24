@@ -4,7 +4,7 @@ import android.os.Bundle;
 import androidx.activity.ComponentActivity;
 import com.example.myapplication.R;
 
-public class SearchPresenter extends ComponentActivity implements SearchContract.Presenter {
+public class SearchPresenter extends ComponentActivity implements ISearchContract.IPresenter {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
