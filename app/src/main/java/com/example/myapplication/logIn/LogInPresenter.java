@@ -15,7 +15,7 @@ import com.google.firebase.database.ValueEventListener;
 public class LogInPresenter implements ILogInContract.IPresenter{
 
     private ILogInContract.IView logInView;
-    private DatabaseConnector dbConnector = new DatabaseConnector();
+    private LogInModel logInModel = new LogInModel();
 
     public LogInPresenter(ILogInContract.IView view){
         this.logInView = view;
@@ -56,7 +56,7 @@ public class LogInPresenter implements ILogInContract.IPresenter{
 
     @Override
     public void userExists(String username, String password) {
-        Query checkUser = dbConnector.readUserFromDatabase(username,"username");
+        Query checkUser = logInModel.readUserFromDatabase(username,"username");
 
         checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override

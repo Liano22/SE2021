@@ -22,8 +22,9 @@ public class DatabaseConnector {
         reference.child(usernameInput).setValue(newUser);
     }
 
-
     //read user from Database
+    //already copied to LogInModel, but might be useful in other packages
+    //is used in Karl's Kram
     public Query readUserFromDatabase(String username, String childName) {
         rootNode = FirebaseDatabase.getInstance();
         reference = rootNode.getReference("users");
