@@ -137,35 +137,11 @@
         app:layout_constraintStart_toEndOf="@+id/textView5"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
-    <CheckBox
-        android:id="@+id/checkbox_papers_present"
-        android:layout_width="wrap_content"
-        android:layout_height="24sp"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="8dp"
-        android:text="vorhanden"
-        android:textColor="@color/black"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
-
-    <CheckBox
-        android:id="@+id/checkbox_papers_optinal"
-        android:layout_width="wrap_content"
-        android:layout_height="24sp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:text="optional"
-        android:textColor="@color/black"
-        app:layout_constraintStart_toEndOf="@+id/checkbox_papers_present"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
-
     <Button
         android:id="@+id/preferences_button"
         android:layout_width="251sp"
         android:layout_height="47sp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/button"
         android:text="Suchpräferenzen aktualisieren"
         android:textAllCaps="false"
@@ -173,5 +149,35 @@
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkbox_papers_optinal" />
+        app:layout_constraintTop_toBottomOf="@+id/searchPapersCheck" />
+
+    <RadioGroup
+        android:id="@+id/searchPapersCheck"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6">
+
+        <RadioButton
+            android:id="@+id/available"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="vorhanden" />
+
+        <RadioButton
+            android:id="@+id/optional"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="optional" />
+
+    </RadioGroup>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
