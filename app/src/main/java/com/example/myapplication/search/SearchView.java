@@ -42,7 +42,13 @@ public class SearchView extends AppCompatActivity implements ISearchContract.IVi
             public void onClick(View view) {
 
                 // die Einträge des Nutzers werden als Strings (boolean) an den Presenter weitergereicht
-                searchPresenter.filter(race, age, minPrice, maxPrice, papersAvailable);
+                if (!race.isEmpty() && !age.isEmpty() && !minPrice.isEmpty() && !maxPrice.isEmpty()){
+                    searchPresenter.filter(race, age, minPrice, maxPrice, papersAvailable);
+                } else {
+                    priceFrom.setError("Bitte alle Felder ausfüllen");
+                    priceTo.setError("Bitte alle Felder ausfüllen");
+                }
+
             }
 
         });
