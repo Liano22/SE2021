@@ -5,6 +5,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,8 +17,10 @@ public class SearchView extends AppCompatActivity implements ISearchContract.IVi
 
     SearchPresenter searchPresenter = new SearchPresenter(this);
     //String race, age, priceFrom, priceUpTo;
-    private boolean papersAvailable, papersOptional;
+    RadioButton radioButton;
+    RadioGroup radioGroup;
     Button updateSearchPreferences;
+    boolean papersAvailable;
 
     protected void onCreate(Bundle savedInstanceState) {
         //Zuweisungen
@@ -37,34 +41,28 @@ public class SearchView extends AppCompatActivity implements ISearchContract.IVi
             @Override
             public void onClick(View view) {
 
-                // die Einträge des Nutzers werden als Strings an den Presenter weitergereicht
+                // die Einträge des Nutzers werden als Strings (boolean) an den Presenter weitergereicht
                 searchPresenter.filter(race, age, minPrice, maxPrice, papersAvailable);
             }
 
         });
         super.onCreate(savedInstanceState);
     }
-
-    public void onCheckboxClicked(View view) {
-        boolean checked = ((CheckBox) view).isChecked();
+    //Methode um den Boolean Wert bei den Papieren zu setzen.
+    public void onRadioButtonClicked(View view) {
+        boolean checked = ((RadioButton) view).isChecked();
 
         switch (view.getId()) {
-            case R.id.checkbox:
+            case R.id.available:
                 if (checked) {
                     papersAvailable = true;
-                    papersOptional = false;
-                } else {
-                    break;
                 }
-
-            case R.id.checkbox_papers_optinal:
+            case R.id.optional:
                 if (checked) {
                     papersAvailable = false;
-                    papersOptional = true;
-                } else {
-                    break;
                 }
         }
+
     }
 
 
