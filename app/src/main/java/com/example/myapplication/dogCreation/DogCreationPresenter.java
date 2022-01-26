@@ -11,7 +11,7 @@ import com.google.firebase.database.ValueEventListener;
 public class DogCreationPresenter implements  IDogCreationContract.IPresenter{
 
     Dog newDog; // der neu erstellte Hund, der später in die Datenbank geladen werden soll
-    DatabaseConnector dbConnector = new DatabaseConnector(); // um Verbindung zur Datenbank herstellen zu können
+    DogCreationModel dogCreationModel = new DogCreationModel(); // um Verbindung zur Datenbank herstellen zu können
     IDogCreationContract.IView dogCreationView;
 
     public DogCreationPresenter(IDogCreationContract.IView dogCreationView) {
@@ -21,19 +21,19 @@ public class DogCreationPresenter implements  IDogCreationContract.IPresenter{
     @Override
     public void saveDog(String username, String name, String age, String gender, String race, String pic, String bio, String price, boolean hybrid, boolean papers) {
         newDog = new Dog(name, age, gender, race, pic, bio, price, hybrid, papers);
-        Query dogId = dbConnector.getNextDogID();
+        Query dogId = dogCreationModel.getNextDogID();
 
         dogId.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
                 int idFromDB = snapshot.getValue(Integer.class);
-                dbConnector.writeDogToDatabase(newDog, String.valueOf(idFromDB));
+                dogCreationModel.writeDogToDatabase(newDog, String.valueOf(idFromDB));
 
                 linkDogToUser(username, idFromDB);
 
                 idFromDB++;
-                dbConnector.writeNextDogID(idFromDB);
+                dogCreationModel.writeNextDogID(idFromDB);
 
                 dogCreationView.changeToDashboard();
 
@@ -51,6 +51,6 @@ public class DogCreationPresenter implements  IDogCreationContract.IPresenter{
 
     public void linkDogToUser(String username, int dogId){
         String dogIdString = String.valueOf(dogId);
-        dbConnector.changeUserDogList(username,dogIdString);
+        dogCreationModel.changeUserDogList(username,dogIdString);
     }
 }
