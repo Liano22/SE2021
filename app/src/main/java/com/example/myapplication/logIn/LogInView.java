@@ -11,13 +11,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.myapplication.R;
 import com.example.myapplication.SignUp;
 import com.example.myapplication.dashboard.DashboardPresenter;
+import com.example.myapplication.search.SearchView;
 import com.google.android.material.textfield.TextInputLayout;
 
 public class LogInView extends AppCompatActivity implements ILogInContract.IView{
 
     private TextInputLayout username, password;
 
-    private Button logInBtn, logInToSignUpBtn;
+    private Button logInBtn, logInToSignUpBtn, searchBtn;
     private LogInPresenter logInPresenter = new LogInPresenter(this);
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,10 +31,11 @@ public class LogInView extends AppCompatActivity implements ILogInContract.IView
         username = findViewById(R.id.usernameLogIn);
         password = findViewById(R.id.passwordLogIn);
 
-
+        searchBtn = findViewById(R.id.searchButton);
 
         //Intent: Wechsel zur Registrierung
         Intent intentSignUp = new Intent(this, SignUp.class);
+        Intent intentSearch = new Intent(this, SearchView.class);
 
         logInBtn.setOnClickListener( new View.OnClickListener(){
             @Override
@@ -46,6 +48,21 @@ public class LogInView extends AppCompatActivity implements ILogInContract.IView
             @Override
             public void onClick(View view) {
                 startActivity(intentSignUp); //Wechsel zur Registrierung
+            }
+        });
+
+        //TEST: Wechsel zu search
+        searchBtn.setOnClickListener( new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                startActivity(intentSearch);
+            }
+        });
+
+        logInToSignUpBtn.setOnClickListener( new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(LogInView.this, SearchView.class)); //Wechsel zur Registrierung
             }
         });
     }
