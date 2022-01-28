@@ -15,29 +15,31 @@ import com.example.myapplication.R;
 public class SearchView extends AppCompatActivity implements ISearchContract.IView {
 
     SearchPresenter searchPresenter = new SearchPresenter(this);
-    //String race, age, priceFrom, priceUpTo;
-    private Button updateSearchPreferences;
+    Button updateSearchPreferences;
+    private Spinner raceSpinner, ageSpinner;
+    private RadioButton available, optional;
+    private EditText priceFrom, priceTo;
 
     boolean papersAvailable;
 
     protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.search_preferences);
+
         //Zuweisungen
         updateSearchPreferences = findViewById(R.id.preferences_button);
-        setContentView(R.layout.search_preferences);
+        raceSpinner = findViewById(R.id.rasse_spinner);
+        ageSpinner = findViewById(R.id.alter_spinner);
+        priceFrom = findViewById(R.id.text_min_preis);
+        priceTo = findViewById(R.id.text_max_preis);
 
         updateSearchPreferences.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Spinner raceSpinner = (Spinner) findViewById(R.id.rasse_spinner);
+
                 String race = raceSpinner.getSelectedItem().toString();
-
-                Spinner ageSpinner = (Spinner) findViewById(R.id.alter_spinner);
                 String age = ageSpinner.getSelectedItem().toString();
-
-                EditText priceFrom = (EditText) findViewById(R.id.text_min_preis);
                 String minPrice = priceFrom.getText().toString();
-
-                EditText priceTo = (EditText) findViewById(R.id.text_max_preis);
                 String maxPrice = priceTo.getText().toString();
 
                 // die Einträge des Nutzers werden als Strings (boolean) an den Presenter weitergereicht
@@ -48,8 +50,6 @@ public class SearchView extends AppCompatActivity implements ISearchContract.IVi
                     priceTo.setError("Bitte alle Felder ausfüllen");
                 }
             }
-            RadioButton radioButton1 = (RadioButton) findViewById(R.id.available);
-            RadioButton radioButton2 = (RadioButton) findViewById(R.id.optional);
 
             //Methode um den Boolean Wert bei den Papieren zu setzen.
             public void onRadioButtonClicked(View view) {
@@ -67,7 +67,7 @@ public class SearchView extends AppCompatActivity implements ISearchContract.IVi
                 }
             }
         });
-        super.onCreate(savedInstanceState);
+
 
     }
 }
