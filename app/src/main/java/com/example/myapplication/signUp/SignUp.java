@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.signUp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.myapplication.DatabaseConnector;
+import com.example.myapplication.R;
+import com.example.myapplication.User;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -21,9 +24,8 @@ public class SignUp extends AppCompatActivity {
     TextInputLayout username, firstName, name, email, postalCode, phoneNumber, bio, password;
     Button regBtn;
 
-    //FirebaseDatabase rootNode;
-    //DatabaseReference reference;
-
+    FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
+    DatabaseReference reference;
     DatabaseConnector dbConnector = new DatabaseConnector();
 
     protected void onCreate(Bundle savedinstanceState) {
@@ -49,6 +51,7 @@ public class SignUp extends AppCompatActivity {
 
 
                 validateUsername(username);
+                userExists(username);
 
                 String usernameInput = username.getEditText().getText().toString();
                 String firstNameInput = firstName.getEditText().getText().toString();
@@ -88,24 +91,6 @@ public class SignUp extends AppCompatActivity {
         //todo muss noch Anforderungen als Verzeichnis für Firebase erfüllen
         //todo muss einzigartig sein
 
-        //----------Karls kram-----------------------------------
-        //TODO Bei bereits vergebenem Nutzername dürfen die Daten nicht überschrieben werden
-        String usernameInput = username.getEditText().getText().toString();
-        Query checkUser = dbConnector.readUserFromDatabase(usernameInput, "username");
-        checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(!snapshot.exists()){
-                    username.setError("Nutzername bereits vergeben");
-                }
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                
-            }
-        });
-        //----------Karls kram------------------------------------
-
         if(val.isEmpty()) {
             username.setError("Benutzername darf nicht leer sein");
             return false;
@@ -121,6 +106,38 @@ public class SignUp extends AppCompatActivity {
             return true;
         }
     }
+
+    //----------Karls kram-----------------------------------
+    public Query readUserFromDatabase(TextInputLayout username, String childName) {
+        String val = username.getEditText().getText().toString();
+        reference = rootNode.getReference("users");
+        Query checkUser = reference.orderByChild(childName).equalTo(val);
+        return checkUser;
+    }
+
+    public void userExists(TextInputLayout username) {
+
+        Query checkUser = readUserFromDatabase(username, "username");
+        checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.exists()) {
+                    username.setError("Nutzername bereits vergeben");
+                } else {
+                    username.setError(null);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
+
+
+    //----------Karls kram------------------------------------
 
     /**
      * Validierung des Passworts.

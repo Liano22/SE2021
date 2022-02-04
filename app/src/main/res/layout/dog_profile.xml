@@ -165,7 +165,7 @@
         tools:layout_editor_absoluteX="79dp" />
 
     <ImageView
-        android:id="@+id/dogPicture"
+        android:id="@+id/dog_owner_image"
         android:layout_width="35dp"
         android:layout_height="35dp"
         android:layout_marginStart="12dp"

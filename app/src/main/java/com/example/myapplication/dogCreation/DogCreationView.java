@@ -15,12 +15,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.myapplication.MainActivity;
 import com.example.myapplication.R;
 import com.example.myapplication.dashboard.DashboardPresenter;
+import com.google.android.material.textfield.TextInputLayout;
 
 public class DogCreationView extends AppCompatActivity implements IDogCreationContract.IView {
 
     // Elemente aus der xml
     Button dogSaveBtn;
-    EditText name, age, race, pic, bio, price;
+    TextInputLayout name, age, race, pic, bio, price;
     CheckBox hybrid, papers;
 
     RadioGroup genderCheckGroup;
@@ -77,8 +78,9 @@ public class DogCreationView extends AppCompatActivity implements IDogCreationCo
             public void onClick(View v) {
 
                 // die Einträge des Nutzers werden als Strings an den Presenter weitergereicht
-                dogCreationPresenter.saveDog(name.getText().toString(), age.getText().toString(), gender, race.getText().toString(),
-                        pic.getText().toString(), bio.getText().toString(), price.getText().toString(), hybrid.isChecked(), papers.isChecked());
+                dogCreationPresenter.saveDog(currentUser,name.getEditText().getText().toString(), age.getEditText().getText().toString(), gender,
+                        race.getEditText().getText().toString(),pic.getEditText().getText().toString(), bio.getEditText().getText().toString(),
+                        price.getEditText().getText().toString(), hybrid.isChecked(), papers.isChecked());
             }
         });
     }

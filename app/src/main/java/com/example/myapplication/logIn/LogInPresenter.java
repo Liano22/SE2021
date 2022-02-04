@@ -14,8 +14,8 @@ import com.google.firebase.database.ValueEventListener;
 
 public class LogInPresenter implements ILogInContract.IPresenter{
 
-    ILogInContract.IView logInView;
-    DatabaseConnector dbConnector = new DatabaseConnector();
+    private ILogInContract.IView logInView;
+    private LogInModel logInModel = new LogInModel();
 
     public LogInPresenter(ILogInContract.IView view){
         this.logInView = view;
@@ -56,7 +56,7 @@ public class LogInPresenter implements ILogInContract.IPresenter{
 
     @Override
     public void userExists(String username, String password) {
-        Query checkUser = dbConnector.readUserFromDatabase(username,"username");
+        Query checkUser = logInModel.readUserFromDatabase(username,"username");
 
         checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -65,9 +65,9 @@ public class LogInPresenter implements ILogInContract.IPresenter{
 
                     logInView.setErrorMessage(null);
 
-                    String passwortAusDB = snapshot.child(username).child("password").getValue(String.class); //Passwort aus DB
+                    String passwordFromDB = snapshot.child(username).child("password").getValue(String.class); //Passwort aus DB
 
-                    if(passwortAusDB.equals(password)){ //Gleichen die Passwörter einander?
+                    if(passwordFromDB.equals(password)){ //Gleichen die Passwörter einander?
                         logInView.setErrorMessage(null);
                         logInView.changeToDashboard(username);
                     }
