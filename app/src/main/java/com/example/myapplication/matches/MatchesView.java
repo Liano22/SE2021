@@ -1,4 +1,6 @@
 package com.example.myapplication.matches;
 
-public class MatchesView implements MatchesContract.View{
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MatchesView  implements MatchesContract.View{
 }

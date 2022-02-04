@@ -8,13 +8,20 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.myapplication.dashboard.DashboardAdapter;
+import com.example.myapplication.dashboard.DashboardView;
 import com.example.myapplication.logIn.LogInView;
 import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
     User currentUser;
+
 
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -22,20 +29,31 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+
         Button startBtn = findViewById(R.id.startBtn);
 
         Intent intent = new Intent(this, LogInView.class);
+        Intent dash = new Intent(this, DashboardView.class);
 
-        /*startBtn.setOnClickListener(new View.OnClickListener(){
+        startBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
                 startBtn.setText("Gestartet");
             }
-        });*/
+        });
+
 
         startBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view){
-                startActivity(intent);
+                Log.d("start", "button wurde geklickt");
+                //startActivity(intent);
+                try {
+                    startActivity(dash);
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
+
                 //startBtn.setText("Gestartet");
             }
         });
@@ -45,5 +63,7 @@ public class MainActivity extends AppCompatActivity {
     public void setCurrentUser(User user){
         this.currentUser = user;
     }
+
+
 
 }

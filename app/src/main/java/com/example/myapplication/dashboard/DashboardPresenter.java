@@ -23,6 +23,10 @@ public class DashboardPresenter extends AppCompatActivity implements IDashboardC
     // Button um auf die Seite zum Erstellen neuer Hunde weiterzuleiten
     //private Button newDogBtn;
 
+
+    public DashboardPresenter() {
+    }
+
     DashboardPresenter(IDashboardContract.DashboardView view) {
         //dashboard = new Dashboard();
         dashboardView = view;

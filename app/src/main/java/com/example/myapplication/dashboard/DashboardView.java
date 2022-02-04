@@ -1,29 +1,54 @@
 package com.example.myapplication.dashboard;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.myapplication.DatabaseConnector;
 import com.example.myapplication.R;
+import com.example.myapplication.dogCreation.Dog;
+import com.example.myapplication.dogCreation.DogCreationView;
+import com.example.myapplication.logIn.LogInView;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class DashboardView extends AppCompatActivity implements IDashboardContract.DashboardView{
 
     Button addDogBtn;
     RecyclerView recyclerViewDashboard;
     private DashboardPresenter dashboardPresenter;
-    ArrayList<Dashboard> items;
+    private DashboardAdapter adapter;
 
+    private DatabaseReference database;
 
-    public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
-        super.onCreate(savedInstanceState, persistentState);
+    ArrayList<Dashboard> dogItems = new ArrayList<>();
+
+    String key;
+    String bio;
+    String name;
+
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
         setContentView(R.layout.dashboard_activity);
 
@@ -31,34 +56,51 @@ public class DashboardView extends AppCompatActivity implements IDashboardContra
         recyclerViewDashboard =  findViewById(R.id.recyclerViewDashboard);
         dashboardPresenter = new DashboardPresenter(this);
 
-        // Initialize contacts
-        items = dashboardPresenter.getAllItems();
-        // Create adapter passing in the sample user data
-        DashboardAdapter adapter = new DashboardAdapter(items);
-        // Attach the adapter to the recyclerview to populate items
-        recyclerViewDashboard.setAdapter(adapter);
-        // Set layout manager to position the items
-        recyclerViewDashboard.setLayoutManager(new LinearLayoutManager(this));
-        // That's all!
+        Intent creation = new Intent(this, DogCreationView.class);
 
-        updateRecyclcerView();
+
+        database = FirebaseDatabase.getInstance().getReference().child("dogs");
+        ArrayList<String> list = new ArrayList<>();
+        ValueEventListener dogListener = new ValueEventListener() {
+
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                list.clear();
+
+                    for(DataSnapshot ds : dataSnapshot.getChildren()) {
+                        key = ds.getKey();
+                        bio = ds.child("bio").getValue(String.class);
+                        name = ds.child("name").getValue(String.class);
+                        //Log.d("test", key + bio + name);
+                        dogItems.add(new Dashboard(key, name));
+                    }
+
+                adapter.notifyDataSetChanged();
+            }
+
+
+            public void onCancelled(DatabaseError databaseError) {
+                // Getting Post failed, log a message
+                Log.w("loadPost:onCancelled", databaseError.toException());
+            }
+        };
+        database.addValueEventListener(dogListener);
+
+
 
         addDogBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dashboardPresenter.addNewRecyclerViewItem();
+                Log.d("AddDog Button", "add new Dog");
+                startActivity(creation);
             }
         });
 
-    }
 
-    private ArrayList<Dashboard> initItems() {
-        ArrayList<Dashboard> list = new ArrayList<>();
+        recyclerViewDashboard.setLayoutManager(new LinearLayoutManager(this));
+        adapter = new DashboardAdapter(this, dogItems);
+        recyclerViewDashboard.setAdapter(adapter);
 
-        list.add(new Dashboard("Manfred", "holger"));
-        list.add(new Dashboard("Ulrich", "stefan"));
-
-        return list;
     }
 
     @Override
