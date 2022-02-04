@@ -60,7 +60,6 @@ public class DashboardView extends AppCompatActivity implements IDashboardContra
 
 
         database = FirebaseDatabase.getInstance().getReference().child("dogs");
-        ArrayList<String> list = new ArrayList<>();
         ValueEventListener dogListener = new ValueEventListener() {
 
             public void onDataChange(DataSnapshot dataSnapshot) {
