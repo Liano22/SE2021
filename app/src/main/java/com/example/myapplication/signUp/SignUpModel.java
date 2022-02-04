@@ -1,10 +1,12 @@
-package com.example.myapplication.logIn;
+package com.example.myapplication.signUp;
 
+import com.example.myapplication.logIn.ILogInContract;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 
-public class LogInModel implements ILogInContract.IModel {
+//Karl
+public class SignUpModel {
 
     FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
     DatabaseReference reference;
