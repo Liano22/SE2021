@@ -65,7 +65,7 @@ public class DashboardView extends AppCompatActivity implements IDashboardContra
 
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                list.clear();
+                dogItems.clear();
 
                     for(DataSnapshot ds : dataSnapshot.getChildren()) {
                         key = ds.getKey();
