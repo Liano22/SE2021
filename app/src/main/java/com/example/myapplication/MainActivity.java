@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
                 Log.d("start", "button wurde geklickt");
                 //startActivity(intent);
                 try {
-                    startActivity(dash);
+                    startActivity(intent);
                 } catch (Exception e) {
                     throw new RuntimeException(e);
                 }

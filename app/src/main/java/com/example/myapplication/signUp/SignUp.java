@@ -53,20 +53,7 @@ public class SignUp extends AppCompatActivity {
                 validateUsername(username);
                 userExists(username);
 
-                String usernameInput = username.getEditText().getText().toString();
-                String firstNameInput = firstName.getEditText().getText().toString();
-                String nameInput = name.getEditText().getText().toString();
-                String emailInput = email.getEditText().getText().toString();
-                String postalCodeInput = postalCode.getEditText().getText().toString();
-                String phoneNumberInput = phoneNumber.getEditText().getText().toString();
-                String bioInput = bio.getEditText().getText().toString();
-                String passwordInput = password.getEditText().getText().toString();
 
-                User newUser = new User(usernameInput,firstNameInput,nameInput,emailInput,postalCodeInput,phoneNumberInput,bioInput, passwordInput);
-
-                //reference.child(usernameInput).setValue(newUser);
-
-                dbConnector.writeUserToDatabase(newUser,usernameInput);
 
                 regBtn.setText("Geklickt");
             }
@@ -116,15 +103,17 @@ public class SignUp extends AppCompatActivity {
     }
 
     public void userExists(TextInputLayout username) {
-
+        String val = username.getEditText().getText().toString();
         Query checkUser = readUserFromDatabase(username, "username");
         checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.exists()) {
+                if(snapshot.exists() && snapshot.child(val).child("username").getValue(String.class).equals(val)) {
                     username.setError("Nutzername bereits vergeben");
+                    return;
                 } else {
                     username.setError(null);
+                    writeUser();
                 }
             }
 
@@ -160,6 +149,20 @@ public class SignUp extends AppCompatActivity {
             return true;
         }
 
+    }
+
+    public void writeUser() {
+        String usernameInput = username.getEditText().getText().toString();
+        String firstNameInput = firstName.getEditText().getText().toString();
+        String nameInput = name.getEditText().getText().toString();
+        String emailInput = email.getEditText().getText().toString();
+        String postalCodeInput = postalCode.getEditText().getText().toString();
+        String phoneNumberInput = phoneNumber.getEditText().getText().toString();
+        String bioInput = bio.getEditText().getText().toString();
+        String passwordInput = password.getEditText().getText().toString();
+
+        User newUser = new User(usernameInput,firstNameInput,nameInput,emailInput,postalCodeInput,phoneNumberInput,bioInput, passwordInput);
+        dbConnector.writeUserToDatabase(newUser,usernameInput);
     }
 
 }

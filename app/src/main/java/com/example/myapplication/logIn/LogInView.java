@@ -13,7 +13,7 @@ import com.example.myapplication.dashboard.DashboardPresenter;
 import com.example.myapplication.search.SearchView;
 import com.google.android.material.textfield.TextInputLayout;
 
-public class LogInView extends AppCompatActivity implements ILogInContract.IView{
+public class LogInView extends AppCompatActivity implements ILogInContract.IView {
 
     private TextInputLayout username, password;
 
@@ -36,14 +36,14 @@ public class LogInView extends AppCompatActivity implements ILogInContract.IView
         Intent intentSignUp = new Intent(this, SignUp.class);
         Intent intentSearch = new Intent(this, SearchView.class);
 
-        logInBtn.setOnClickListener( new View.OnClickListener(){
+        logInBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                logInPresenter.logIn(view,username.getEditText().getText().toString(), password.getEditText().getText().toString()); //Überprüfen der Log-In-Daten
+                logInPresenter.logIn(view, username.getEditText().getText().toString(), password.getEditText().getText().toString()); //Überprüfen der Log-In-Daten
             }
         });
 
-        logInToSignUpBtn.setOnClickListener( new View.OnClickListener(){
+        logInToSignUpBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(intentSignUp); //Wechsel zur Registrierung
@@ -51,17 +51,10 @@ public class LogInView extends AppCompatActivity implements ILogInContract.IView
         });
 
         //TEST: Wechsel zu search
-        searchBtn.setOnClickListener( new View.OnClickListener(){
+        searchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(intentSearch);
-            }
-        });
-
-        logInToSignUpBtn.setOnClickListener( new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(LogInView.this, SearchView.class)); //Wechsel zur Registrierung
             }
         });
     }
