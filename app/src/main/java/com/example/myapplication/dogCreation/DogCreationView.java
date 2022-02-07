@@ -91,8 +91,19 @@ public class DogCreationView extends AppCompatActivity implements IDogCreationCo
     }
 
     @Override
-    public void setErrorMessage(String ErrorMessage) {
-        // TODO Fehlermeldung bei leeren Feldern hinzufügen
+    public void setErrorMessage(String field, String errorMessage) {
+        switch (field){
+            case "name" :
+                name.setError(errorMessage);
+            case "age" :
+                age.setError(errorMessage);
+            case "race" :
+                race.setError(errorMessage);
+            case "bio" :
+                bio.setError(errorMessage);
+            case "price" :
+                price.setError(errorMessage);
+        }
     }
 
     @Override
