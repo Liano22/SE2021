@@ -1,6 +1,5 @@
 package com.example.myapplication.signUp;
 
-import com.example.myapplication.User;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.Query;
 
@@ -8,6 +7,7 @@ public interface ISignUpContract {
 
     interface IView {
         void setErrorMessage(String field, String msg);
+        void goToDashboard(String username);
     }
 
     interface IPresenter{

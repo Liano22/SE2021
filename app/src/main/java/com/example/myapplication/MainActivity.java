@@ -5,18 +5,12 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myapplication.dashboard.DashboardAdapter;
 import com.example.myapplication.dashboard.DashboardView;
 import com.example.myapplication.logIn.LogInView;
-import com.google.firebase.database.FirebaseDatabase;
-
-import java.util.ArrayList;
+import com.example.myapplication.signUp.User;
 
 public class MainActivity extends AppCompatActivity {
 
