@@ -37,7 +37,7 @@ public class DogCreationModel implements IDogCreationContract.IModel{
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 String dogsFromDB = snapshot.child("myDogs").getValue(String.class);
-                String appendDog = dogsFromDB + dogID + ", ";
+                String appendDog = dogsFromDB + dogID + ",";
                 reference = rootNode.getReference("users/" + username + "/myDogs");
                 reference.setValue(appendDog);
             }

@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.R;
 import com.example.myapplication.dashboard.DashboardPresenter;
+import com.example.myapplication.dashboard.DashboardView;
 import com.example.myapplication.filter.FilterView;
 import com.example.myapplication.signUp.SignUpView;
 import com.google.android.material.textfield.TextInputLayout;
@@ -67,7 +68,7 @@ public class LogInView extends AppCompatActivity implements ILogInContract.IView
 
     @Override
     public void changeToDashboard(String username) {
-        Intent intentDashboard = new Intent(this, DashboardPresenter.class);
+        Intent intentDashboard = new Intent(this, DashboardView.class);
         intentDashboard.putExtra("currentUser", username);
         startActivity(intentDashboard);
     }

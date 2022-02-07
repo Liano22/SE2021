@@ -2,11 +2,9 @@ package com.example.myapplication.dashboard;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -14,23 +12,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myapplication.DatabaseConnector;
 import com.example.myapplication.R;
-import com.example.myapplication.dogCreation.Dog;
 import com.example.myapplication.dogCreation.DogCreationView;
-import com.example.myapplication.logIn.LogInView;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Arrays;
+import java.util.List;
 
 public class DashboardView extends AppCompatActivity implements IDashboardContract.DashboardView{
 
@@ -39,23 +31,26 @@ public class DashboardView extends AppCompatActivity implements IDashboardContra
     private DashboardPresenter dashboardPresenter;
     private DashboardAdapter adapter;
 
-    private DatabaseReference database;
+    private DatabaseReference databaseDogs;
+    private DatabaseReference databaseUser;
 
     ArrayList<Dashboard> dogItems = new ArrayList<>();
+    ArrayList<String> userDogsList = new ArrayList<>();
+    List<String> userDogs;
 
     String key;
     String bio;
     String name;
 
-    String data;
-    Intent intent = getIntent();
+    String currentUser;
 
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        Bundle extras = intent.getExtras();
-        if(extras != null)
-            data = extras.getString("keyName");
+        if (getIntent().hasExtra("currentUser")) {
+            Bundle extra = getIntent().getExtras();
+            currentUser = extra.getString("currentUser");
+        }
 
         setContentView(R.layout.dashboard_activity);
 
@@ -66,32 +61,50 @@ public class DashboardView extends AppCompatActivity implements IDashboardContra
         Intent creation = new Intent(this, DogCreationView.class);
 
 
-        database = FirebaseDatabase.getInstance().getReference().child("dogs");
-        ValueEventListener dogListener = new ValueEventListener() {
+        databaseDogs = FirebaseDatabase.getInstance().getReference().child("dogs");
+        databaseUser = FirebaseDatabase.getInstance().getReference().child("users");
 
-            public void onDataChange(DataSnapshot dataSnapshot) {
-
-                dogItems.clear();
-
-                    for(DataSnapshot ds : dataSnapshot.getChildren()) {
-                        key = ds.getKey();
-                        bio = ds.child("bio").getValue(String.class);
-                        name = ds.child("name").getValue(String.class);
-                        //Log.d("test", key + bio + name);
-                        dogItems.add(new Dashboard(key, name));
+        ValueEventListener userListerner = new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                userDogsList.clear();
+                for (DataSnapshot ds : snapshot.getChildren()) {
+                    if (ds.child("username").getValue(String.class).equals(currentUser)) {
+                        userDogsList.add(ds.child("myDogs").getValue(String.class));
                     }
-
+                }
+                userDogs = Arrays.asList(userDogsList.get(0).split(","));
                 adapter.notifyDataSetChanged();
             }
 
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        };
+
+        ValueEventListener dogListener = new ValueEventListener() {
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                dogItems.clear();
+                    for(DataSnapshot ds : dataSnapshot.getChildren()) {
+                        key = ds.getKey();
+                        name = ds.child("name").getValue(String.class);
+
+                        if (userDogs.contains(key)) {
+                            dogItems.add(new Dashboard(key, name));
+                        }
+                    }
+                adapter.notifyDataSetChanged();
+            }
 
             public void onCancelled(DatabaseError databaseError) {
                 // Getting Post failed, log a message
                 Log.w("loadPost:onCancelled", databaseError.toException());
             }
         };
-        database.addValueEventListener(dogListener);
 
+        databaseUser.addValueEventListener(userListerner);
+        databaseDogs.addValueEventListener(dogListener);
 
 
         addDogBtn.setOnClickListener(new View.OnClickListener() {
@@ -102,11 +115,9 @@ public class DashboardView extends AppCompatActivity implements IDashboardContra
             }
         });
 
-
         recyclerViewDashboard.setLayoutManager(new LinearLayoutManager(this));
         adapter = new DashboardAdapter(this, dogItems);
         recyclerViewDashboard.setAdapter(adapter);
-
     }
 
     @Override
