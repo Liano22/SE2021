@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.R;
 import com.example.myapplication.dashboard.DashboardPresenter;
-import com.example.myapplication.search.SearchView;
+import com.example.myapplication.filter.FilterView;
 import com.example.myapplication.signUp.SignUpView;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -34,7 +34,7 @@ public class LogInView extends AppCompatActivity implements ILogInContract.IView
 
         //Intent: Wechsel zur Registrierung
         Intent intentSignUp = new Intent(this, SignUpView.class);
-        Intent intentSearch = new Intent(this, SearchView.class);
+        Intent intentSearch = new Intent(this, FilterView.class);
 
         logInBtn.setOnClickListener(new View.OnClickListener() {
             @Override

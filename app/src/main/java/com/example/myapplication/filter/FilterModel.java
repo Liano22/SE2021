@@ -1,10 +1,10 @@
-package com.example.myapplication.search;
+package com.example.myapplication.filter;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 
-public class SearchModel {
+public class FilterModel {
 
     FirebaseDatabase rootNode;
     DatabaseReference reference;
