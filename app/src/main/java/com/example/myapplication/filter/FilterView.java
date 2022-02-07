@@ -1,21 +1,20 @@
-package com.example.myapplication.search;
+package com.example.myapplication.filter;
 
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.Spinner;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.R;
 
-public class SearchView extends AppCompatActivity implements ISearchContract.IView {
+public class FilterView extends AppCompatActivity implements IFilterContract.IView {
 
-    SearchPresenter searchPresenter = new SearchPresenter(this);
-    Button updateSearchPreferences;
+    FilterPresenter filterPresenter = new FilterPresenter(this);
+    Button updateFilterPreferences;
     private Spinner raceSpinner, ageSpinner;
     private RadioButton available, optional;
     private EditText priceFrom, priceTo;
@@ -24,16 +23,16 @@ public class SearchView extends AppCompatActivity implements ISearchContract.IVi
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.search_preferences);
+        setContentView(R.layout.filter_preferences);
 
         //Zuweisungen
-        updateSearchPreferences = findViewById(R.id.preferences_button);
+        updateFilterPreferences = findViewById(R.id.preferences_button);
         raceSpinner = findViewById(R.id.rasse_spinner);
         ageSpinner = findViewById(R.id.alter_spinner);
         priceFrom = findViewById(R.id.text_min_preis);
         priceTo = findViewById(R.id.text_max_preis);
 
-        updateSearchPreferences.setOnClickListener(new View.OnClickListener() {
+        updateFilterPreferences.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -44,7 +43,7 @@ public class SearchView extends AppCompatActivity implements ISearchContract.IVi
 
                 // die Einträge des Nutzers werden als Strings (boolean) an den Presenter weitergereicht
                 if (!race.isEmpty() && !age.isEmpty() && !minPrice.isEmpty() && !maxPrice.isEmpty()) {
-                    searchPresenter.filter(race, age, minPrice, maxPrice, papersAvailable);
+                    filterPresenter.filter(race, age, minPrice, maxPrice, papersAvailable);
                 } else {
                     priceFrom.setError("Bitte alle Felder ausfüllen");
                     priceTo.setError("Bitte alle Felder ausfüllen");

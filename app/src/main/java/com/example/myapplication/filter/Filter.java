@@ -1,10 +1,10 @@
-package com.example.myapplication.search;
+package com.example.myapplication.filter;
 
-public class Search {
+public class Filter {
     private String race, age, minPrice, maxPrice;
     private boolean papersAvailable;
 
-    public Search(String race, String age, String minPrice, String maxPrice, boolean papersAvailable) {
+    public Filter(String race, String age, String minPrice, String maxPrice, boolean papersAvailable) {
         this.race = race;
         this.age = age;
         this.minPrice = minPrice;

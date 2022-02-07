@@ -2,8 +2,6 @@ package com.example.myapplication.signUp;
 
 import androidx.annotation.NonNull;
 
-import com.example.myapplication.User;
-import com.example.myapplication.logIn.ILogInContract;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -72,6 +70,7 @@ public class SignUpPresenter implements ISignUpContract.IPresenter{
                 } else {
                     view.setErrorMessage("username", null);
                     writeUser(username, firstName, name, email, postalCode, phoneNumber, bio, password);
+                    view.goToDashboard(username);
                 }
             }
 
@@ -110,7 +109,6 @@ public class SignUpPresenter implements ISignUpContract.IPresenter{
     }
 
     public void writeUser(String username, String firstName, String name, String email, String postalCode, String phoneNumber, String bio, String password) {
-
         User newUser = new User(username,firstName,name,email,postalCode,phoneNumber,bio, password);
         model.writeUserToDatabase(newUser,username);
     }

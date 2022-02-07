@@ -1,8 +1,5 @@
 package com.example.myapplication.signUp;
 
-import com.example.myapplication.User;
-import com.example.myapplication.logIn.ILogInContract;
-import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;

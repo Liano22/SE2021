@@ -1,6 +1,6 @@
-package com.example.myapplication.search;
+package com.example.myapplication.filter;
 
-public interface ISearchContract {
+public interface IFilterContract {
     interface IView{
 
     }

@@ -1,5 +1,6 @@
 package com.example.myapplication.signUp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -8,6 +9,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.DatabaseConnector;
 import com.example.myapplication.R;
+import com.example.myapplication.dashboard.DashboardView;
+import com.example.myapplication.dashboard.IDashboardContract;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -92,6 +95,12 @@ public class SignUpView extends AppCompatActivity implements ISignUpContract.IVi
                 password.setError(msg);
                 break;
         }
+    }
+
+    public void goToDashboard(String username){
+        Intent signUpToDashboard = new Intent(this, DashboardView.class);
+        signUpToDashboard.putExtra("currentUser", username);
+        startActivity(signUpToDashboard);
     }
 
 }
