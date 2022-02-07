@@ -47,9 +47,10 @@ public class MainActivity extends AppCompatActivity {
         startBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view){
                 Log.d("start", "button wurde geklickt");
-                //startActivity(intent);
+
                 try {
                     startActivity(intent);
+                    //startActivity(dash);
                 } catch (Exception e) {
                     throw new RuntimeException(e);
                 }

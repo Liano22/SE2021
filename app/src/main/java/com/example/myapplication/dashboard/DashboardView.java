@@ -47,8 +47,15 @@ public class DashboardView extends AppCompatActivity implements IDashboardContra
     String bio;
     String name;
 
+    String data;
+    Intent intent = getIntent();
+
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Bundle extras = intent.getExtras();
+        if(extras != null)
+            data = extras.getString("keyName");
 
         setContentView(R.layout.dashboard_activity);
 
