@@ -69,7 +69,7 @@ public class DogCreationView extends AppCompatActivity implements IDogCreationCo
             currentUser= (String) savedInstanceState.getSerializable("currentUser");
         }
 
-        //Neuer Intent nach Dachboard wir gepackt, User wird beigelegt
+        //Neuer Intent nach Dashboard wir gepackt, User wird beigelegt
         intentDashboardFromDogCreation = new Intent(this, DashboardPresenter.class);
         intentDashboardFromDogCreation.putExtra("currentUser", currentUser);
 

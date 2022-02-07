@@ -8,9 +8,9 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.R;
-import com.example.myapplication.signUp.SignUp;
 import com.example.myapplication.dashboard.DashboardPresenter;
 import com.example.myapplication.search.SearchView;
+import com.example.myapplication.signUp.SignUpView;
 import com.google.android.material.textfield.TextInputLayout;
 
 public class LogInView extends AppCompatActivity implements ILogInContract.IView {
@@ -33,7 +33,7 @@ public class LogInView extends AppCompatActivity implements ILogInContract.IView
         searchBtn = findViewById(R.id.searchButton);
 
         //Intent: Wechsel zur Registrierung
-        Intent intentSignUp = new Intent(this, SignUp.class);
+        Intent intentSignUp = new Intent(this, SignUpView.class);
         Intent intentSearch = new Intent(this, SearchView.class);
 
         logInBtn.setOnClickListener(new View.OnClickListener() {
