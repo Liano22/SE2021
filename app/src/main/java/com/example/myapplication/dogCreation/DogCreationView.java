@@ -1,11 +1,15 @@
 package com.example.myapplication.dogCreation;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Debug;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
@@ -15,19 +19,26 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.myapplication.MainActivity;
 import com.example.myapplication.R;
 import com.example.myapplication.dashboard.DashboardPresenter;
+import com.example.myapplication.dashboard.DashboardView;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputLayout;
+
+import java.util.UUID;
 
 public class DogCreationView extends AppCompatActivity implements IDogCreationContract.IView {
 
     // Elemente aus der xml
     Button dogSaveBtn;
-    TextInputLayout name, age, race, pic, bio, price;
+    TextInputLayout name, age, race, bio, price;
     CheckBox hybrid, papers;
+    ImageView dogPic;
 
     RadioGroup genderCheckGroup;
     RadioButton genderCheckBtn;
 
-    String gender;
+    String gender, pictureKey;
+
+    public Uri imageUri;
 
     // Verbindung zum Presenter
     DogCreationPresenter dogCreationPresenter = new DogCreationPresenter(this);
@@ -49,7 +60,7 @@ public class DogCreationView extends AppCompatActivity implements IDogCreationCo
         name = findViewById(R.id.dogName);
         age = findViewById(R.id.dogAge);
         race = findViewById(R.id.dogRace);
-        pic = findViewById(R.id.dogPic);
+        dogPic = findViewById(R.id.dogPicCreation);
         bio = findViewById(R.id.dogBio);
         price = findViewById(R.id.dogPrice);
 
@@ -70,7 +81,7 @@ public class DogCreationView extends AppCompatActivity implements IDogCreationCo
         }
 
         //Neuer Intent nach Dashboard wir gepackt, User wird beigelegt
-        intentDashboardFromDogCreation = new Intent(this, DashboardPresenter.class);
+        intentDashboardFromDogCreation = new Intent(this, DashboardView.class);
         intentDashboardFromDogCreation.putExtra("currentUser", currentUser);
 
         dogSaveBtn.setOnClickListener(new View.OnClickListener() {
@@ -79,8 +90,15 @@ public class DogCreationView extends AppCompatActivity implements IDogCreationCo
 
                 // die Einträge des Nutzers werden als Strings an den Presenter weitergereicht
                 dogCreationPresenter.saveDog(currentUser,name.getEditText().getText().toString(), age.getEditText().getText().toString(), gender,
-                        race.getEditText().getText().toString(),pic.getEditText().getText().toString(), bio.getEditText().getText().toString(),
+                        race.getEditText().getText().toString(),pictureKey, bio.getEditText().getText().toString(),
                         price.getEditText().getText().toString(), hybrid.isChecked(), papers.isChecked());
+            }
+        });
+
+        dogPic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                selectPicture();
             }
         });
     }
@@ -109,5 +127,28 @@ public class DogCreationView extends AppCompatActivity implements IDogCreationCo
     @Override
     public void changeToDashboard() {
         startActivity(intentDashboardFromDogCreation);
+    }
+
+    public void selectPicture(){
+        Intent getPicture = new Intent();
+        getPicture.setType("image/*");
+        getPicture.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(getPicture, 1);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1 && resultCode == RESULT_OK && data != null && data.getData() != null){
+            imageUri = data.getData();
+            dogPic.setImageURI(imageUri);
+            final String randomKey = UUID.randomUUID().toString();
+            pictureKey = randomKey;
+            dogCreationPresenter.savePicture(imageUri, randomKey);
+        }
+    }
+
+    public void setSnackbar(String msg){
+        Snackbar.make(findViewById(android.R.id.content), msg, Snackbar.LENGTH_LONG).show();
     }
 }
