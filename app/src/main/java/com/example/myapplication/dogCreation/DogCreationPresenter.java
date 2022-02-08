@@ -1,5 +1,7 @@
 package com.example.myapplication.dogCreation;
 
+import android.net.Uri;
+
 import androidx.annotation.NonNull;
 
 import com.example.myapplication.DatabaseConnector;
@@ -11,7 +13,7 @@ import com.google.firebase.database.ValueEventListener;
 public class DogCreationPresenter implements  IDogCreationContract.IPresenter{
 
     Dog newDog; // der neu erstellte Hund, der später in die Datenbank geladen werden soll
-    DogCreationModel dogCreationModel = new DogCreationModel(); // um Verbindung zur Datenbank herstellen zu können
+    DogCreationModel dogCreationModel = new DogCreationModel(this); // um Verbindung zur Datenbank herstellen zu können
     IDogCreationContract.IView dogCreationView;
 
     public DogCreationPresenter(IDogCreationContract.IView dogCreationView) {
@@ -96,4 +98,13 @@ public class DogCreationPresenter implements  IDogCreationContract.IPresenter{
         return validation;
 
     }
+
+    public void activateSnackbar(String msg){
+        dogCreationView.setSnackbar(msg);
+    }
+
+    public void savePicture(Uri imageUri, String key){
+        dogCreationModel.uploadPicture(imageUri, key);
+    }
+
 }
