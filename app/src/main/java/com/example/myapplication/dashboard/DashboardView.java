@@ -44,6 +44,8 @@ public class DashboardView extends AppCompatActivity implements IDashboardContra
 
     String currentUser;
 
+
+
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
