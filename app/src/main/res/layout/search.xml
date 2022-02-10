@@ -102,7 +102,7 @@
         tools:layout_editor_absoluteY="594dp" />
 
     <TextView
-        android:id="@+id/alterTextview"
+        android:id="@+id/alterTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
@@ -110,7 +110,7 @@
         tools:layout_editor_absoluteY="640dp" />
 
     <TextView
-        android:id="@+id/papieTextView"
+        android:id="@+id/papiereTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"

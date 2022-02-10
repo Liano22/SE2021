@@ -38,6 +38,12 @@
         <entry key="..\:/Users/kbb_r/OneDrive/Dokumente/GitHub/SE2021/app/src/main/res/layout/dashboard_activity.xml" value="0.2520833333333333" />
         <entry key="..\:/Users/kbb_r/OneDrive/Dokumente/GitHub/SE2021/app/src/main/res/layout/log_in.xml" value="0.2520833333333333" />
         <entry key="..\:/Users/kbb_r/OneDrive/Dokumente/GitHub/SE2021/app/src/main/res/layout/suchpraeferenzen.xml" value="0.2520833333333333" />
+        <entry key="app/src/main/res/layout/dashboard.xml" value="0.44479166666666664" />
+        <entry key="app/src/main/res/layout/dashboard_activity.xml" value="0.44479166666666664" />
+        <entry key="app/src/main/res/layout/dog_matches.xml" value="0.44479166666666664" />
+        <entry key="app/src/main/res/layout/filter_preferences.xml" value="0.44479166666666664" />
+        <entry key="app/src/main/res/layout/item_dashboard.xml" value="0.44479166666666664" />
+        <entry key="app/src/main/res/layout/search.xml" value="0.44479166666666664" />
       </map>
     </option>
   </component>
