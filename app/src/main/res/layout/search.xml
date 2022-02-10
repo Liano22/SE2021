@@ -6,19 +6,17 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/searchDogName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/imageView3"
+        android:text="Lulu"
+        app:layout_constraintBottom_toTopOf="@+id/searchDogImage"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/searchDogImage"
         android:layout_width="0dp"
         android:layout_height="400dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -30,23 +28,93 @@
         tools:srcCompat="@tools:sample/avatars" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/likeButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="48dp"
+        android:layout_marginRight="48dp"
         android:text="Take"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3"
-        app:layout_constraintVertical_bias="0.264"
-        tools:layout_editor_absoluteX="253dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchDogImage"
+        app:layout_constraintVertical_bias="0.833" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/dislikeButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginLeft="48dp"
         android:text="Toss"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3"
-        app:layout_constraintVertical_bias="0.264"
-        tools:layout_editor_absoluteX="39dp" />
+        app:layout_constraintEnd_toStartOf="@+id/button"
+        app:layout_constraintHorizontal_bias="0.319"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchDogImage"
+        app:layout_constraintVertical_bias="0.833" />
+
+    <TextView
+        android:id="@+id/papiereHeadline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Papiere:"
+        tools:layout_editor_absoluteX="36dp"
+        tools:layout_editor_absoluteY="688dp" />
+
+    <TextView
+        android:id="@+id/geschlechtHeadline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Geschlecht:"
+        tools:layout_editor_absoluteX="36dp"
+        tools:layout_editor_absoluteY="594dp" />
+
+    <TextView
+        android:id="@+id/rasseHeadline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rasse:"
+        tools:layout_editor_absoluteX="36dp"
+        tools:layout_editor_absoluteY="549dp" />
+
+    <TextView
+        android:id="@+id/AlterHeadline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Alter:"
+        tools:layout_editor_absoluteX="36dp"
+        tools:layout_editor_absoluteY="640dp" />
+
+    <TextView
+        android:id="@+id/rasseTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        tools:layout_editor_absoluteX="152dp"
+        tools:layout_editor_absoluteY="547dp" />
+
+    <TextView
+        android:id="@+id/geschlechtTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        tools:layout_editor_absoluteX="152dp"
+        tools:layout_editor_absoluteY="594dp" />
+
+    <TextView
+        android:id="@+id/alterTextview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        tools:layout_editor_absoluteX="152dp"
+        tools:layout_editor_absoluteY="640dp" />
+
+    <TextView
+        android:id="@+id/papieTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        tools:layout_editor_absoluteX="152dp"
+        tools:layout_editor_absoluteY="688dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
