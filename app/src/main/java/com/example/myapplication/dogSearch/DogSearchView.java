@@ -6,8 +6,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.view.View;
-
 import java.util.ArrayList;
 
 public class DogSearchView extends AppCompatActivity {
@@ -21,7 +19,6 @@ public class DogSearchView extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-
     }
 
 }
