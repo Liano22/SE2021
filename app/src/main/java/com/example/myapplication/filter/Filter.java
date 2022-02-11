@@ -1,6 +1,10 @@
 package com.example.myapplication.filter;
 
-public class Filter {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+//Karl
+public class Filter implements Parcelable{
     private String race, age, minPrice, maxPrice;
     private boolean papersAvailable;
 
@@ -11,6 +15,26 @@ public class Filter {
         this.maxPrice = maxPrice;
         this.papersAvailable = papersAvailable;
     }
+
+    protected Filter(Parcel in) {
+        race = in.readString();
+        age = in.readString();
+        minPrice = in.readString();
+        maxPrice = in.readString();
+        papersAvailable = in.readByte() != 0;
+    }
+
+    public static final Creator<Filter> CREATOR = new Creator<Filter>() {
+        @Override
+        public Filter createFromParcel(Parcel in) {
+            return new Filter(in);
+        }
+
+        @Override
+        public Filter[] newArray(int size) {
+            return new Filter[size];
+        }
+    };
 
     public String getRace() {
         return race;
@@ -50,5 +74,19 @@ public class Filter {
 
     public void setPapersAvailable(boolean papersAvailable) {
         this.papersAvailable = papersAvailable;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(race);
+        parcel.writeString(age);
+        parcel.writeString(minPrice);
+        parcel.writeString(maxPrice);
+        parcel.writeByte((byte) (papersAvailable ? 1 : 0));
     }
 }
