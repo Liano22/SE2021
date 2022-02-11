@@ -6,12 +6,15 @@ import android.os.Bundle;
 import android.os.Debug;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Spinner;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,11 +28,14 @@ import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.UUID;
 
-public class DogCreationView extends AppCompatActivity implements IDogCreationContract.IView {
+public class DogCreationView extends AppCompatActivity implements IDogCreationContract.IView{
 
     // Elemente aus der xml
     Button dogSaveBtn;
-    TextInputLayout name, age, race, bio, price;
+    TextInputLayout name, bio, price;
+
+    Spinner age, race;
+
     CheckBox hybrid, papers;
     ImageView dogPic;
 
@@ -44,6 +50,7 @@ public class DogCreationView extends AppCompatActivity implements IDogCreationCo
     DogCreationPresenter dogCreationPresenter = new DogCreationPresenter(this);
 
     Intent intentDashboardFromDogCreation;
+    String currentUser;
 
 
     @Override
@@ -58,29 +65,34 @@ public class DogCreationView extends AppCompatActivity implements IDogCreationCo
         genderCheckGroup = findViewById(R.id.dogGenderCheck);
 
         name = findViewById(R.id.dogName);
-        age = findViewById(R.id.dogAge);
-        race = findViewById(R.id.dogRace);
         dogPic = findViewById(R.id.dogPicCreation);
         bio = findViewById(R.id.dogBio);
         price = findViewById(R.id.dogPrice);
 
+        age = findViewById(R.id.dogAgeSpinner);
+        race = findViewById(R.id.dogRaceSpinner);
+
         hybrid = findViewById(R.id.checkDogHybrid);
         papers = findViewById(R.id.checkDogPapers);
 
+        // Spinner-Adapter mit arrays verbinden
+        ArrayAdapter<CharSequence> dogAgeAdapter = ArrayAdapter.createFromResource(this,R.array.ages, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> dogRaceAdapter = ArrayAdapter.createFromResource(this,R.array.races, android.R.layout.simple_spinner_item);
+        dogAgeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        dogRaceAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        // den Spinnern aus der xml zuweisen
+        age.setAdapter(dogAgeAdapter);
+        race.setAdapter(dogRaceAdapter);
+
         //Aktueller User wird aus Intent ausgelesen
-        String currentUser;
-        if (savedInstanceState == null) {
-            Bundle extras = getIntent().getExtras();
-            if(extras == null) {
-                currentUser= null;
-            } else {
-                currentUser= extras.getString("currentUser");
-            }
-        } else {
-            currentUser= (String) savedInstanceState.getSerializable("currentUser");
+
+        if (getIntent().hasExtra("currentUser")) {
+            Bundle extra = getIntent().getExtras();
+            currentUser = extra.getString("currentUser");
         }
 
-        //Neuer Intent nach Dashboard wir gepackt, User wird beigelegt
+        //Neuer Intent nach Dashboard wird gepackt, User wird beigelegt
         intentDashboardFromDogCreation = new Intent(this, DashboardView.class);
         intentDashboardFromDogCreation.putExtra("currentUser", currentUser);
 
@@ -88,9 +100,13 @@ public class DogCreationView extends AppCompatActivity implements IDogCreationCo
             @Override
             public void onClick(View v) {
 
+
+                String ageString = age.getSelectedItem().toString();
+                String raceString = race.getSelectedItem().toString();
+
                 // die Einträge des Nutzers werden als Strings an den Presenter weitergereicht
-                dogCreationPresenter.saveDog(currentUser,name.getEditText().getText().toString(), age.getEditText().getText().toString(), gender,
-                        race.getEditText().getText().toString(),pictureKey, bio.getEditText().getText().toString(),
+                dogCreationPresenter.saveDog(currentUser,name.getEditText().getText().toString(), ageString, gender,
+                        raceString,pictureKey, bio.getEditText().getText().toString(),
                         price.getEditText().getText().toString(), hybrid.isChecked(), papers.isChecked());
             }
         });
@@ -101,7 +117,10 @@ public class DogCreationView extends AppCompatActivity implements IDogCreationCo
                 selectPicture();
             }
         });
+
     }
+
+
     public void checkRadioButton(View view) {
         int radioId = genderCheckGroup.getCheckedRadioButtonId();
         genderCheckBtn = findViewById(radioId);
@@ -113,10 +132,6 @@ public class DogCreationView extends AppCompatActivity implements IDogCreationCo
         switch (field){
             case "name" :
                 name.setError(errorMessage);
-            case "age" :
-                age.setError(errorMessage);
-            case "race" :
-                race.setError(errorMessage);
             case "bio" :
                 bio.setError(errorMessage);
             case "price" :
@@ -151,4 +166,6 @@ public class DogCreationView extends AppCompatActivity implements IDogCreationCo
     public void setSnackbar(String msg){
         Snackbar.make(findViewById(android.R.id.content), msg, Snackbar.LENGTH_LONG).show();
     }
+
+
 }
