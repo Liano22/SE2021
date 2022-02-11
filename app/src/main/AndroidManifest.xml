@@ -20,6 +20,8 @@
         <activity android:name=".logIn.LogInView" />
         <activity android:name=".dogCreation.DogCreationView" />
         <activity android:name=".dashboard.DashboardPresenter" />
+        <activity android:name=".matches.MatchesView" />
+        <activity android:name=".likes.LikesView" />
         <activity android:name=".filter.FilterView" />
         <activity android:name=".dashboard.DashboardView">
             <intent-filter>
