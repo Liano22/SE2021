@@ -6,11 +6,365 @@
     <string name="jetzt_registrieren">jetzt registrieren</string>
     
     <string-array name="races">
-        <item>Husky</item>
-        <item>Shiba</item>
-        <item>Wolfshund</item>
-        <item>Dackel</item>
+        <item>Affenpinscher</item>
+        <item>Afghanischer Windhund (Afghan Hound)</item>
+        <item>Aïdi (Chien de montagne de l’Atlas)</item>
+        <item>Airedale Terrier</item>
+        <item>Akita</item>
+        <item>Alaskan Malamute</item>
+        <item>Alpenländische Dachsbracke</item>
+        <item>American Akita</item>
+        <item>American Cocker Spaniel</item>
+        <item>American Foxhound</item>
+        <item>American Staffordshire Terrier</item>
+        <item>American Water Spaniel</item>
+        <item>Anglo-Français de petite vénerie</item>
+        <item>Anjing Kintamani-Bali</item>
+        <item>Appenzeller Sennenhund</item>
+        <item>Ariégeois</item>
+        <item>Australian Cattle Dog</item>
+        <item>Australian Kelpie</item>
+        <item>Australian Shepherd</item>
+        <item>Australian Silky Terrier</item>
+        <item>Australian Stumpy Tail Cattle Dog</item>
+        <item>Australian Terrier</item>
+        <item>Azawakh</item>
+        <item>Barbet</item>
+        <item>Basenji</item>
+        <item>Basset artésien normand</item>
+        <item>Basset bleu de Gascogne</item>
+        <item>Basset fauve de Bretagne</item>
+        <item>Basset Hound</item>
+        <item>Bayerischer Gebirgsschweißhund</item>
+        <item>Beagle</item>
+        <item>Beagle Harrier</item>
+        <item>Bearded Collie</item>
+        <item>Bedlington Terrier</item>
+        <item>Belgischer Schäferhund</item>
+        <item>Berger Blanc Suisse</item>
+        <item>Berger de Beauce (Beauceron)</item>
+        <item>Berger de Brie (Briard)</item>
+        <item>Berger Picard (Berger de Picardie)</item>
+        <item>Berner Sennenhund (Dürrbächler)</item>
+        <item>Bichon à poil frisé (Bichon Frisé)</item>
+        <item>Bichon Havanais (Havaneser)</item>
+        <item>Billy</item>
+        <item>Black and Tan Coonhound</item>
+        <item>Bolognese(r)</item>
+        <item>Border Collie</item>
+        <item>Border Terrier</item>
+        <item>Bosanski Oštrodlaki Gonič-Barak (Stichelhaariger Bosnischer Laufhund – Barak)</item>
+        <item>Boston Terrier</item>
+        <item>Bouledogue Français (Französische Bulldogge)</item>
+        <item>Bouvier des Ardennes</item>
+        <item>Bouvier des Flandres (Vlaamse koehond)</item>
+        <item>Bracco Italiano</item>
+        <item>Brandlbracke (Vieräugl)</item>
+        <item>Braque d’Auvergne</item>
+        <item>Braque de l’Ariège</item>
+        <item>Braque du Bourbonnais</item>
+        <item>Braque français (Französischer Vorstehhund) – Type Gascogne</item>
+        <item>Braque français (Französischer Vorstehhund) – Typee Pyrenees</item>
+        <item>Braque Saint-Germain</item>
+        <item>Briquet Griffon Vendéen</item>
+        <item>Broholmer</item>
+        <item>Bull Terrier</item>
+        <item>Bulldog (Englische Bulldogge)</item>
+        <item>Bullmastiff</item>
+        <item>Ca de Bestiar</item>
+        <item>Cairn Terrier</item>
+        <item>Canaan Dog (Kanaan-Hund)</item>
+        <item>Canadian Eskimo Dog (Kanadischer Eskimohund)</item>
+        <item>Cane Corso Italiano</item>
+        <item>Cane da pastore bergamasco (Bergamasker Hirtenhund)</item>
+        <item>Cane da pastore maremmano abruzzese (Maremmen-Abruzzen-Schäferhund)</item>
+        <item>Caniche (Pudel)</item>
+        <item>Cão da Serra da Estrela</item>
+        <item>Cão da Serra de Aires</item>
+        <item>Cão de Água Português (Portugiesischer Wasserhund)</item>
+        <item>Cão de Castro Laboreiro</item>
+        <item>Cão de gado transmontano (Transmontano)</item>
+        <item>Cão Fila de São Miguel (Cão de Fila de São Miguel)</item>
+        <item>Cavalier King Charles Spaniel</item>
+        <item>Československý vlčák (Tschechoslowakischer Wolfhund)</item>
+        <item>Český fousek (Böhmischer Rauhbart)</item>
+        <item>Český teriér (Tschechischer Terrier)</item>
+        <item>Chart Polski</item>
+        <item>Chesapeake Bay Retriever</item>
+        <item>Chien d’Artois</item>
+        <item>Chien de Berger Belge (Belgischer Schäferhund)</item>
+        <item>Chien de Berger des Pyrénées à face rase (Kurzhaariger Pyrenäenschäferhund)</item>
+        <item>Chien de berger des Pyrénées à poil long (Langhaariger Pyrenäenschäferhund)</item>
+        <item>Chien de Montagne des Pyrénées (Pyrenäenberghund oder auch Patou)</item>
+        <item>Chien de Saint Hubert (Bloodhound)</item>
+        <item>Chihuahueño (Chihuahua)</item>
+        <item>Chin (Japan Chin)</item>
+        <item>Chinese Crested Dog (Chinesischer Schopfhund)</item>
+        <item>Chodský pes</item>
+        <item>Chow Chow</item>
+        <item>Cimarrón Uruguayo (Perro cimarrón uruguayo)</item>
+        <item>Ciobănesc Românesc Carpatin (Zavod)</item>
+        <item>Ciobănesc Românesc de Bucovina</item>
+        <item>Ciobănesc Românesc Mioritic</item>
+        <item>Cirneco dell’Etna</item>
+        <item>Clumber Spaniel</item>
+        <item>Collie Rough (Langhaarcollie)</item>
+        <item>Collie Smooth (Kurzhaarcollie)</item>
+        <item>Coton de Tuléar</item>
+        <item>Crnogorski Planinski Gonic (Montenegrinischer Gebirgslaufhund)</item>
+        <item>Curly Coated Retriever</item>
+        <item>Dachshund (Dackel)</item>
+        <item>Dalmatinski pas (Dalmatiner)</item>
+        <item>Dandie Dinmont Terrier</item>
+        <item>Dansk-Svensk Gårdshund</item>
+        <item>Deerhound</item>
+        <item>Deutsch Drahthaar</item>
+        <item>Deutsch Kurzhaar</item>
+        <item>Deutsch Langhaar</item>
+        <item>Deutsch Stichelhaar</item>
+        <item>Deutsche Bracke</item>
+        <item>Deutsche Dogge</item>
+        <item>Deutscher Boxer</item>
+        <item>Deutscher Jagdterrier</item>
+        <item>Deutscher Pinscher</item>
+        <item>Deutscher Schäferhund</item>
+        <item>Deutscher Spitz</item>
+        <item>Deutscher Wachtelhund</item>
+        <item>Dobermann</item>
+        <item>Dogo Argentino</item>
+        <item>Dogue de Bordeaux (Bordeauxdogge)</item>
+        <item>Do-Khyi (Tibetdogge oder auch Tibetmastiff)</item>
+        <item>Drentse Patrijshond</item>
+        <item>Drever</item>
+        <item>Drötzörü Magyar Vizsla (Drahthaariger Ungarischer Vorstehhund)</item>
+        <item>Dunker</item>
+        <item>Eesti hagijas (Estnische Bracke)</item>
+        <item>English Cocker Spaniel</item>
+        <item>English Foxhound</item>
+        <item>English Pointer</item>
+        <item>English Setter</item>
+        <item>English Springer Spaniel</item>
+        <item>English Toy Terrier</item>
+        <item>Entlebucher Sennenhund</item>
+        <item>Epagneul Bleu de Picardie</item>
+        <item>Epagneul Breton</item>
+        <item>Epagneul de Pont-Audemer</item>
+        <item>Epagneul Français</item>
+        <item>Epagneul Nain Continental (Phaléne oder auch Kontinentaler Zwergspaniel)</item>
+        <item>Epagneul Picard</item>
+        <item>Erdélyi Kopó</item>
+        <item>Eurasier</item>
+        <item>Field Spaniel</item>
+        <item>Fila Brasileiro</item>
+        <item>Flat Coated Retriever</item>
+        <item>Fox Terrier Smooth (Glatthaar-Foxterrier)</item>
+        <item>Fox Terrier Wire (Drahthaar-Foxterrier)</item>
+        <item>Français blanc et noir (Französischer weiß-schwarzer Laufhund)</item>
+        <item>Français blanc et orange (Französischer weiß-oranger Laufhund)</item>
+        <item>Français tricolore (Französischer dreifarbiger Laufhund)</item>
+        <item>Französische Bulldogge (Bouledogue Français)</item>
+        <item>Galgo Español</item>
+        <item>Gammel dansk hønsehund (Altdänischer Vorstehhund)</item>
+        <item>Gascon Saintongeois</item>
+        <item>Golden Retriever</item>
+        <item>Gończy Polski</item>
+        <item>Gordon Setter</item>
+        <item>Gos d’Atura Català</item>
+        <item>Grand anglo-français blanc et noir (Großer Anglo-Französischer weiß-schwarzer Laufhund)</item>
+        <item>Grand anglo-français blanc et orange (Großer Anglo-Französischer weiß-oranger Laufhund)</item>
+        <item>Grand anglo-français tricolore (Großer Anglo-Französischer dreifarbiger Laufhund)</item>
+        <item>Grand Basset Griffon Vendéen</item>
+        <item>Grand Bleu de Gascogne</item>
+        <item>Grand Griffon Vendéen</item>
+        <item>Greyhound</item>
+        <item>Griffon d’arrêt à poil dur Korthals</item>
+        <item>Griffon Belge (Belgischer Zwerggriffon)</item>
+        <item>Griffon bleu de Gascogne</item>
+        <item>Griffon Bruxellois (Brüsseler Griffon)</item>
+        <item>Griffon Fauve de Bretagne</item>
+        <item>Griffon Nivernais</item>
+        <item>Grønlandshund (Grönlandhund)</item>
+        <item>Großer Münsterländer Vorstehhund</item>
+        <item>Grosser Schweizer Sennenhund</item>
+        <item>Haldenstøver</item>
+        <item>Hamiltonstövare</item>
+        <item>Hannoverscher Schweißhund</item>
+        <item>Harrier</item>
+        <item>Hellinikos Ichnilatis</item>
+        <item>Hokkaido</item>
+        <item>Hollandse Herdershond (Holländischer Schäferhund)</item>
+        <item>Hollandse Smoushond</item>
+        <item>Hovawart</item>
+        <item>Hrvatski ovčar</item>
+        <item>Hygenhund</item>
+        <item>Irish Glen of Imaal Terrier</item>
+        <item>Irish Red and White Setter</item>
+        <item>Irish Red Setter</item>
+        <item>Irish Soft Coated Wheaten Terrier</item>
+        <item>Irish Terrier</item>
+        <item>Irish Water Spaniel</item>
+        <item>Irish Wolfhound (Irischer Wolfshund)</item>
+        <item>Íslenskur fjárhundur (Islandhund)</item>
+        <item>Istarski Ostrodlaki Gonic (Rauhhaarige Istrianer Bracke)</item>
+        <item>Istarski Kratkodlaki Gonic (Kurzhaarige Istrianer Bracke)</item>
+        <item>Jack Russell Terrier</item>
+        <item>Jämthund</item>
+        <item>Jugoslovenski Ovčarski Pas (Šarplaninac oder auch Jugoslawischer Hirtenhund)</item>
+        <item>Kai</item>
+        <item>Kangal Çoban Köpeği (Kangal-Hirtenhund)</item>
+        <item>Karjalankarhukoira (Karelischer Bärenhund)</item>
+        <item>Kavkazskaïa Ovtcharka (Kaukasischer Owtscharka / Schäferhund)</item>
+        <item>Kerry Blue Terrier</item>
+        <item>King Charles Spaniel</item>
+        <item>Kishu</item>
+        <item>Kleiner Münsterländer</item>
+        <item>Komondor</item>
+        <item>Korea Jindo Dog (Koreanischer Jindo)</item>
+        <item>Königspudel</item>
+        <item>Kraški ovčar (Karst-Schäferhund)</item>
+        <item>Kromfohrländer</item>
+        <item>Kuvasz</item>
+        <item>Labrador Retriever</item>
+        <item>Lagotto Romagnolo</item>
+        <item>Lakeland Terrier</item>
+        <item>Lancashire Heeler</item>
+        <item>Landseer (Europäisch-kontinentaler Typ)</item>
+        <item>Lapinporokoira (Lappländer Rentierhund)</item>
+        <item>Leonberger</item>
+        <item>Lhasa Apso</item>
+        <item>Magyar Agár</item>
+        <item>Malinois</item>
+        <item>Maltese(r)</item>
+        <item>Manchester Terrier</item>
+        <item>Mastiff</item>
+        <item>Mastín del Pirineo (Pyrenäen-Mastiff)</item>
+        <item>Mastín Español (Spanischer Mastiff)</item>
+        <item>Mastino Napoletano (Neapolitanischer Mastiff)</item>
+        <item>Miniature American Shepherd (Miniature Australian Shepherd)</item>
+        <item>Miniature Bull Terrier</item>
+        <item>Mudi</item>
+        <item>Nederlandse Kooikerhondje</item>
+        <item>Nederlandse Schapendoes</item>
+        <item>Newfoundland Dog (Neufundländer)</item>
+        <item>Nihon Supittsu (Japan-Spitz)</item>
+        <item>Nihon Teria (Japanischer Terrier)</item>
+        <item>Norfolk Terrier</item>
+        <item>Norrbottenspitz</item>
+        <item>Norsk Buhund (Norwegischer Buhund)</item>
+        <item>Norsk elghund grå (Grauer Norwegischer Elchhund)</item>
+        <item>Norsk Elghund Sort (Schwarzer Norwegischer Elchhund)</item>
+        <item>Norsk Lundehund (Norwegischer Lundehund)</item>
+        <item>Norwich Terrier</item>
+        <item>Nova Scotia Duck Tolling Retriever</item>
+        <item>Ogar Polski (Polnische Bracke)</item>
+        <item>Old English Sheepdog (Bobtail)</item>
+        <item>Österreichischer Pinscher</item>
+        <item>Otterhound</item>
+        <item>Parson Russell Terrier</item>
+        <item>Pekingese (Pekinese)</item>
+        <item>Perdigueiro Português</item>
+        <item>Perdiguero de Burgos</item>
+        <item>Perro de Agua Español (Spanischer Wasserhund)</item>
+        <item>Perro Dogo Mallorquin (Ca de Bou oder auch: Dogo mallorquín)</item>
+        <item>Perro sin pelo del Perú (Peruanischer Nackthund)</item>
+        <item>Petit Basset Griffon Vendéen</item>
+        <item>Petit Bleu de Gascogne</item>
+        <item>Petit Brabançon</item>
+        <item>Petit chien lion (Löwchen)</item>
+        <item>Pharaoh Hound (Pharaonenhund)</item>
+        <item>Piccolo levriero italiano (Italienisches Windspiel)</item>
+        <item>Podenco Canario</item>
+        <item>Podenco Ibicenco (Ca Eivissenc)</item>
+        <item>Podengo Português</item>
+        <item>Poitevin</item>
+        <item>Polski Owczarek Nizinny (PON)</item>
+        <item>Polski Owczarek Podhalanski (Owczarek podhalański)</item>
+        <item>Porcelaine</item>
+        <item>Posavski Gonič (Save-Bracke oder auch: Posavatz-Laufhund)</item>
+        <item>Pražský krysařík (Prager Rattler)</item>
+        <item>Presa Canario (Dogo Canario)</item>
+        <item>Pudel</item>
+        <item>Pudelpointer</item>
+        <item>Pug (Mops)</item>
+        <item>Puli</item>
+        <item>Pumi</item>
+        <item>Rafeiro do Alentejo</item>
+        <item>Rhodesian Ridgeback</item>
+        <item>Riesenschnauzer</item>
         <item>Rottweiler</item>
+        <item>Rövidszőrű Magyar Vizsla (Kurzhaariger Ungarischer Vorstehhund)</item>
+        <item>Russkaya Psovaya Borzaya (Barsoi oder auch: Borzoi)</item>
+        <item>Russkiy Tchiorny Terrier (Russischer schwarzer Terrier)</item>
+        <item>Russkiy Toy</item>
+        <item>Russko-Evropeïskaïa Laïka (Russisch-Europäischer Laika)</item>
+        <item>Saarlooswolfhond (Saarlooswolfhund)</item>
+        <item>Sabueso Español</item>
+        <item>Saluki</item>
+        <item>Samoiedskaïa Sabaka (Samojede)</item>
+        <item>Schillerstövare</item>
+        <item>Schipperke</item>
+        <item>Schnauzer</item>
+        <item>Schweizerischer Niederlaufhund</item>
+        <item>Schweizer Laufhund (Chien Courant Suisse)</item>
+        <item>Scottish Terrier</item>
+        <item>Sealyham Terrier</item>
+        <item>Segugio Italiano a pelo forte (Drahthaariger Italienischer Laufhund)</item>
+        <item>Segugio Italiano a pelo raso (Kurzhaariger Italienischer Laufhund)</item>
+        <item>Segugio Maremmano</item>
+        <item>Shar Pei</item>
+        <item>Shetland Sheepdog</item>
+        <item>Shiba (Shiba Inu)</item>
+        <item>Shih Tzu</item>
+        <item>Shikoku</item>
+        <item>Siberian Husky (Sibirischer Husky)</item>
+        <item>Skye Terrier</item>
+        <item>Sloughi</item>
+        <item>Slovenský čuvač</item>
+        <item>Slovenský Hrubosrsty Stavac (Ohar)</item>
+        <item>Slovenský kopov (Slowakische Schwarzwildbracke)</item>
+        <item>Smålandsstövare</item>
+        <item>Spinone Italiano</item>
+        <item>Sredneasiatskaya Ovtcharka (Central Asian Shepherd Dog)</item>
+        <item>Srpski gonič (Serbischer Laufhund)</item>
+        <item>Srpski trobojni gonič (Dreifarbiger Serbischer Laufhund)</item>
+        <item>St. Bernhardshund (Bernhardiner)</item>
+        <item>Stabyhoun</item>
+        <item>Staffordshire Bull Terrier</item>
+        <item>Steirische Rauhhaarbracke</item>
+        <item>Suomenajokoira (Finnischer Laufhund)</item>
+        <item>Suomenlapinkoira (Finnischer Lapphund)</item>
+        <item>Suomenpystykorva (Finnischer Spitz)</item>
+        <item>Sussex Spaniel</item>
+        <item>Svensk Lapphund (Schwedischer Lapphund)</item>
+        <item>Taiwan Dog</item>
+        <item>Terrier Brasileiro</item>
+        <item>Thai Bangkaew Dog</item>
+        <item>Thai Ridgeback Dog</item>
+        <item>Tibetan Spaniel (Tibet-Spaniel)</item>
+        <item>Tibetan Terrier (Tsang Apso oder auch: Tibet-Terrier)</item>
+        <item>Tiroler Bracke</item>
+        <item>Tornjak</item>
+        <item>Tosa</item>
+        <item>Västgötaspets</item>
+        <item>Volpino Italiano</item>
+        <item>Vostotchno-Sibirskaïa Laïka</item>
+        <item>Weimaraner</item>
+        <item>Welsh Corgi Cardigan</item>
+        <item>Welsh Corgi Pembroke</item>
+        <item>Welsh Springer Spaniel</item>
+        <item>Welsh Terrier</item>
+        <item>West Highland White Terrier</item>
+        <item>Westfälische Dachsbracke</item>
+        <item>Wetterhoun</item>
+        <item>Whippet</item>
+        <item>Xoloitzcuintle</item>
+        <item>Yakutskaya Laika</item>
+        <item>Yorkshire Terrier</item>
+        <item>Yuzhnorusskaya Ovcharka (Südrussischer Owtscharka)</item>
+        <item>Zapadno-Sibirskaïa Laïka</item>
+        <item>Zwergpinscher</item>
+        <item>Zwergpudel</item>
+        <item>Zwergschnauzer</item>
     </string-array>
 
     <string-array name="ages">
