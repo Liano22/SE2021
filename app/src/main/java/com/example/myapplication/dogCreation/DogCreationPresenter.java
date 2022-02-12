@@ -11,7 +11,7 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 public class DogCreationPresenter implements  IDogCreationContract.IPresenter{
-
+    // --- Bennedict und Johanna ---
     Dog newDog; // der neu erstellte Hund, der später in die Datenbank geladen werden soll
     DogCreationModel dogCreationModel = new DogCreationModel(this); // um Verbindung zur Datenbank herstellen zu können
     IDogCreationContract.IView dogCreationView;
@@ -106,5 +106,6 @@ public class DogCreationPresenter implements  IDogCreationContract.IPresenter{
     public void savePicture(Uri imageUri, String key){
         dogCreationModel.uploadPicture(imageUri, key);
     }
+// --- Bennedict und Johanna ---
 
 }
