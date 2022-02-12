@@ -5,6 +5,7 @@ import android.net.Uri;
 import com.google.firebase.database.Query;
 
 public interface IDogCreationContract {
+    // --- Bennedict und Johanna ---
     interface IView{
         void setErrorMessage(String field, String ErrorMessage);
         void changeToDashboard();
@@ -26,4 +27,5 @@ public interface IDogCreationContract {
         void changeUserDogList(String username, String dogID);
         void uploadPicture(Uri imageUri, String key);
     }
+    // --- Bennedict und Johanna ---
 }

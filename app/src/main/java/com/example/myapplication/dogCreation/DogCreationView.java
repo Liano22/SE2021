@@ -29,6 +29,7 @@ import com.google.android.material.textfield.TextInputLayout;
 import java.util.UUID;
 
 public class DogCreationView extends AppCompatActivity implements IDogCreationContract.IView{
+// --- Bennedict und Johanna ---
 
     // Elemente aus der xml
     Button dogSaveBtn;
@@ -41,6 +42,7 @@ public class DogCreationView extends AppCompatActivity implements IDogCreationCo
 
     RadioGroup genderCheckGroup;
     RadioButton genderCheckBtn;
+
 
     String gender, pictureKey;
 
@@ -166,6 +168,6 @@ public class DogCreationView extends AppCompatActivity implements IDogCreationCo
     public void setSnackbar(String msg){
         Snackbar.make(findViewById(android.R.id.content), msg, Snackbar.LENGTH_LONG).show();
     }
-
+// --- Bennedict und Johanna ---
 
 }
