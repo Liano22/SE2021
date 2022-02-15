@@ -1,5 +1,7 @@
 package com.example.myapplication.dashboard;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
@@ -9,6 +11,8 @@ import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.R;
+import com.example.myapplication.dogSearch.DogSearchView;
+import com.example.myapplication.likes.LikesView;
 import com.example.myapplication.matches.MatchesView;
 
 public class Dashboard extends AppCompatActivity {
@@ -27,45 +31,41 @@ public class Dashboard extends AppCompatActivity {
         //this.dogPicture.setImageResource(profilePicture);
     }
 
-    public void goToMatches() {
+    public void goToMatches(Context context) {
         Log.d("Matches Button", "Go to Matches of " + this.dogName + " with the ID " + this.dogID);
-        /*
-        Intent matches = new Intent(this, MatchesView.class);
+
+        Intent matches = new Intent(context, MatchesView.class);
         matches.putExtra("dogID", this.dogID);
-        startActivity(matches);
-         */
+        context.startActivity(matches);
+
     }
 
-    public void goToLikes() {
+    public void goToLikes(Context context) {
         Log.d("Likes Button", "Go to Likes of " + this.dogName + " with the ID " + this.dogID);
-        /*
-        Intent likes = new Intent(this, LikesView.class);
+
+        Intent likes = new Intent(context, LikesView.class);
         likes.putExtra("dogID", this.dogID);
-        startActivity(likes);
-
-         */
+        context.startActivity(likes);
     }
 
-    public void goToSearch() {
+
+    public void goToSearch(Context context) {
         Log.d("Search Button", "Go to Search of " + this.dogName + " with the ID " + this.dogID);
-        /*
-        Intent search = new Intent(this, SearchView.class);
-        search.putExtra("dogID", this.dogID);
-        startActivity(search);
 
-         */
+        Intent search = new Intent(context, DogSearchView.class);
+        search.putExtra("dogID", this.dogID);
+        context.startActivity(search);
     }
 
-    public void goToDogProfile() {
+    /*
+    public void goToDogProfile(Context context) {
         Log.d("Hundebild", "Go to DogProfile of " + this.dogName + " with the ID " + this.dogID);
-        /*
+
         Intent profile = new Intent(this, DogProfile.class);
         profile.putExtra("dogID", this.dogID);
         startActivity(profile);
+    } */
 
-         */
-    }
-    
 
     public String getDogName() {
         return dogName;

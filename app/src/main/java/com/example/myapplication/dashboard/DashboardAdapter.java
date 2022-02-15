@@ -92,31 +92,30 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.View
         viewHolder.getMatchesButton().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                items.goToMatches();
+                items.goToMatches(v.getContext());
             }
         });
 
         viewHolder.getLikesButton().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                items.goToLikes();
+                items.goToLikes(v.getContext());
             }
         });
 
         viewHolder.getSearchButton().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                items.goToSearch();
+                items.goToSearch(v.getContext());
             }
         });
-
+        /*
         viewHolder.getDogPicture().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 items.goToDogProfile();
             }
-        });
-
+        }); */
     }
 
     // Return the size of your dataset (invoked by the layout manager)
