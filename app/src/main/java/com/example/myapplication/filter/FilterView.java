@@ -22,7 +22,7 @@ public class FilterView extends AppCompatActivity implements IFilterContract.IVi
     private Spinner raceSpinner, ageSpinner;
     private RadioButton available, optional;
     private EditText priceFrom, priceTo;
-
+    String dogID;
 
 
     boolean papersAvailable;
@@ -32,11 +32,16 @@ public class FilterView extends AppCompatActivity implements IFilterContract.IVi
         setContentView(R.layout.filter_preferences);
 
         //Zuweisungen
+        if (getIntent().hasExtra("dogID")) {
+            Bundle extra = getIntent().getExtras();
+            dogID = extra.getString("dogID");
+        }
         updateFilterPreferences = findViewById(R.id.preferences_button);
         raceSpinner = findViewById(R.id.rasse_spinner);
         ageSpinner = findViewById(R.id.alter_spinner);
         priceFrom = findViewById(R.id.text_min_preis);
         priceTo = findViewById(R.id.text_max_preis);
+
 
         //Die beiden Spinner mittels Adapter zur strings.xml in res/values befüllen
         ArrayAdapter<CharSequence> raceAdapter = ArrayAdapter.createFromResource(this, R.array.races, android.R.layout.simple_spinner_item);
@@ -47,6 +52,7 @@ public class FilterView extends AppCompatActivity implements IFilterContract.IVi
         ageAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         ageSpinner.setAdapter(ageAdapter);
 
+        //Filter Knopf wird gedrückt und Daten werden an die DogSearch übertragen
         updateFilterPreferences.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -61,6 +67,7 @@ public class FilterView extends AppCompatActivity implements IFilterContract.IVi
                     filterPresenter.filter(race, age, minPrice, maxPrice, papersAvailable);
                     Intent searchIntent = new Intent(FilterView.this, DogSearchView.class);
                     searchIntent.putExtra("filterSettings", filter);
+                    searchIntent.putExtra("dogID", dogID);
                     startActivity(searchIntent);
                 } else {
                     priceFrom.setError("Bitte alle Felder ausfüllen");
