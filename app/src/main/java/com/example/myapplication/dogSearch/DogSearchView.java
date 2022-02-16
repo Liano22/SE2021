@@ -93,14 +93,10 @@ public class DogSearchView extends AppCompatActivity {
         databaseDogs.addValueEventListener(dogListener);
 
         recyclerViewDogSearch.setLayoutManager(new LinearLayoutManager(this));
-        dogSearchAdapter = new DogSearchAdapter(this, goToNextDog(dogList));
+        dogSearchAdapter = new DogSearchAdapter(this, dogList);
         recyclerViewDogSearch.setAdapter(dogSearchAdapter);
 
     }
 
-    public ArrayList<DogSearch> goToNextDog(ArrayList<DogSearch> dogList) {
-        myList.add(dogList.get(3));
-        return myList;
-    }
 
 }
