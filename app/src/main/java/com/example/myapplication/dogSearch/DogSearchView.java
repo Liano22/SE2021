@@ -6,9 +6,11 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.R;
+import com.example.myapplication.dashboard.Dashboard;
 import com.example.myapplication.filter.Filter;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -30,6 +32,12 @@ public class DogSearchView extends AppCompatActivity {
     ArrayList<DogSearch> dogList = new ArrayList<>();
     private Object ValueEventListener;
 
+    private String searchDogName;
+    private String rasseTextView;
+    private String geschlechtTextView;
+    private String alterTextView;
+    private String papiereTextView;
+
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dog_search);
@@ -48,23 +56,33 @@ public class DogSearchView extends AppCompatActivity {
 
         ValueEventListener dogListener = new ValueEventListener() {
 
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
+            public void onDataChange(DataSnapshot dataSnapshot) {
                 dogList.clear();
-                for (DataSnapshot ds : snapshot.getChildren()) {
-                    if (ds.child("username").getValue(String.class).equals(currentDog)) {
-                        dogList.add(ds.child("myDogs").getValue(String.class));
-                    }
+                for(DataSnapshot ds : dataSnapshot.getChildren()) {
+
+                    searchDogName = ds.child("name").getValue(String.class);
+                    rasseTextView = ds.child("race").getValue(String.class);
+                    //geschlechtTextView = ds.child("name").getValue(String.class);
+                    alterTextView = ds.child("age").getValue(String.class);
+                    papiereTextView = ds.child("papers").getValue(String.class);
+
+                    dogList.add(new DogSearch(searchDogName, rasseTextView, alterTextView, papiereTextView));
+
                 }
-                userDogs = Arrays.asList(userDogsList.get(0).split(","));
-                adapter.notifyDataSetChanged();
+                dogSearchAdapter.notifyDataSetChanged();
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 Log.w("loadPost:onCancelled", error.toException());
             }
-        }
+        };
+
+        databaseDogs.addValueEventListener(dogListener);
+
+        recyclerViewDogSearch.setLayoutManager(new LinearLayoutManager(this));
+        dogSearchAdapter = new DogSearchAdapter(this, dogList);
+        recyclerViewDogSearch.setAdapter(dogSearchAdapter);
 
     }
 

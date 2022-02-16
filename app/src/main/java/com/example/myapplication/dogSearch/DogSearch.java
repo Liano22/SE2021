@@ -16,15 +16,15 @@ public class DogSearch {
 
     private ImageView searchDogImage;
 
-    public DogSearch(String searchDogName, String rasseTextView, String geschlechtTextView, String alterTextView, String papiereTextView, Button likeButton, Button dislikeButton, ImageView searchDogImage) {
+    public DogSearch(String searchDogName, String rasseTextView, String alterTextView, String papiereTextView) {
         this.searchDogName = searchDogName;
         this.rasseTextView = rasseTextView;
-        this.geschlechtTextView = geschlechtTextView;
+        //this.geschlechtTextView = geschlechtTextView;
         this.alterTextView = alterTextView;
         this.papiereTextView = papiereTextView;
-        this.likeButton = likeButton;
-        this.dislikeButton = dislikeButton;
-        this.searchDogImage = searchDogImage;
+        //this.likeButton = likeButton;
+        //this.dislikeButton = dislikeButton;
+        //this.searchDogImage = searchDogImage;
     }
 
     public void dislike() {
