@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.R;
 import com.example.myapplication.dogSearch.DogSearchView;
+import com.example.myapplication.filter.FilterView;
 import com.example.myapplication.likes.LikesView;
 import com.example.myapplication.matches.MatchesView;
 
@@ -52,7 +53,7 @@ public class Dashboard extends AppCompatActivity {
     public void goToSearch(Context context) {
         Log.d("Search Button", "Go to Search of " + this.dogName + " with the ID " + this.dogID);
 
-        Intent search = new Intent(context, DogSearchView.class);
+        Intent search = new Intent(context, FilterView.class);
         search.putExtra("dogID", this.dogID);
         context.startActivity(search);
     }

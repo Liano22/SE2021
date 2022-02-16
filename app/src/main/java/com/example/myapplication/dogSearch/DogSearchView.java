@@ -29,24 +29,40 @@ public class DogSearchView extends AppCompatActivity {
 
     ArrayList<DogSearch> dogList = new ArrayList<>();
     private Object ValueEventListener;
+    String race;
+    String age;
+    String minPrice;
+    String maxPrice;
+    Boolean papersAvailable;
 
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dog_search);
-
-        //Variablen von den Filter Einstellungen bekommen
         Filter filterSettings = getIntent().getParcelableExtra("filterSettings");
+        //Variablen von den Filter Einstellungen bekommen
 
         if (getIntent().hasExtra("dogID")) {
             Bundle extra = getIntent().getExtras();
             currentDog = extra.getString("dogID");
         }
 
+        race = filterSettings.getRace();
+        age = filterSettings.getAge();
+        minPrice = filterSettings.getMinPrice();
+        maxPrice = filterSettings.getMaxPrice();
+        papersAvailable = filterSettings.isPapersAvailable();
+        Log.d("Rasse: ", race);
+        Log.d("Alter: ", age);
+        Log.d("Min Preis: ", minPrice);
+        Log.d("Max Preis: ", maxPrice);
+        Log.d("Papiere verfügbar: ", String.valueOf(papersAvailable));
+        Log.d("DogID: ", currentDog);
+
         recyclerViewDogSearch = findViewById(R.id.searchView);
 
         databaseDogs = FirebaseDatabase.getInstance().getReference().child("dogs");
 
-        ValueEventListener dogListener = new ValueEventListener() {
+    /*    ValueEventListener dogListener = new ValueEventListener() {
 
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -64,7 +80,7 @@ public class DogSearchView extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) {
                 Log.w("loadPost:onCancelled", error.toException());
             }
-        }
+        }*/
 
     }
 
