@@ -19,7 +19,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class LikesView extends AppCompatActivity implements ILikesContract.IView {
+public class LikesView extends AppCompatActivity implements ILikesContract.LikesView {
 
     ArrayList<Like> likesList = new ArrayList<>();
     ArrayList<String> liked_dogs_ids;
@@ -37,8 +37,17 @@ public class LikesView extends AppCompatActivity implements ILikesContract.IView
     String age;
     String price;
 
+    String selectedDog;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        if (getIntent().hasExtra("dogID")) {
+            Bundle extra = getIntent().getExtras();
+            selectedDog = extra.getString("dogID");
+        }
+
+
         setContentView(R.layout.dog_likes);
 
         recyclerView = findViewById(R.id.dog_likeslist);
@@ -53,11 +62,18 @@ public class LikesView extends AppCompatActivity implements ILikesContract.IView
                 liked_dogs_ids.clear();
 
                 for(DataSnapshot ds : dataSnapshot.getChildren()) {
-                    if(ds.child("like").getValue(Boolean.class).equals(true) && ds.child("match").getValue(Boolean.class).equals(false)) {
-                        dog_id = ds.child("dog_id_2").getValue(String.class);
-                        liked_dogs_ids.add(String.valueOf(dog_id));
-                        //Log.d("start", String.valueOf(matched_dogs_ids));
+                    if(ds.child("dog_id_1").getValue(String.class).equals(selectedDog)) {
+                        if(ds.child("like").getValue(Boolean.class).equals(true) && ds.child("match").getValue(Boolean.class).equals(false)) {
+                            dog_id = ds.child("dog_id_2").getValue(String.class);
+                            liked_dogs_ids.add(String.valueOf(dog_id));
+                        }
+                    } if(ds.child("dog_id_2").getValue(String.class).equals(selectedDog)) {
+                        if(ds.child("like").getValue(Boolean.class).equals(true) && ds.child("match").getValue(Boolean.class).equals(false)) {
+                            dog_id = ds.child("dog_id_1").getValue(String.class);
+                            liked_dogs_ids.add(String.valueOf(dog_id));
+                        }
                     }
+                    //Log.d("start", selectedDog);
                 }
             }
 
@@ -110,4 +126,10 @@ public class LikesView extends AppCompatActivity implements ILikesContract.IView
         };
         database_liked_dogs_data.addValueEventListener(likedDogsListener);
     }
+
+    @Override
+    public void updateRecyclcerView() {
+        //lade alle Hunde in die Liste
+    }
+
 }

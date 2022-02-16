@@ -10,8 +10,7 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.R;
-import com.example.myapplication.matches.Match;
-import com.example.myapplication.matches.MatchAdapter;
+import com.example.myapplication.dashboard.Dashboard;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -59,15 +58,16 @@ public class LikesAdapter extends RecyclerView.Adapter<LikesAdapter.ViewHolder> 
         }
     }
 
-    public LikesAdapter.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
+    public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         View view = LayoutInflater.from(viewGroup.getContext())
                 .inflate(R.layout.dog_likes_item, viewGroup, false);
 
-        return new LikesAdapter.ViewHolder(view);
+        return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(LikesAdapter.ViewHolder viewHolder, final int position) {
+    public void onBindViewHolder(ViewHolder viewHolder, final int position) {
+        /*
         String name = likesList.get(position).getDog_name();
         viewHolder.nameText.setText(name + ",");
 
@@ -79,8 +79,17 @@ public class LikesAdapter extends RecyclerView.Adapter<LikesAdapter.ViewHolder> 
 
         String price = likesList.get(position).getDog_price();
         viewHolder.priceText.setText(price);
+         */
 
-        Log.d("start", String.valueOf(likesList));
+        Like items = likesList.get(position);
+
+        viewHolder.getNameText().setText(items.getDog_name());
+
+        viewHolder.getRaceText().setText(items.getDog_race());
+
+        viewHolder.getAgeText().setText(items.getDog_age());
+
+        viewHolder.getPriceText().setText(items.getDog_price());
     }
 
     @Override

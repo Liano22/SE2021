@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.R;
+import com.example.myapplication.likes.Like;
 
 
 import java.util.ArrayList;
@@ -24,7 +25,6 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> 
     public MatchAdapter(Context context, ArrayList<Match> matchesList){
         this.mInflater = LayoutInflater.from(context);
         this.matchesList = matchesList;
-        Log.d("start", String.valueOf(matchesList));
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
@@ -69,6 +69,7 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, final int position) {
+        /*
         String name = matchesList.get(position).getDog_name();
         viewHolder.nameText.setText(name + ",");
 
@@ -80,8 +81,18 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> 
 
         String price = matchesList.get(position).getDog_price();
         viewHolder.priceText.setText(price);
+         */
 
-        Log.d("start", String.valueOf(matchesList));
+        Match items = matchesList.get(position);
+
+        viewHolder.getNameText().setText(items.getDog_name()+ ",");
+
+        viewHolder.getRaceText().setText(items.getDog_race());
+
+        viewHolder.getAgeText().setText(items.getDog_age());
+
+        viewHolder.getPriceText().setText(items.getDog_price());
+
     }
 
     @Override

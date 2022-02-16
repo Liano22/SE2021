@@ -13,10 +13,11 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.database.annotations.Nullable;
 
 import java.util.ArrayList;
 
-public class MatchesView extends AppCompatActivity implements IMatchesContract.IView{
+public class MatchesView extends AppCompatActivity implements IMatchesContract.MatchesView{
 
     ArrayList<Match> matchesList = new ArrayList<>();
     ArrayList<String> matched_dogs_ids;
@@ -34,8 +35,16 @@ public class MatchesView extends AppCompatActivity implements IMatchesContract.I
     String age;
     String price;
 
+    String selectedDog;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        if (getIntent().hasExtra("dogID")) {
+            Bundle extra = getIntent().getExtras();
+            selectedDog = extra.getString("dogID");
+        }
+
         setContentView(R.layout.dog_matches);
 
         recyclerView = findViewById(R.id.dog_matcheslist);
@@ -48,13 +57,22 @@ public class MatchesView extends AppCompatActivity implements IMatchesContract.I
             public void onDataChange(DataSnapshot dataSnapshot) {
 
                 matched_dogs_ids.clear();
-
                     for(DataSnapshot ds : dataSnapshot.getChildren()) {
-                        if(ds.child("match").getValue(Boolean.class).equals(true)) {
-                            dog_id = ds.child("dog_id_2").getValue(String.class);
-                            matched_dogs_ids.add(String.valueOf(dog_id));
-                            //Log.d("start", String.valueOf(matched_dogs_ids));
+                        if(ds.child("dog_id_1").getValue(String.class).equals(selectedDog)) {
+                            if(ds.child("match").getValue(Boolean.class).equals(true)) {
+                                dog_id = ds.child("dog_id_2").getValue(String.class);
+                                matched_dogs_ids.add(String.valueOf(dog_id));
+                            }
                         }
+
+                        if(ds.child("dog_id_2").getValue(String.class).equals(selectedDog)) {
+                            if(ds.child("match").getValue(Boolean.class).equals(true)) {
+                                dog_id = ds.child("dog_id_1").getValue(String.class);
+                                matched_dogs_ids.add(String.valueOf(dog_id));
+                            }
+                        }
+                        //Log.d("start", selectedDog);
+                        //Log.d("start", String.valueOf(matched_dogs_ids));
                     }
             }
 
@@ -69,20 +87,8 @@ public class MatchesView extends AppCompatActivity implements IMatchesContract.I
         setMatchInfo();
         setAdapter();
 
-        //IDs von gematchten Hunden speichern
+        //Log.d("start", String.valueOf(matchesList));
 
-    }
-
-    private void setAdapter() {
-        /*MatchAdapter adapter = new MatchAdapter(matchesList);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setAdapter(adapter);*/
-
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new MatchAdapter(this, matchesList);
-        recyclerView.setAdapter(adapter);
     }
 
     //Daten der gematchten Hunde anhand von ID auslesen und zur matchesList hinzufügen
@@ -100,11 +106,12 @@ public class MatchesView extends AppCompatActivity implements IMatchesContract.I
                         age = dataSnapshot.child(id).child("age").getValue(String.class);
                         price = dataSnapshot.child(id).child("price").getValue(String.class);
 
+                        //Log.d("start", name);
+
                         matchesList.add(new Match(String.valueOf(name), String.valueOf(race), String.valueOf(age), String.valueOf(price)));
                     }
                 adapter.notifyDataSetChanged();
             }
-
 
             public void onCancelled(DatabaseError databaseError) {
                 // Getting Post failed, log a message
@@ -113,4 +120,16 @@ public class MatchesView extends AppCompatActivity implements IMatchesContract.I
         };
         database_matched_dogs_data.addValueEventListener(matchedDogsListener);
     }
+
+    private void setAdapter() {
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        adapter = new MatchAdapter(this, matchesList);
+        recyclerView.setAdapter(adapter);
+    }
+
+    @Override
+    public void updateRecyclcerView() {
+        //lade alle Hunde in die Liste
+    }
+
 }

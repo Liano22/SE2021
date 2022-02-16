@@ -1,7 +1,9 @@
 package com.example.myapplication.likes;
 
 public interface ILikesContract {
-    interface IView{
+    interface LikesView {
+
+        void updateRecyclcerView();
 
     }
 
