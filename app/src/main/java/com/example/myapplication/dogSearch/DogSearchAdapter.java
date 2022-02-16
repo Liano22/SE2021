@@ -40,6 +40,23 @@ public class DogSearchAdapter extends RecyclerView.Adapter<DogSearchAdapter.View
 
         private ImageView searchDogImage;
 
+
+
+
+        public ViewHolder(View view) {
+            super(view);
+            // Define click listener for the ViewHolder's View
+
+            searchDogName = (TextView) view.findViewById(R.id.searchDogName);
+            rasseTextView = (TextView) view.findViewById(R.id.rasseTextView);
+            geschlechtTextView = (TextView) view.findViewById(R.id.geschlechtTextView);
+            alterTextView = (TextView) view.findViewById(R.id.alterTextView);
+            papiereTextView = (TextView) view.findViewById(R.id.papiereTextView);
+
+            likeButton = (Button) view.findViewById(R.id.likeButton);
+            dislikeButton = (Button) view.findViewById(R.id.dislikeButton);
+        }
+
         public TextView getSearchDogName() {
             return searchDogName;
         }
@@ -71,27 +88,12 @@ public class DogSearchAdapter extends RecyclerView.Adapter<DogSearchAdapter.View
         public ImageView getSearchDogImage() {
             return searchDogImage;
         }
-
-
-        public ViewHolder(View view) {
-            super(view);
-            // Define click listener for the ViewHolder's View
-
-            searchDogName = (TextView) view.findViewById(R.id.searchDogName);
-            rasseTextView = (TextView) view.findViewById(R.id.rasseTextView);
-            geschlechtTextView = (TextView) view.findViewById(R.id.geschlechtTextView);
-            alterTextView = (TextView) view.findViewById(R.id.alterTextView);
-            papiereTextView = (TextView) view.findViewById(R.id.papiereTextView);
-
-            likeButton = (Button) view.findViewById(R.id.likeButton);
-            dislikeButton = (Button) view.findViewById(R.id.dislikeButton);
-        }
     }
 
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         // Create a new view, which defines the UI of the list item
         View view = LayoutInflater.from(viewGroup.getContext())
-                .inflate(R.layout.item_dashboard, viewGroup, false);
+                .inflate(R.layout.search, viewGroup, false);
 
         return new ViewHolder(view);
     }
@@ -104,6 +106,8 @@ public class DogSearchAdapter extends RecyclerView.Adapter<DogSearchAdapter.View
         // contents of the view with that element
         DogSearch items = dogData.get(position);
 
+
+        Log.d("test", viewHolder.getAlterTextView().toString());
         viewHolder.getAlterTextView().setText(items.getAlterTextView());
         viewHolder.getSearchDogName().setText(items.getSearchDogName());
         viewHolder.getRasseTextView().setText(items.getRasseTextView());
@@ -117,7 +121,12 @@ public class DogSearchAdapter extends RecyclerView.Adapter<DogSearchAdapter.View
             }
         });
 
-
+        viewHolder.getDislikeButton().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("test", "gedrückt");
+            }
+        });
 
 
     }

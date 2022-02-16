@@ -30,6 +30,7 @@ public class DogSearchView extends AppCompatActivity {
     String currentDog;
 
     ArrayList<DogSearch> dogList = new ArrayList<>();
+    ArrayList<DogSearch> myList;
     private Object ValueEventListener;
 
     private String searchDogName;
@@ -44,6 +45,8 @@ public class DogSearchView extends AppCompatActivity {
 
         //Variablen von den Filter Einstellungen bekommen
         Filter filterSettings = getIntent().getParcelableExtra("filterSettings");
+
+        Log.d("filter Rasse", filterSettings.getRace());
 
         if (getIntent().hasExtra("dogID")) {
             Bundle extra = getIntent().getExtras();
@@ -64,7 +67,15 @@ public class DogSearchView extends AppCompatActivity {
                     rasseTextView = ds.child("race").getValue(String.class);
                     //geschlechtTextView = ds.child("name").getValue(String.class);
                     alterTextView = ds.child("age").getValue(String.class);
-                    papiereTextView = ds.child("papers").getValue(String.class);
+                    Boolean papers = ds.child("papers").getValue(Boolean.class);
+                    papiereTextView = papers.toString();
+
+                    /*
+                    if (rasseTextView.equals(filterSettings.getRace())) {
+
+                    }
+
+                     */
 
                     dogList.add(new DogSearch(searchDogName, rasseTextView, alterTextView, papiereTextView));
 
@@ -78,12 +89,18 @@ public class DogSearchView extends AppCompatActivity {
             }
         };
 
+
         databaseDogs.addValueEventListener(dogListener);
 
         recyclerViewDogSearch.setLayoutManager(new LinearLayoutManager(this));
-        dogSearchAdapter = new DogSearchAdapter(this, dogList);
+        dogSearchAdapter = new DogSearchAdapter(this, goToNextDog(dogList));
         recyclerViewDogSearch.setAdapter(dogSearchAdapter);
 
+    }
+
+    public ArrayList<DogSearch> goToNextDog(ArrayList<DogSearch> dogList) {
+        myList.add(dogList.get(3));
+        return myList;
     }
 
 }
