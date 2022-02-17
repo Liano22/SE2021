@@ -15,12 +15,15 @@ import com.example.myapplication.dashboard.Dashboard;
 import java.util.ArrayList;
 import java.util.List;
 
+//Nils Behrens
+
 public class LikesAdapter extends RecyclerView.Adapter<LikesAdapter.ViewHolder> {
 
     //Deklaration von Variablen
     private List<Like> likesList;
     private LayoutInflater mInflater;
 
+    //Konstruktor der Klasse LikesAdapter
     public LikesAdapter(Context context, ArrayList<Like> likesList){
         this.mInflater = LayoutInflater.from(context);
         this.likesList = likesList;
@@ -28,14 +31,18 @@ public class LikesAdapter extends RecyclerView.Adapter<LikesAdapter.ViewHolder> 
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
+
+        //Deklaration der Viewholder Elemente
         private final TextView nameText;
         private final TextView raceText;
         private final TextView ageText;
         private final TextView priceText;
 
+        //Konstruktor der Klasse ViewHolder
         public ViewHolder(View view){
             super(view);
 
+            //Zuweisung der Viewholder Elemente zu den Elementen des Item Views
             nameText = (TextView) view.findViewById(R.id.dog_name);
             raceText = (TextView) view.findViewById(R.id.dog_race);
             ageText = (TextView) view.findViewById(R.id.dog_age);
@@ -59,6 +66,8 @@ public class LikesAdapter extends RecyclerView.Adapter<LikesAdapter.ViewHolder> 
         }
     }
 
+    //Erstellung eines neuen Views für den Viewholder
+    //Dem Viewholder wird hierbei der entsprechende XML File (dog_matches_item) zugewiesen.
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         View view = LayoutInflater.from(viewGroup.getContext())
                 .inflate(R.layout.dog_likes_item, viewGroup, false);
@@ -66,35 +75,26 @@ public class LikesAdapter extends RecyclerView.Adapter<LikesAdapter.ViewHolder> 
         return new ViewHolder(view);
     }
 
+    //Befüllung des Views mit den Daten aus der likesList
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, final int position) {
-        /*
-        String name = likesList.get(position).getDog_name();
-        viewHolder.nameText.setText(name + ",");
-
-        String race = likesList.get(position).getDog_race();
-        viewHolder.raceText.setText(race);
-
-        String age = likesList.get(position).getDog_age();
-        viewHolder.ageText.setText(age);
-
-        String price = likesList.get(position).getDog_price();
-        viewHolder.priceText.setText(price);
-         */
 
         Like items = likesList.get(position);
 
-        viewHolder.getNameText().setText(items.getDog_name());
+        viewHolder.getNameText().setText(items.getDog_name() + ",");
 
         viewHolder.getRaceText().setText(items.getDog_race());
 
-        viewHolder.getAgeText().setText(items.getDog_age());
+        viewHolder.getAgeText().setText(items.getDog_age() + " Jahre");
 
-        viewHolder.getPriceText().setText(items.getDog_price());
+        viewHolder.getPriceText().setText(items.getDog_price() + "€");
     }
 
+    //Größe bzw. Umfang der matchesList abfragen
     @Override
     public int getItemCount() {
         return likesList.size();
     }
 }
+
+//Nils Behrens

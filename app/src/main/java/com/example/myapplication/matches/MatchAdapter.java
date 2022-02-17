@@ -17,6 +17,8 @@ import com.example.myapplication.likes.Like;
 import java.util.ArrayList;
 import java.util.List;
 
+//Nils Behrens
+
 public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> {
 
     //Deklaration von Variablen
@@ -29,15 +31,20 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> 
         this.matchesList = matchesList;
     }
 
+
     public class ViewHolder extends RecyclerView.ViewHolder{
+
+        //Deklaration der Viewholder Elemente
         private final TextView nameText;
         private final TextView raceText;
         private final TextView ageText;
         private final TextView priceText;
 
+        //Konstruktor der Klasse ViewHolder
         public ViewHolder(View view){
             super(view);
 
+            //Zuweisung der Viewholder Elemente zu den Elementen des Item Views
             nameText = (TextView) view.findViewById(R.id.dog_name);
             raceText = (TextView) view.findViewById(R.id.dog_race);
             ageText = (TextView) view.findViewById(R.id.dog_age);
@@ -61,7 +68,8 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> 
         }
     }
 
-
+    //Erstellung eines neuen Views für den Viewholder
+    //Dem Viewholder wird hierbei der entsprechende XML File (dog_matches_item) zugewiesen.
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         View view = LayoutInflater.from(viewGroup.getContext())
                 .inflate(R.layout.dog_matches_item, viewGroup, false);
@@ -69,36 +77,27 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> 
         return new ViewHolder(view);
     }
 
+    //Befüllung des Views mit den Daten aus der matchesList
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, final int position) {
-        /*
-        String name = matchesList.get(position).getDog_name();
-        viewHolder.nameText.setText(name + ",");
 
-        String race = matchesList.get(position).getDog_race();
-        viewHolder.raceText.setText(race);
+        Match item = matchesList.get(position);
 
-        String age = matchesList.get(position).getDog_age();
-        viewHolder.ageText.setText(age);
+        viewHolder.getNameText().setText(item.getDog_name()+ ",");
 
-        String price = matchesList.get(position).getDog_price();
-        viewHolder.priceText.setText(price);
-         */
+        viewHolder.getRaceText().setText(item.getDog_race());
 
-        Match items = matchesList.get(position);
+        viewHolder.getAgeText().setText("Alter: " + item.getDog_age() + " Jahre");
 
-        viewHolder.getNameText().setText(items.getDog_name()+ ",");
-
-        viewHolder.getRaceText().setText(items.getDog_race());
-
-        viewHolder.getAgeText().setText(items.getDog_age());
-
-        viewHolder.getPriceText().setText(items.getDog_price());
+        viewHolder.getPriceText().setText("Preis: " + item.getDog_price() + "€");
 
     }
 
+    //Größe bzw. Umfang der matchesList abfragen
     @Override
     public int getItemCount() {
         return matchesList.size();
     }
 }
+
+//Nils Behrens

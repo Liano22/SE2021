@@ -1,5 +1,7 @@
 package com.example.myapplication.likes;
 
+//Nils Behrens
+
 public class Like {
 
     //Deklaration von Variablen
@@ -16,6 +18,7 @@ public class Like {
         this.dog_price = dog_price;
     }
 
+    //Getter und Setter für die Klassenvariablen
     public String getDog_name() {
         return dog_name;
     }
@@ -48,3 +51,5 @@ public class Like {
         this.dog_price = dog_price;
     }
 }
+
+//Nils Behrens

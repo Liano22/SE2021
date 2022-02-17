@@ -19,11 +19,12 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
+//Nils Behrens
+
 public class LikesView extends AppCompatActivity implements ILikesContract.LikesView {
 
     //Deklaration von Variablen
     private RecyclerView recyclerView;
-    private LikesPresenter likesPresenter;
     private LikesAdapter adapter;
     private DatabaseReference database_like_check;
     private DatabaseReference database_liked_dogs_data;
@@ -31,9 +32,14 @@ public class LikesView extends AppCompatActivity implements ILikesContract.Likes
     ArrayList<String> liked_dogs_ids;
     String dog_id, name, race, age, price, selectedDog;
 
+    //Verbindung zum Presenter
+    LikesPresenter likesPresenter = new LikesPresenter(this);
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        //Hier wird geprüft, ob der Intent, der diese Activity aufgerufen hat, eine dogID als extra enthält.
+        //Die dogID wird benötigt, um die Likes in der Datenbank zu durchsuchen.
         if (getIntent().hasExtra("dogID")) {
             Bundle extra = getIntent().getExtras();
             selectedDog = extra.getString("dogID");
@@ -41,10 +47,18 @@ public class LikesView extends AppCompatActivity implements ILikesContract.Likes
 
         setContentView(R.layout.dog_likes);
 
+        //Zuweisungen
         recyclerView = findViewById(R.id.dog_likeslist);
         likesList = new ArrayList<>();
         liked_dogs_ids = new ArrayList<>();
 
+        findLikes();
+
+    }
+
+    public void findLikes() {
+        //Erstellung einer Instanz des Matches-Datensatz aus der Datenbank
+        //Der Matches-Datensatz wird sowohl für Matches als auch für Likes verwendet
         database_like_check = FirebaseDatabase.getInstance().getReference().child("matches");
         ValueEventListener likeListener = new ValueEventListener() {
 
@@ -52,6 +66,8 @@ public class LikesView extends AppCompatActivity implements ILikesContract.Likes
 
                 liked_dogs_ids.clear();
 
+                //Matches-Datensatz wird nach der ID des gewünschten Hundes durchsucht.
+                //Bei allen Likes (likes = true && match = false), die den gewünschten Hund enthalten, wird die ID des jeweils anderen Hundes zu liked_dog_ids hinzugefügt.
                 for(DataSnapshot ds : dataSnapshot.getChildren()) {
                     if(ds.child("dog_id_1").getValue(String.class).equals(selectedDog)) {
                         if(ds.child("like").getValue(Boolean.class).equals(true) && ds.child("match").getValue(Boolean.class).equals(false)) {
@@ -79,14 +95,9 @@ public class LikesView extends AppCompatActivity implements ILikesContract.Likes
         database_like_check.addValueEventListener(likeListener);
     }
 
-    private void setAdapter() {
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new LikesAdapter(this, likesList);
-        recyclerView.setAdapter(adapter);
-    }
+    public void setLikeInfo() {
 
-    //Daten der gematchten Hunde anhand von ID auslesen und zur matchesList hinzufügen
-    private void setLikeInfo() {
+        //Erstellung einer Instanz des Hunde-Datensatz aus der Datenbank
         database_liked_dogs_data = FirebaseDatabase.getInstance().getReference().child("dogs");
         ValueEventListener likedDogsListener = new ValueEventListener() {
 
@@ -94,6 +105,7 @@ public class LikesView extends AppCompatActivity implements ILikesContract.Likes
 
                 likesList.clear();
 
+                //Die gelikten Hunde werden anhand Ihrer IDs (liked_dog_ids) aus der Datenbank ausgelesen und Ihren Informationen werden zur likesList hinzugefügt.
                 for(String id : liked_dogs_ids) {
                     name = dataSnapshot.child(id).child("name").getValue(String.class);
                     race = dataSnapshot.child(id).child("race").getValue(String.class);
@@ -114,9 +126,14 @@ public class LikesView extends AppCompatActivity implements ILikesContract.Likes
         database_liked_dogs_data.addValueEventListener(likedDogsListener);
     }
 
-    @Override
-    public void updateRecyclcerView() {
-        //lade alle Hunde in die Liste
+    //Zuweisung des LayoutManagers und Adapters zum RecyclerView
+    //Außerdem werden hier die Informationen der gelikten Hunde an den Adapter übergeben
+    public void setAdapter() {
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        adapter = new LikesAdapter(this, likesList);
+        recyclerView.setAdapter(adapter);
     }
 
 }
+
+//Nils Behrens

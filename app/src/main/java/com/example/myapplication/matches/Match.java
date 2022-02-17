@@ -1,5 +1,7 @@
 package com.example.myapplication.matches;
 
+//Nils Behrens
+
 public class Match {
 
     //Deklaration von Variablen
@@ -49,3 +51,5 @@ public class Match {
         this.dog_price = dog_price;
     }
 }
+
+//Nils Behrens
