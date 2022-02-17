@@ -14,9 +14,11 @@ import com.google.firebase.database.ValueEventListener;
 
 public class LogInPresenter implements ILogInContract.IPresenter{
 
+    //Deklaration von Variablen
     private ILogInContract.IView logInView;
     private LogInModel logInModel = new LogInModel();
 
+    //Konstruktor der Klasse LogInPresenter
     public LogInPresenter(ILogInContract.IView view){
         this.logInView = view;
     }

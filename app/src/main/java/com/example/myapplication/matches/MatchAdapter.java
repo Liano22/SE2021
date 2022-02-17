@@ -19,9 +19,11 @@ import java.util.List;
 
 public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> {
 
+    //Deklaration von Variablen
     private List<Match> matchesList;
     private LayoutInflater mInflater;
 
+    //Konstruktor der Klasse Matchadapter
     public MatchAdapter(Context context, ArrayList<Match> matchesList){
         this.mInflater = LayoutInflater.from(context);
         this.matchesList = matchesList;

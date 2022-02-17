@@ -6,6 +6,7 @@ import com.google.firebase.database.Query;
 
 public class LogInModel implements ILogInContract.IModel {
 
+    //Deklaration von Variablen
     FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
     DatabaseReference reference;
 

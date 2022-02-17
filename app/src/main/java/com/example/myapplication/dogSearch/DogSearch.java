@@ -5,15 +5,14 @@ import android.widget.ImageView;
 
 public class DogSearch {
 
+    //Deklaration von Variablen
     private String searchDogName;
     private String rasseTextView;
     private String geschlechtTextView;
     private String alterTextView;
     private String papiereTextView;
-
     private Button likeButton;
     private Button dislikeButton;
-
     private ImageView searchDogImage;
 
     public DogSearch(String searchDogName, String rasseTextView, String alterTextView, String papiereTextView) {

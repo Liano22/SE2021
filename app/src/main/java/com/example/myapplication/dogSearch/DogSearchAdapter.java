@@ -20,6 +20,7 @@ import java.util.List;
 
 public class DogSearchAdapter extends RecyclerView.Adapter<DogSearchAdapter.ViewHolder> {
 
+    //Deklaration von Variablen
     private List<DogSearch> dogData;
     private List<DogSearch> limitedDogData;
     private LayoutInflater myInflator;
@@ -30,6 +31,8 @@ public class DogSearchAdapter extends RecyclerView.Adapter<DogSearchAdapter.View
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
+
+        //Deklaration von Variablen
         private final TextView searchDogName;
         private final TextView rasseTextView;
         private final TextView geschlechtTextView;
@@ -40,8 +43,6 @@ public class DogSearchAdapter extends RecyclerView.Adapter<DogSearchAdapter.View
         private Button dislikeButton;
 
         private ImageView searchDogImage;
-
-
 
 
         public ViewHolder(View view) {

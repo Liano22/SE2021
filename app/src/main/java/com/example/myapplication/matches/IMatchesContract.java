@@ -14,4 +14,8 @@ public interface IMatchesContract {
     interface IPresenter{
 
     }
+
+    interface IModel{
+
+    }
 }

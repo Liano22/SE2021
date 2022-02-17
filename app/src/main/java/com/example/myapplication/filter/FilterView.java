@@ -16,15 +16,17 @@ import com.example.myapplication.R;
 import com.example.myapplication.dogSearch.DogSearchView;
 
 public class FilterView extends AppCompatActivity implements IFilterContract.IView {
-//Ralf & Karl
+//Karl & Ralf
+
+    //Initialisieren einer Variable
     FilterPresenter filterPresenter = new FilterPresenter(this);
-    Button updateFilterPreferences;
+
+    //Deklaration von Variablen
     private Spinner raceSpinner, ageSpinner;
     private RadioButton available, optional;
     private EditText priceFrom, priceTo;
+    Button updateFilterPreferences;
     String dogID;
-
-
     boolean papersAvailable;
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +63,9 @@ public class FilterView extends AppCompatActivity implements IFilterContract.IVi
                 String minPrice = priceFrom.getText().toString();
                 String maxPrice = priceTo.getText().toString();
 
-                // die Einträge des Nutzers werden als Objekt an die DogSearchView weitergereicht.
+                //Die Einträge des Nutzers werden als Objekt an die DogSearchView weitergereicht.
+                //Hierbei müssen alle Felder ausgefüllt sein,
+                //ansonsten wird eine Fehlermeldung mit der Aufforderung zum Ausfüllen aller Felder gesendet.
                 if (!race.isEmpty() && !age.isEmpty() && !minPrice.isEmpty() && !maxPrice.isEmpty()) {
                     Filter filter = new Filter(race, age, minPrice, maxPrice, papersAvailable);
                     filterPresenter.filter(race, age, minPrice, maxPrice, papersAvailable);

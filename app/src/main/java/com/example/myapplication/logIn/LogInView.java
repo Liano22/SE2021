@@ -16,8 +16,8 @@ import com.google.android.material.textfield.TextInputLayout;
 
 public class LogInView extends AppCompatActivity implements ILogInContract.IView {
 
+    //Deklaration von Variablen
     private TextInputLayout username, password;
-
     private Button logInBtn, logInToSignUpBtn, searchBtn;
     private LogInPresenter logInPresenter = new LogInPresenter(this);
 
