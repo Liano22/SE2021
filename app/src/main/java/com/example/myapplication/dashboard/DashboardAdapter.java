@@ -67,8 +67,6 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.View
         }
     }
 
-
-
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         // Create a new view, which defines the UI of the list item
         View view = LayoutInflater.from(viewGroup.getContext())
@@ -76,7 +74,6 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.View
 
         return new ViewHolder(view);
     }
-
 
     // Replace the contents of a view (invoked by the layout manager)
     @Override

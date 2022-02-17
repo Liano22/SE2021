@@ -56,7 +56,6 @@ public class DashboardView extends AppCompatActivity implements IDashboardContra
         Intent creation = new Intent(this, DogCreationView.class);
         creation.putExtra("currentUser", currentUser);
 
-
         databaseDogs = FirebaseDatabase.getInstance().getReference().child("dogs");
         databaseUser = FirebaseDatabase.getInstance().getReference().child("users");
 

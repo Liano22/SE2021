@@ -87,8 +87,6 @@ public class DogSearchView extends AppCompatActivity {
                 Log.w("loadPost:onCancelled", error.toException());
             }
         };
-
-
         databaseDogs.addValueEventListener(dogListener);
 
         recyclerViewDogSearch.setLayoutManager(new LinearLayoutManager(this));
@@ -96,11 +94,5 @@ public class DogSearchView extends AppCompatActivity {
         recyclerViewDogSearch.setAdapter(dogSearchAdapter);
 
     }
-
-    public void itemManager() {
-        dogList.remove(0);
-        dogSearchAdapter.notifyDataSetChanged();
-    }
-
 
 }

@@ -37,11 +37,10 @@ public class DogSearchAdapter extends RecyclerView.Adapter<DogSearchAdapter.View
         private final TextView geschlechtTextView;
         private final TextView alterTextView;
         private final TextView papiereTextView;
+        private final ImageView searchDogImage;
 
         private Button likeButton;
         private Button dislikeButton;
-
-        private ImageView searchDogImage;
 
 
         public ViewHolder(View view) {
@@ -53,6 +52,7 @@ public class DogSearchAdapter extends RecyclerView.Adapter<DogSearchAdapter.View
             geschlechtTextView = (TextView) view.findViewById(R.id.geschlechtTextView);
             alterTextView = (TextView) view.findViewById(R.id.alterTextView);
             papiereTextView = (TextView) view.findViewById(R.id.papiereTextView);
+            searchDogImage = (ImageView) view.findViewById(R.id.searchDogImage);
 
             likeButton = (Button) view.findViewById(R.id.likeButton);
             dislikeButton = (Button) view.findViewById(R.id.dislikeButton);
@@ -117,19 +117,20 @@ public class DogSearchAdapter extends RecyclerView.Adapter<DogSearchAdapter.View
         viewHolder.getSearchDogName().setText(items.getSearchDogName());
         viewHolder.getRasseTextView().setText(items.getRasseTextView());
         viewHolder.getPapiereTextView().setText(items.getPapiereTextView());
+        viewHolder.getSearchDogImage().setImageResource(R.drawable.a_portrait_of_a_beagle_that_was_a_rescued_dog_2);
 
 
         viewHolder.getLikeButton().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("test", "gedrückt");
+                dogData.remove(viewHolder.getAdapterPosition());
+                notifyDataSetChanged();
             }
         });
 
         viewHolder.getDislikeButton().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("test", "gedrückt");
                 dogData.remove(viewHolder.getAdapterPosition());
                 notifyDataSetChanged();
             }
