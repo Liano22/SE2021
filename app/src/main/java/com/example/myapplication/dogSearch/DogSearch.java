@@ -15,10 +15,10 @@ public class DogSearch {
     private Button dislikeButton;
     private ImageView searchDogImage;
 
-    public DogSearch(String searchDogName, String rasseTextView, String alterTextView, String papiereTextView) {
+    public DogSearch(String searchDogName, String rasseTextView, String alterTextView, String papiereTextView, String geschlechtTextView) {
         this.searchDogName = searchDogName;
         this.rasseTextView = rasseTextView;
-        //this.geschlechtTextView = geschlechtTextView;
+        this.geschlechtTextView = geschlechtTextView;
         this.alterTextView = alterTextView;
         this.papiereTextView = papiereTextView;
         //this.likeButton = likeButton;

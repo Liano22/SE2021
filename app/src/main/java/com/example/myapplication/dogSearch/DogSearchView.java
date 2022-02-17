@@ -26,12 +26,11 @@ public class DogSearchView extends AppCompatActivity {
     //Deklaration von Variablen
     private DogSearchAdapter dogSearchAdapter;
     private DatabaseReference databaseDogs;
-    private Object ValueEventListener;
     private String searchDogName,rasseTextView, geschlechtTextView, alterTextView, papiereTextView;
     RecyclerView recyclerViewDogSearch;
     ArrayList<DogSearch> dogList = new ArrayList<>();
-    ArrayList<DogSearch> myList;
     String currentDog;
+    String currentDogGender;
 
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,25 +58,36 @@ public class DogSearchView extends AppCompatActivity {
 
                     searchDogName = ds.child("name").getValue(String.class);
                     rasseTextView = ds.child("race").getValue(String.class);
-                    //geschlechtTextView = ds.child("name").getValue(String.class);
+                    geschlechtTextView = ds.child("gender").getValue(String.class);
                     alterTextView = ds.child("age").getValue(String.class);
                     Boolean papers = ds.child("papers").getValue(Boolean.class);
-                    papiereTextView = papers.toString();
+                    if (papers.equals(true)) {
+                        papiereTextView = "ja";
+                    } else {
+                        papiereTextView = "nein";
+                    }
 
+                    if (currentDog.equals(ds.getKey())) {
+                        currentDogGender = ds.child("gender").getValue(String.class);
+                    }
 
                     /*
                     if (rasseTextView.equals(filterSettings.getRace())) {
-                        if (alter >= Integer.parseInt(filterSettings.getMaxPrice())) {
-                            if (papers = true) {
-                                dogList.add(new DogSearch(searchDogName, rasseTextView, alterTextView, papiereTextView));
+                        if (Integer.parseInt(alterTextView) >= Integer.parseInt(filterSettings.getMaxPrice())) {
+                            if (papers.equals(filterSettings.isPapersAvailable())) {
+                                if (!geschlechtTextView.equals(currentDogGender)) {
+                                    dogList.add(new DogSearch(searchDogName, rasseTextView, alterTextView, papiereTextView, geschlechtTextView));
+                                }
+
                             }
                         }
                     }
-
+                    
                      */
 
-                    dogList.add(new DogSearch(searchDogName, rasseTextView, alterTextView, papiereTextView));
 
+
+                    dogList.add(new DogSearch(searchDogName, rasseTextView, alterTextView, papiereTextView, geschlechtTextView));
                 }
                 dogSearchAdapter.notifyDataSetChanged();
             }
