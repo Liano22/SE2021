@@ -21,6 +21,7 @@ import java.util.List;
 public class DogSearchAdapter extends RecyclerView.Adapter<DogSearchAdapter.ViewHolder> {
 
     private List<DogSearch> dogData;
+    private List<DogSearch> limitedDogData;
     private LayoutInflater myInflator;
 
     public DogSearchAdapter(Context context, ArrayList<DogSearch> data) {
@@ -102,9 +103,13 @@ public class DogSearchAdapter extends RecyclerView.Adapter<DogSearchAdapter.View
     @Override
     public void onBindViewHolder(DogSearchAdapter.ViewHolder viewHolder, final int position) {
 
+
+        //limitedDogData.add(dogData.get(0));
+        Log.d("test", dogData.get(0).toString());
+
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
-        DogSearch items = dogData.get(position);
+        DogSearch items = limitedDogData.get(position);
 
 
         Log.d("test", viewHolder.getAlterTextView().toString());
@@ -125,6 +130,8 @@ public class DogSearchAdapter extends RecyclerView.Adapter<DogSearchAdapter.View
             @Override
             public void onClick(View v) {
                 Log.d("test", "gedrückt");
+                dogData.remove(0);
+                notifyDataSetChanged();
             }
         });
 

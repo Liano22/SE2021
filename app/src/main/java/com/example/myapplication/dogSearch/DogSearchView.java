@@ -70,9 +70,14 @@ public class DogSearchView extends AppCompatActivity {
                     Boolean papers = ds.child("papers").getValue(Boolean.class);
                     papiereTextView = papers.toString();
 
+
                     /*
                     if (rasseTextView.equals(filterSettings.getRace())) {
-
+                        if (alter >= Integer.parseInt(filterSettings.getMaxPrice())) {
+                            if (papers = true) {
+                                dogList.add(new DogSearch(searchDogName, rasseTextView, alterTextView, papiereTextView));
+                            }
+                        }
                     }
 
                      */
@@ -96,6 +101,11 @@ public class DogSearchView extends AppCompatActivity {
         dogSearchAdapter = new DogSearchAdapter(this, dogList);
         recyclerViewDogSearch.setAdapter(dogSearchAdapter);
 
+    }
+
+    public void itemManager() {
+        dogList.remove(0);
+        dogSearchAdapter.notifyDataSetChanged();
     }
 
 
