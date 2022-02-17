@@ -44,7 +44,11 @@ public class DogCreationView extends AppCompatActivity implements IDogCreationCo
     RadioButton genderCheckBtn;
 
 
-    String gender, pictureKey;
+    String pictureKey;
+
+    //Nicht-Klicken der Radiobuttons berücksichtigen
+    //Weiblich ist der Default-Wert
+    String gender = "weiblich";
 
     public Uri imageUri;
 
