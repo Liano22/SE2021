@@ -12,8 +12,6 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.R;
-import com.example.myapplication.dashboard.Dashboard;
-import com.example.myapplication.dashboard.DashboardAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +22,7 @@ public class DogSearchAdapter extends RecyclerView.Adapter<DogSearchAdapter.View
     private List<DogSearch> dogData;
     private List<DogSearch> limitedDogData;
     private LayoutInflater myInflator;
+    private DogSearchView myDogSearchView;
 
     public DogSearchAdapter(Context context, ArrayList<DogSearch> data) {
         this.myInflator = LayoutInflater.from(context);
@@ -131,11 +130,10 @@ public class DogSearchAdapter extends RecyclerView.Adapter<DogSearchAdapter.View
             @Override
             public void onClick(View v) {
                 Log.d("test", "gedrückt");
-                dogData.remove(0);
+                dogData.remove(viewHolder.getAdapterPosition());
                 notifyDataSetChanged();
             }
         });
-
 
     }
 
