@@ -64,8 +64,10 @@ public class LikesView extends AppCompatActivity implements ILikesContract.Likes
                             liked_dogs_ids.add(String.valueOf(dog_id));
                         }
                     }
-                    //Log.d("start", selectedDog);
                 }
+                setLikeInfo();
+                setAdapter();
+                adapter.notifyDataSetChanged();
             }
 
 
@@ -75,12 +77,6 @@ public class LikesView extends AppCompatActivity implements ILikesContract.Likes
             }
         };
         database_like_check.addValueEventListener(likeListener);
-
-        setLikeInfo();
-        setAdapter();
-
-        //IDs von gematchten Hunden speichern
-
     }
 
     private void setAdapter() {
