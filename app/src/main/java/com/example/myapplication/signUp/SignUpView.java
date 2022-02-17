@@ -19,10 +19,9 @@ public class SignUpView extends AppCompatActivity implements ISignUpContract.IVi
 
     ISignUpContract.IPresenter presenter = new SignUpPresenter(this);
 
-    //Variablen:
+    //Deklaration von Variablen
     TextInputLayout username, firstName, name, email, postalCode, phoneNumber, bio, password;
     Button regBtn;
-
     FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
     DatabaseReference reference;
     DatabaseConnector dbConnector = new DatabaseConnector();

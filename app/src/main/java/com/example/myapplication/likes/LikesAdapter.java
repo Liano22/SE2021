@@ -17,6 +17,7 @@ import java.util.List;
 
 public class LikesAdapter extends RecyclerView.Adapter<LikesAdapter.ViewHolder> {
 
+    //Deklaration von Variablen
     private List<Like> likesList;
     private LayoutInflater mInflater;
 

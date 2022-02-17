@@ -23,21 +23,15 @@ import java.util.Arrays;
 
 public class DogSearchView extends AppCompatActivity {
 
-    RecyclerView recyclerViewDogSearch;
+    //Deklaration von Variablen
     private DogSearchAdapter dogSearchAdapter;
     private DatabaseReference databaseDogs;
-
-    String currentDog;
-
+    private Object ValueEventListener;
+    private String searchDogName,rasseTextView, geschlechtTextView, alterTextView, papiereTextView;
+    RecyclerView recyclerViewDogSearch;
     ArrayList<DogSearch> dogList = new ArrayList<>();
     ArrayList<DogSearch> myList;
-    private Object ValueEventListener;
-
-    private String searchDogName;
-    private String rasseTextView;
-    private String geschlechtTextView;
-    private String alterTextView;
-    private String papiereTextView;
+    String currentDog;
 
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

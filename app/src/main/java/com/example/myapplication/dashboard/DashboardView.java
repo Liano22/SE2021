@@ -26,23 +26,17 @@ import java.util.List;
 
 public class DashboardView extends AppCompatActivity implements IDashboardContract.DashboardView{
 
-    Button addDogBtn;
-    RecyclerView recyclerViewDashboard;
+    //Deklaration & teilweise Initialisierung von Variablen
     private DashboardPresenter dashboardPresenter;
     private DashboardAdapter adapter;
-
     private DatabaseReference databaseDogs;
     private DatabaseReference databaseUser;
-
+    Button addDogBtn;
+    RecyclerView recyclerViewDashboard;
     ArrayList<Dashboard> dogItems = new ArrayList<>();
     ArrayList<String> userDogsList = new ArrayList<>();
     List<String> userDogs;
-
-    String key;
-    String bio;
-    String name;
-
-    String currentUser;
+    String key, bio, name, currentUser;
 
 
     protected void onCreate(@Nullable Bundle savedInstanceState) {

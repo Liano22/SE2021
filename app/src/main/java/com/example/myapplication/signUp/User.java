@@ -2,11 +2,10 @@ package com.example.myapplication.signUp;
 
 public class User {
 
+    //Deklaration von Variablen
     private String username, firstName, name, email, postalCode, phoneNumber, bio, password, myDogs;
 
-    public User() {
-    }
-
+    //Konstruktor der Klasse User
     public User(String username, String firstName, String name, String email, String postalCode, String phoneNumber, String bio, String password) {
         this.username = username;
         this.firstName = firstName;
@@ -19,6 +18,7 @@ public class User {
         this.myDogs = "";
     }
 
+    //Getter und Setter für die oben deklarierten Variablen
     public String getMyDogs() {
         return myDogs;
     }

@@ -10,15 +10,16 @@ import com.google.firebase.database.ValueEventListener;
 
 public class SignUpPresenter implements ISignUpContract.IPresenter{
 
+    //Deklaration von Variablen
     ISignUpContract.IView view;
+    ISignUpContract.IModel model = new SignUpModel();
 
+    //Konstruktor der Klasse SignUpPresenter
     public SignUpPresenter(ISignUpContract.IView view){
         this.view = view;
     }
-    ISignUpContract.IModel model = new SignUpModel();
 
     public SignUpPresenter(){
-
     }
 
     /**

@@ -19,23 +19,15 @@ import java.util.ArrayList;
 
 public class MatchesView extends AppCompatActivity implements IMatchesContract.MatchesView{
 
-    ArrayList<Match> matchesList = new ArrayList<>();
-    ArrayList<String> matched_dogs_ids;
+    //Deklaration von Variablen
     private RecyclerView recyclerView;
     private MatchesPresenter matchesPresenter;
     private MatchAdapter adapter;
-
     private DatabaseReference database_match_check;
     private DatabaseReference database_matched_dogs_data;
-
-    String dog_id;
-
-    String name;
-    String race;
-    String age;
-    String price;
-
-    String selectedDog;
+    ArrayList<Match> matchesList = new ArrayList<>();
+    ArrayList<String> matched_dogs_ids;
+    String dog_id, name, race, age, price, selectedDog;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

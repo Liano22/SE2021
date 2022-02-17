@@ -21,23 +21,15 @@ import java.util.ArrayList;
 
 public class LikesView extends AppCompatActivity implements ILikesContract.LikesView {
 
-    ArrayList<Like> likesList = new ArrayList<>();
-    ArrayList<String> liked_dogs_ids;
+    //Deklaration von Variablen
     private RecyclerView recyclerView;
     private LikesPresenter likesPresenter;
     private LikesAdapter adapter;
-
     private DatabaseReference database_like_check;
     private DatabaseReference database_liked_dogs_data;
-
-    String dog_id;
-
-    String name;
-    String race;
-    String age;
-    String price;
-
-    String selectedDog;
+    ArrayList<Like> likesList = new ArrayList<>();
+    ArrayList<String> liked_dogs_ids;
+    String dog_id, name, race, age, price, selectedDog;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,7 +38,6 @@ public class LikesView extends AppCompatActivity implements ILikesContract.Likes
             Bundle extra = getIntent().getExtras();
             selectedDog = extra.getString("dogID");
         }
-
 
         setContentView(R.layout.dog_likes);
 
