@@ -110,7 +110,7 @@ public class DogSearchAdapter extends RecyclerView.Adapter<DogSearchAdapter.View
 
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
-        DogSearch items = limitedDogData.get(position);
+        DogSearch items = dogData.get(position);
 
 
         Log.d("test", viewHolder.getAlterTextView().toString());
