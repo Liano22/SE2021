@@ -55,8 +55,10 @@ public class DogCreationView extends AppCompatActivity implements IDogCreationCo
     // Verbindung zum Presenter
     DogCreationPresenter dogCreationPresenter = new DogCreationPresenter(this);
 
+
     Intent intentDashboardFromDogCreation;
     String currentUser;
+
 
 
     @Override

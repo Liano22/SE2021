@@ -86,6 +86,10 @@ public class DogCreationModel implements IDogCreationContract.IModel{
                 dogCreationPresenter.activateSnackbar("Bild konnte nicht hochgeladen werden.");
             }
         });
-        }
+    }
+
+
     // --- Bennedict und Johanna ---
     }
+
+

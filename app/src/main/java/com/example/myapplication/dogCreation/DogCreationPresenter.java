@@ -1,6 +1,7 @@
 package com.example.myapplication.dogCreation;
 
 import android.net.Uri;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
@@ -13,11 +14,17 @@ import com.google.firebase.database.ValueEventListener;
 public class DogCreationPresenter implements  IDogCreationContract.IPresenter{
     // --- Bennedict und Johanna ---
     Dog newDog; // der neu erstellte Hund, der später in die Datenbank geladen werden soll
-    DogCreationModel dogCreationModel = new DogCreationModel(this); // um Verbindung zur Datenbank herstellen zu können
-    IDogCreationContract.IView dogCreationView;
+    DogCreationModel dogCreationModel; // um Verbindung zur Datenbank herstellen zu können
+    DogCreationView dogCreationView;
 
-    public DogCreationPresenter(IDogCreationContract.IView dogCreationView) {
+    public DogCreationPresenter(DogCreationView dogCreationView) {
         this.dogCreationView = dogCreationView; // Verbindung zur View
+        dogCreationModel = new DogCreationModel(this);
+    }
+
+    public DogCreationPresenter(DogCreationView dogCreationView, DogCreationModel dogCreationModel) {
+        this.dogCreationView = dogCreationView; // Verbindung zur View
+        this.dogCreationModel = dogCreationModel;
     }
 
     @Override
@@ -46,7 +53,7 @@ public class DogCreationPresenter implements  IDogCreationContract.IPresenter{
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
-
+                    Toast.makeText(dogCreationView.getApplicationContext(), "Es ist ein Fehler aufgetreten.", Toast.LENGTH_LONG);
                 }
             });
 
@@ -106,6 +113,8 @@ public class DogCreationPresenter implements  IDogCreationContract.IPresenter{
     public void savePicture(Uri imageUri, String key){
         dogCreationModel.uploadPicture(imageUri, key);
     }
+
+
 // --- Bennedict und Johanna ---
 
 }
