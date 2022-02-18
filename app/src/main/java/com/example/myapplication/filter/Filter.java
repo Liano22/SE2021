@@ -6,9 +6,9 @@ import android.os.Parcelable;
 //Karl
 public class Filter implements Parcelable{
     private String race, age, minPrice, maxPrice;
-    private boolean papersAvailable;
+    String papersAvailable;
 
-    public Filter(String race, String age, String minPrice, String maxPrice, boolean papersAvailable) {
+    public Filter(String race, String age, String minPrice, String maxPrice, String papersAvailable) {
         this.race = race;
         this.age = age;
         this.minPrice = minPrice;
@@ -21,7 +21,7 @@ public class Filter implements Parcelable{
         age = in.readString();
         minPrice = in.readString();
         maxPrice = in.readString();
-        papersAvailable = in.readByte() != 0;
+        papersAvailable = in.readString();
     }
 
     public static final Creator<Filter> CREATOR = new Creator<Filter>() {
@@ -68,11 +68,11 @@ public class Filter implements Parcelable{
         this.maxPrice = maxPrice;
     }
 
-    public boolean isPapersAvailable() {
+    public String isPapersAvailable() {
         return papersAvailable;
     }
 
-    public void setPapersAvailable(boolean papersAvailable) {
+    public void setPapersAvailable(String papersAvailable) {
         this.papersAvailable = papersAvailable;
     }
 
@@ -87,6 +87,6 @@ public class Filter implements Parcelable{
         parcel.writeString(age);
         parcel.writeString(minPrice);
         parcel.writeString(maxPrice);
-        parcel.writeByte((byte) (papersAvailable ? 1 : 0));
+        parcel.writeString(papersAvailable);
     }
 }

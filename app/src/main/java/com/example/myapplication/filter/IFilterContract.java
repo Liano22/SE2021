@@ -8,7 +8,7 @@ public interface IFilterContract {
     }
 
     interface IPresenter{
-        void filter(String race, String age, String minPrice, String maxPrice, boolean papersAvailable);
+        //Filter filter(String race, String age, String minPrice, String maxPrice, String papersAvailable);
 
     }
 

@@ -116,6 +116,7 @@ public class DogCreationView extends AppCompatActivity implements IDogCreationCo
                 dogCreationPresenter.saveDog(currentUser,name.getEditText().getText().toString(), ageString, gender,
                         raceString,pictureKey, bio.getEditText().getText().toString(),
                         price.getEditText().getText().toString(), hybrid.isChecked(), papers.isChecked());
+                Log.d("gender: ", gender);
             }
         });
 

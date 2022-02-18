@@ -2,12 +2,14 @@ package com.example.myapplication.filter;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,11 +25,12 @@ public class FilterView extends AppCompatActivity implements IFilterContract.IVi
 
     //Deklaration von Variablen
     private Spinner raceSpinner, ageSpinner;
-    private RadioButton available, optional;
     private EditText priceFrom, priceTo;
     Button updateFilterPreferences;
     String dogID;
-    boolean papersAvailable;
+    String papersAvailable = "optional";
+    RadioGroup papersCheckGroup;
+    RadioButton papersCheckBtn;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,7 +46,7 @@ public class FilterView extends AppCompatActivity implements IFilterContract.IVi
         ageSpinner = findViewById(R.id.alter_spinner);
         priceFrom = findViewById(R.id.text_min_preis);
         priceTo = findViewById(R.id.text_max_preis);
-
+        papersCheckGroup = findViewById(R.id.searchPapersCheck);
 
         //Die beiden Spinner mittels Adapter zur strings.xml in res/values befüllen
         ArrayAdapter<CharSequence> raceAdapter = ArrayAdapter.createFromResource(this, R.array.races, android.R.layout.simple_spinner_item);
@@ -66,37 +69,40 @@ public class FilterView extends AppCompatActivity implements IFilterContract.IVi
                 //Die Einträge des Nutzers werden als Objekt an die DogSearchView weitergereicht.
                 //Hierbei müssen alle Felder ausgefüllt sein,
                 //ansonsten wird eine Fehlermeldung mit der Aufforderung zum Ausfüllen aller Felder gesendet.
-                if (!race.isEmpty() && !age.isEmpty() && !minPrice.isEmpty() && !maxPrice.isEmpty()) {
-                    Filter filter = new Filter(race, age, minPrice, maxPrice, papersAvailable);
-                    filterPresenter.filter(race, age, minPrice, maxPrice, papersAvailable);
+
+                if (filterPresenter.validateFields(race, age, minPrice, maxPrice, papersAvailable)) {
+                    //filterPresenter.filter(race, age, minPrice, maxPrice, papersAvailable);
                     Intent searchIntent = new Intent(FilterView.this, DogSearchView.class);
+                    Filter filter = new Filter(race, age, minPrice, maxPrice, papersAvailable);
                     searchIntent.putExtra("filterSettings", filter);
                     searchIntent.putExtra("dogID", dogID);
                     startActivity(searchIntent);
+
+
                 } else {
                     priceFrom.setError("Bitte alle Felder ausfüllen");
                     priceTo.setError("Bitte alle Felder ausfüllen");
                 }
             }
-
-            //Methode um den Boolean Wert bei den Papieren zu setzen.
-            public void onRadioButtonClicked(View view) {
-                boolean checked = ((RadioButton) view).isChecked();
-
-                switch (view.getId()) {
-                    case R.id.available:
-                        if (checked) {
-                            papersAvailable = true;
-                        }
-                    case R.id.optional:
-                        if (checked) {
-                            papersAvailable = false;
-                        }
-                }
-            }
         });
 
 
+    }
+
+    public void setErrorMessage(String field, String errorMessage) {
+
+        switch (field) {
+            case "minPrice":
+                priceFrom.setError(errorMessage);
+            case "maxPrice":
+                priceTo.setError(errorMessage);
+        }
+    }
+
+    public void checkRadioButton(View view) {
+        int radioId = papersCheckGroup.getCheckedRadioButtonId();
+        papersCheckBtn = findViewById(radioId);
+        papersAvailable = papersCheckBtn.getText().toString();
     }
 
 
