@@ -12,7 +12,7 @@ public class FilterModel implements IFilterContract.IModel {
     DatabaseReference reference;
 
     //Herstellen der Verbindung zur Datenbank bzw. das Auslesen aller Hunde aus der Datenbank.
-    @Override
+
     public Query getAllDogs() {
         rootNode = FirebaseDatabase.getInstance();
         reference = rootNode.getReference("dogs/");

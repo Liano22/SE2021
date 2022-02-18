@@ -30,6 +30,23 @@ public class DogCreationPresenter implements  IDogCreationContract.IPresenter{
         this.dogCreationModel = dogCreationModel;
     }
 
+    /**
+     * Es wird ein neuer Hund in die Datenbank gespeichert.
+     * Zuerst werden die Eingaben des Nutzers überprüft, dann eine neue Instanz von Dog erstellt.
+     * Nach dem Auslesen der aktuellen DogID wird der Hund in die Datenbank gespeichert und die DogID beim
+     * entsprechenden User unter myDogs hinterlegt. Die DogID wird anschließend erhöht und als nextDogID
+     * in der Datenbank hinterlegt. Zu guter Letzt wird ein Intent zum Dasjboard ausgeführt.
+     * @param username Benutzername - String
+     * @param name Name des Hundes - String
+     * @param age Alter des Hundes - String
+     * @param gender Geschlecht des Hundes - String
+     * @param race Rasse des Hundes - String
+     * @param pic Key für das Bild des Hundes - String
+     * @param bio Bio des Hundes - String
+     * @param price Preis für Paarung - String
+     * @param hybrid Mischling? - Boolean
+     * @param papers Papiere? - Boolean
+     */
     @Override
     public void saveDog(String username, String name, String age, String gender, String race, String pic, String bio, String price, boolean hybrid, boolean papers) {
 
@@ -72,14 +89,27 @@ public class DogCreationPresenter implements  IDogCreationContract.IPresenter{
 
     }
 
-    // Das Model die DogId beim User abspeichern lassen
+
+    /**
+     * Änderung der myDogs des Users durch das Model veranlassen.
+     * @param username Benutzername - String
+     * @param dogId DogID - Integer
+     */
     public void linkDogToUser(String username, int dogId){
         String dogIdString = String.valueOf(dogId);
         dogCreationModel.changeUserDogList(username,dogIdString);
     }
 
-    // Prüfen, ob alle Felder ausgefüllt wurden
-    // für leere Felder eine Fehlermeldung in der View setzen lassen
+    /**
+     * Prüfen, ob alle Felder ausgefüllt wurden.
+     * Für leere Felder eine Fehlermeldung in der View setzen lassen.
+     * @param name Name des Hundes - String
+     * @param age Alter - String
+     * @param race Rasse - String
+     * @param bio Bio - String
+     * @param price Preis - String
+     * @return Boolean: true, wenn alle Felder befüllt; false, wenn mind. ein Feld leer.
+     */
     public Boolean validateFields(String name, String age, String race, String bio, String price){
 
         // wird nur auf false gesetzt falls eines der Felder leer ist
@@ -122,11 +152,19 @@ public class DogCreationPresenter implements  IDogCreationContract.IPresenter{
 
     }
 
-    // Snackbar in View anzeigen lassen
+    /**
+     * Snackbar in View anzeigen lassen.
+     * @param msg Fehlermeldung - String
+     */
     public void activateSnackbar(String msg){
         dogCreationView.setSnackbar(msg);
     }
 
+    /**
+     * ImageUri für ausgewähltes Bild an das Model weiterreichen.
+     * @param imageUri Uri des gewünschten Bildes - Uri
+     * @param key Key zum Abrufen des Bildes - String
+     */
     public void savePicture(Uri imageUri, String key){
         dogCreationModel.uploadPicture(imageUri, key);
     }

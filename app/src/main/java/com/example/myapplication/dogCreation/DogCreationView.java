@@ -132,13 +132,22 @@ public class DogCreationView extends AppCompatActivity implements IDogCreationCo
 
     }
 
-
+    /**
+     * Auslesen, welcher Wert bei den Radio Buttons ausgewählt ist.
+     * Wird bei Klick aufgerufen.
+     * @param view Aktuelle View - View
+     */
     public void checkRadioButton(View view) {
         int radioId = genderCheckGroup.getCheckedRadioButtonId();
         genderCheckBtn = findViewById(radioId);
         gender = genderCheckBtn.getText().toString();
     }
 
+    /**
+     * Zeigt die gewünschte Fehlermeldung an.
+     * @param field Eingabefeld, auf dem der Fehler erscheinen soll - String
+     * @param errorMessage Fehlermeldung - String
+     */
     @Override
     public void setErrorMessage(String field, String errorMessage) {
         switch (field){
@@ -151,13 +160,17 @@ public class DogCreationView extends AppCompatActivity implements IDogCreationCo
         }
     }
 
-    // Zurück zu Dashboard wechseln
+    /**
+     * Zurück zu Dashboard wechseln.
+     */
     @Override
     public void changeToDashboard() {
         startActivity(intentDashboardFromDogCreation);
     }
 
-    // ein Bild des Hundes in der Galerie auswählen
+    /**
+     * Ein Bild des Hundes in der Galerie auswählen.
+     */
     public void selectPicture(){
         Intent getPicture = new Intent();
         getPicture.setType("image/*");
@@ -165,7 +178,12 @@ public class DogCreationView extends AppCompatActivity implements IDogCreationCo
         startActivityForResult(getPicture, 1);
     }
 
-    // Ausgewähltes Bild mit zufällig generiertem Key an dogCreationPresenter weitergeben
+    /**
+     * Ausgewähltes Bild mit zufällig generiertem Key an dogCreationPresenter weitergeben.
+     * @param requestCode Identifizierung der Activity, aus der man kommt - Integer
+     * @param resultCode Angabe zum Erfolg der Operation - Integer
+     * @param data Intent mit den gewünschten Daten - Intent
+     */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -178,7 +196,10 @@ public class DogCreationView extends AppCompatActivity implements IDogCreationCo
         }
     }
 
-    // Snackbar anzeigen Lassen, wird vom Presenter aufgerufen, Rückmeldung für den User, ob das hochladen geklappt hat
+    /**
+     * Snackbar anzeigen Lassen, wird vom Presenter aufgerufen, Rückmeldung für den User, ob das hochladen geklappt hat.
+     * @param msg Meldung - String
+     */
     public void setSnackbar(String msg){
         Snackbar.make(findViewById(android.R.id.content), msg, Snackbar.LENGTH_LONG).show();
     }

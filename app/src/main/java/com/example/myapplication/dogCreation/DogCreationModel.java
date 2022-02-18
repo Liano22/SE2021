@@ -1,6 +1,7 @@
 package com.example.myapplication.dogCreation;
 
 import android.net.Uri;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
@@ -38,26 +39,40 @@ public class DogCreationModel implements IDogCreationContract.IModel{
         this.dogCreationPresenter = presenter;
     }
 
-    // Ein Objekt der Klasse Hund mit ID unter dogs in der Datenbank speichern
+    /**
+     * Ein Objekt der Klasse Hund mit ID unter dogs in der Datenbank speichern.
+     * @param newDog Neuer Hund - Dog
+     * @param dogId ID des neuen Hundes - String
+     */
     public void writeDogToDatabase(Dog newDog, String dogId) {
         reference = rootNode.getReference("dogs");
         reference.child(dogId).setValue(newDog);
     }
 
-    // Die DogId für den neu zu speichernden Hund aus der Datenbank auslesen und als Query zurückgeben
+    /**
+     * Die DogId für den neu zu speichernden Hund aus der Datenbank auslesen und als Query zurückgeben.
+     * @return Gewünschte Daten - Query
+     */
     public Query getNextDogID() {
         reference = rootNode.getReference("nextDogId");
         Query getDogId = reference;
         return getDogId;
     }
 
-    // Die nextDogId in der Datenbank für den nächsten zu speichernden Hund abspeichern
+    /**
+     * Die nextDogId in der Datenbank für den nächsten zu speichernden Hund abspeichern.
+     * @param newDogId Neue DogID - String
+     */
     public void writeNextDogID(int newDogId) {
         reference = rootNode.getReference("nextDogId");
         reference.setValue(newDogId);
     }
 
-    // Die Id des neu hinzugefügten Hundes unter users -> username -> Mydogs dem Mydogs-String des aktuellen Users hinzufügen
+    /**
+     * Die Id des neu hinzugefügten Hundes unter users -> username -> myDogs dem myDogs-String des aktuellen Users hinzufügen.
+     * @param username Benutzername - String
+     * @param dogID Id des eben hinzugefügten Hundes - String
+     */
     public void changeUserDogList(String username, String dogID) {
         reference = rootNode.getReference("users/" + username);
         Query user = reference;
@@ -78,8 +93,12 @@ public class DogCreationModel implements IDogCreationContract.IModel{
 
     }
 
-    // Das vom User ausgewählte DogPic in Storage unter images/ abspeichern
-    // Fehlermeldung als Snackbar in View anzeigen lassen, wenn das Hochladen nicht klappt
+    /**
+     * Das vom User ausgewählte DogPic in Storage unter images/ abspeichern.
+     * Fehlermeldung als Snackbar in View anzeigen lassen, wenn das Hochladen nicht klappt.
+     * @param imageUri Uri des gewünschten Bildes - Uri
+     * @param key Schlüssel für Verbindung zwischen Storage und Realtime Database - String
+     */
     public void uploadPicture(Uri imageUri, String key){
         storageReference = storage.getReference();
 
