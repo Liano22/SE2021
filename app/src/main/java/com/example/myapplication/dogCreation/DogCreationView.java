@@ -44,6 +44,7 @@ public class DogCreationView extends AppCompatActivity implements IDogCreationCo
     RadioButton genderCheckBtn;
 
 
+    // Pfad für das Speichern des Hundebildes
     String pictureKey;
 
     //Nicht-Klicken der Radiobuttons berücksichtigen
@@ -56,6 +57,7 @@ public class DogCreationView extends AppCompatActivity implements IDogCreationCo
     DogCreationPresenter dogCreationPresenter = new DogCreationPresenter(this);
 
 
+    // für die Weiterleitung zurück zu Dashboard
     Intent intentDashboardFromDogCreation;
     String currentUser;
 
@@ -83,7 +85,7 @@ public class DogCreationView extends AppCompatActivity implements IDogCreationCo
         hybrid = findViewById(R.id.checkDogHybrid);
         papers = findViewById(R.id.checkDogPapers);
 
-        // Spinner-Adapter mit arrays verbinden
+        // Spinner-Adapter mit Arrays verbinden
         ArrayAdapter<CharSequence> dogAgeAdapter = ArrayAdapter.createFromResource(this,R.array.ages, android.R.layout.simple_spinner_item);
         ArrayAdapter<CharSequence> dogRaceAdapter = ArrayAdapter.createFromResource(this,R.array.races, android.R.layout.simple_spinner_item);
         dogAgeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -93,8 +95,8 @@ public class DogCreationView extends AppCompatActivity implements IDogCreationCo
         age.setAdapter(dogAgeAdapter);
         race.setAdapter(dogRaceAdapter);
 
-        //Aktueller User wird aus Intent ausgelesen
 
+        //Aktueller User wird aus Intent ausgelesen
         if (getIntent().hasExtra("currentUser")) {
             Bundle extra = getIntent().getExtras();
             currentUser = extra.getString("currentUser");
@@ -108,7 +110,7 @@ public class DogCreationView extends AppCompatActivity implements IDogCreationCo
             @Override
             public void onClick(View v) {
 
-
+                // Werte aus den Spinnern werden ausgelesen
                 String ageString = age.getSelectedItem().toString();
                 String raceString = race.getSelectedItem().toString();
 
@@ -119,6 +121,7 @@ public class DogCreationView extends AppCompatActivity implements IDogCreationCo
             }
         });
 
+        // bei Klick auf das Bild wird der User zu seinen Dateien weitergeleitet
         dogPic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -147,11 +150,13 @@ public class DogCreationView extends AppCompatActivity implements IDogCreationCo
         }
     }
 
+    // Zurück zu Dashboard wechseln
     @Override
     public void changeToDashboard() {
         startActivity(intentDashboardFromDogCreation);
     }
 
+    // ein Bild des Hundes in der Galerie auswählen
     public void selectPicture(){
         Intent getPicture = new Intent();
         getPicture.setType("image/*");
@@ -159,6 +164,7 @@ public class DogCreationView extends AppCompatActivity implements IDogCreationCo
         startActivityForResult(getPicture, 1);
     }
 
+    // Ausgewähltes Bild mit zufällig generiertem Key an dogCreationPresenter weitergeben
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -171,6 +177,7 @@ public class DogCreationView extends AppCompatActivity implements IDogCreationCo
         }
     }
 
+    // Snackbar anzeigen Lassen, wird vom Presenter aufgerufen, Rückmeldung für den User, ob das hochladen geklappt hat
     public void setSnackbar(String msg){
         Snackbar.make(findViewById(android.R.id.content), msg, Snackbar.LENGTH_LONG).show();
     }
