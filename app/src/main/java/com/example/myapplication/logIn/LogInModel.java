@@ -10,6 +10,12 @@ public class LogInModel implements ILogInContract.IModel {
     FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
     DatabaseReference reference;
 
+    /**
+     * Liest einen gewüsnchten User aus.
+     * @param username Gesuchter Benutzername - String
+     * @param childName Name im Pfad in der Datenbank - String
+     * @return Query mit dem gewünschten User (leer falls User nicht existent)
+     */
     public Query readUserFromDatabase(String username, String childName) {
         reference = rootNode.getReference("users");
         Query checkUser = reference.orderByChild(childName).equalTo(username);

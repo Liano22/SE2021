@@ -87,7 +87,7 @@ public class DogCreationModel implements IDogCreationContract.IModel{
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
+                Toast.makeText(dogCreationPresenter.dogCreationView.getApplicationContext(), "Es ist ein Fehler aufgetreten.", Toast.LENGTH_LONG);
             }
         });
 

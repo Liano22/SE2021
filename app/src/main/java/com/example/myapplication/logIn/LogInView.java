@@ -60,12 +60,21 @@ public class LogInView extends AppCompatActivity implements ILogInContract.IView
         });
     }
 
+    /**
+     * Ausgabe von Fehlermeldungen, die vom Presenter übergeben werden.
+     * @param ErrorMessage Fehlermeldung - String
+     */
     @Override
     public void setErrorMessage(String ErrorMessage) {
         password.setError(ErrorMessage);
         username.setError(ErrorMessage);
     }
 
+    /**
+     * Wechsel zum Dashboard.
+     * Aufgerufen nach erfolgreicher Validierung des Benutzers.
+     * @param username Aktueller Benutzer (wird unter den Activities weitergereicht) - String
+     */
     @Override
     public void changeToDashboard(String username) {
         Intent intentDashboard = new Intent(this, DashboardView.class);
