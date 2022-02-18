@@ -15,9 +15,9 @@ import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class SignUpView extends AppCompatActivity implements ISignUpContract.IView{
+public class SignUpView extends AppCompatActivity implements ISignUpContract.IView {
 
-    ISignUpContract.IPresenter presenter = new SignUpPresenter(this);
+    SignUpPresenter presenter = new SignUpPresenter(this);
 
     //Deklaration von Variablen
     TextInputLayout username, firstName, name, email, postalCode, phoneNumber, bio, password;
@@ -43,7 +43,7 @@ public class SignUpView extends AppCompatActivity implements ISignUpContract.IVi
 
         //Senden des neuen Nutzers an die Datenbank:
         regBtn.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view){
+            public void onClick(View view) {
                 //rootNode = FirebaseDatabase.getInstance();
                 //reference = rootNode.getReference("users/");
 
@@ -56,9 +56,9 @@ public class SignUpView extends AppCompatActivity implements ISignUpContract.IVi
                 String bioInput = bio.getEditText().getText().toString();
                 String passwordInput = password.getEditText().getText().toString();
 
-                presenter.validateUsername(username);
-                presenter.userExists(usernameInput, firstNameInput, nameInput, emailInput, postalCodeInput, phoneNumberInput, bioInput, passwordInput);
-
+                if (presenter.validateUsername(usernameInput) && presenter.validatePassword(passwordInput) && presenter.validatePostalCode(postalCodeInput)) {
+                    presenter.userExists(usernameInput, firstNameInput, nameInput, emailInput, postalCodeInput, phoneNumberInput, bioInput, passwordInput);
+                }
 
 
                 regBtn.setText("Geklickt");
@@ -67,7 +67,7 @@ public class SignUpView extends AppCompatActivity implements ISignUpContract.IVi
 
     }
 
-    public void setErrorMessage(String field, String msg){
+    public void setErrorMessage(String field, String msg) {
         switch (field) {
             case "username":
                 username.setError(msg);
@@ -96,7 +96,7 @@ public class SignUpView extends AppCompatActivity implements ISignUpContract.IVi
         }
     }
 
-    public void goToDashboard(String username){
+    public void goToDashboard(String username) {
         Intent signUpToDashboard = new Intent(this, DashboardView.class);
         signUpToDashboard.putExtra("currentUser", username);
         startActivity(signUpToDashboard);

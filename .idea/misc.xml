@@ -49,7 +49,9 @@
         <entry key="app/src/main/res/layout/dog_search.xml" value="0.36041666666666666" />
         <entry key="app/src/main/res/layout/filter_preferences.xml" value="0.44479166666666664" />
         <entry key="app/src/main/res/layout/item_dashboard.xml" value="0.44479166666666664" />
+        <entry key="app/src/main/res/layout/register_activity.xml" value="0.36367753623188404" />
         <entry key="app/src/main/res/layout/search.xml" value="0.44479166666666664" />
+        <entry key="app/src/main/res/layout/sign_up.xml" value="0.36367753623188404" />
       </map>
     </option>
   </component>

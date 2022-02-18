@@ -59,7 +59,8 @@
             android:id="@+id/emailTxt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Email" />
+            android:hint="Email"
+            android:inputType="textEmailAddress" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -74,7 +75,8 @@
             android:id="@+id/phoneNumberTxt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Telefonnummer" />
+            android:hint="Telefonnummer"
+            android:inputType="phone" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -89,7 +91,8 @@
             android:id="@+id/postalCodeTxt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Postleitzahl" />
+            android:hint="Postleitzahl"
+            android:inputType="number" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout

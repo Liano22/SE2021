@@ -11,7 +11,7 @@ public interface ISignUpContract {
     }
 
     interface IPresenter{
-        Boolean validateUsername(TextInputLayout username);
+        Boolean validateUsername(String username);
         void userExists(String username, String firstName, String name, String email, String postalCode, String phoneNumber, String bio, String  password);
         void writeUser(String username, String firstName, String name, String email, String postalCode, String phoneNumber, String bio, String password);
     }

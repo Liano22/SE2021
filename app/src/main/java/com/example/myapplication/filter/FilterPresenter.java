@@ -43,10 +43,10 @@ public class FilterPresenter implements IFilterContract.IPresenter {
             filterView.setErrorMessage("maxPrice", "Darf nicht leer sein.");
             return false;
         }
-        /*if (Integer.getInteger(minPrice) > Integer.getInteger(maxPrice)) {
+        if (Integer.valueOf(minPrice) > Integer.valueOf(maxPrice)) {
             filterView.setErrorMessage("minPrice", "Mindestpreis muss kleiner als Höchstpreis sein.");
             return false;
-        }*/
+        }
         return true;
     }
 

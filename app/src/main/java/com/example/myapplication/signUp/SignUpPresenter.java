@@ -11,15 +11,17 @@ import com.google.firebase.database.ValueEventListener;
 public class SignUpPresenter implements ISignUpContract.IPresenter{
 
     //Deklaration von Variablen
-    ISignUpContract.IView view;
-    ISignUpContract.IModel model = new SignUpModel();
+    SignUpView view;
+    SignUpModel model;
 
     //Konstruktor der Klasse SignUpPresenter
-    public SignUpPresenter(ISignUpContract.IView view){
+    public SignUpPresenter(SignUpView view){
         this.view = view;
     }
 
-    public SignUpPresenter(){
+    public SignUpPresenter(SignUpView signUpView, SignUpModel signUpModel){
+        this.view = signUpView;
+        this.model = signUpModel;
     }
 
     /**
@@ -31,26 +33,22 @@ public class SignUpPresenter implements ISignUpContract.IPresenter{
      * @param username Eingabe aus Textfeld Benutzername
      * @return Boolean-Wert. True, wenn Name akzeptiert. False, wenn nicht.
      */
-    public Boolean validateUsername(TextInputLayout username) {
+    public Boolean validateUsername(String username) {
 
-        String val = username.getEditText().getText().toString();
         String noSpace = "\\A\\w{4,20}\\z";
 
         //todo muss noch Anforderungen als Verzeichnis für Firebase erfüllen
-        //todo muss einzigartig sein
 
-        if(val.isEmpty()) {
-            username.setError("Benutzername darf nicht leer sein");
+        if(username.isEmpty()) {
+            view.setErrorMessage("username", "Benutzername darf nicht leer sein");
             return false;
-        } else if (val.length() >= 20) {
-            username.setError("Benutzername zu lang");
+        } else if (username.length() >= 20) {
+            view.setErrorMessage("username", "Benutzername zu lang");
             return false;
-        } else if(!val.matches(noSpace)) {
-            username.setError("Es sind keine Leerzeichen erlaubt");
+        } else if(!username.matches(noSpace)) {
+            view.setErrorMessage("username", "Es sind keine Leerzeichen erlaubt");
             return false;
         } else {
-            username.setError(null);
-            username.setErrorEnabled(false);
             return true;
         }
     }
@@ -94,19 +92,30 @@ public class SignUpPresenter implements ISignUpContract.IPresenter{
      * @param password Eingabe aus Textfeld passwort
      * @return Boolean-Wert. True, wenn Passwort akzeptiert. False, wenn nicht.
      */
-    private Boolean validatePassword(TextInputLayout password) {
+    public boolean validatePassword(String password) {
 
-        String val = password.getEditText().getText().toString();
-
-        if(val.isEmpty()) {
-            password.setError("Passwort darf nicht leer sein");
+        if(password.isEmpty()) {
+            view.setErrorMessage("password", "Passwort darf nicht leer sein");
+            return false;
+        } else if (password.length() < 6) {
+            view.setErrorMessage("password", "Passwort zu kurz");
+            return false;
+        } else if (password.length() > 40) {
+            view.setErrorMessage("password", "Passwort zu lang");
             return false;
         } else {
-            password.setError(null);
-            password.setErrorEnabled(false);
             return true;
         }
 
+    }
+
+    public boolean validatePostalCode(String postalCode) {
+        if (postalCode.length() == 5) {
+            return true;
+        } else {
+            view.setErrorMessage("postalCode", "Ungültige Postleitzahl");
+            return false;
+        }
     }
 
     public void writeUser(String username, String firstName, String name, String email, String postalCode, String phoneNumber, String bio, String password) {

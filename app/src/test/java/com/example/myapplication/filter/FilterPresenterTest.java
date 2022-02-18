@@ -27,9 +27,6 @@ public class FilterPresenterTest {
     @Mock
     FilterView mockView;
 
-    @Mock
-    Query query;
-
     @Before
     public void setUp() {
         mockView = Mockito.mock(FilterView.class);
@@ -51,6 +48,11 @@ public class FilterPresenterTest {
     @Test
     public void validateFieldsAlright() {
         assertTrue(filterPresenterTest.validateFields("Terrier", "12", "0", "50", "vorhanden"));
+    }
+
+    @Test
+    public void validateMinBiggerThanMax() {
+        assertFalse(filterPresenterTest.validateFields("Terrier", "12", "50", "30", "vorhanden"));
     }
 
 

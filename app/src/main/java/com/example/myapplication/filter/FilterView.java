@@ -77,11 +77,6 @@ public class FilterView extends AppCompatActivity implements IFilterContract.IVi
                     searchIntent.putExtra("filterSettings", filter);
                     searchIntent.putExtra("dogID", dogID);
                     startActivity(searchIntent);
-
-
-                } else {
-                    priceFrom.setError("Bitte alle Felder ausfüllen");
-                    priceTo.setError("Bitte alle Felder ausfüllen");
                 }
             }
         });
@@ -104,8 +99,6 @@ public class FilterView extends AppCompatActivity implements IFilterContract.IVi
         papersCheckBtn = findViewById(radioId);
         papersAvailable = papersCheckBtn.getText().toString();
     }
-
-
 }
 
 
