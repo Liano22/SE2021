@@ -16,11 +16,17 @@ public class LogInPresenter implements ILogInContract.IPresenter{
 
     //Deklaration von Variablen
     private ILogInContract.IView logInView;
-    private LogInModel logInModel = new LogInModel();
+    private LogInModel logInModel;
 
     //Konstruktor der Klasse LogInPresenter
     public LogInPresenter(ILogInContract.IView view){
         this.logInView = view;
+        logInModel = new LogInModel();
+    }
+
+    public LogInPresenter(ILogInContract.IView logInView, LogInModel logInModel) {
+        this.logInView = logInView;
+        this.logInModel = logInModel;
     }
 
     @Override

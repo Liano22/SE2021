@@ -3,7 +3,6 @@ package com.example.myapplication.dogCreation;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.never;
@@ -28,6 +27,9 @@ import org.mockito.Mock;
 import org.junit.Test;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
+
+
+// --- Bennedict und Johanna ---
 
 @RunWith(MockitoJUnitRunner.class)
 public class DogCreationPresenterTest {
@@ -158,4 +160,5 @@ public class DogCreationPresenterTest {
         verify(mockView).setSnackbar("Es gibt ein Problem!");
     }
 
+    // --- Bennedict und Johanna ---
 }

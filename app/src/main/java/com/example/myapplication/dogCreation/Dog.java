@@ -1,6 +1,10 @@
 package com.example.myapplication.dogCreation;
 
+// --- Johanna ---
+
 public class  Dog {
+
+
     private String name, age, gender, race, pic, bio, price;
     private boolean hybrid, papers;
 
@@ -95,47 +99,5 @@ public class  Dog {
         this.papers = papers;
     }
 
-    /*
-    public void schreibeHund(){
-
-    }
-
-    public void ladeHund(){
-
-    }
-
-    public void bearbeiten(String cmd, String data){
-        switch(cmd){
-            case "name":
-                this.name = data;
-                break;
-            case "alter":
-                this.alter = data;
-                break;
-            case "rasse":
-                this.rasse = data;
-                break;
-            case "bild":
-                this.bild = data;
-                break;
-            case "bio":
-                this.bio = data;
-                break;
-            case "preis":
-                this.preis = data;
-                break;
-        }
-
-    }
-    public void bearbeiten(String cmd, boolean data){
-        switch(cmd){
-            case "mischling":
-                this.mischling = data;
-                break;
-            case "papiere":
-                this.papiere = data;
-                break;
-        }
-
-    } */
+    // --- Johanna ---
 }

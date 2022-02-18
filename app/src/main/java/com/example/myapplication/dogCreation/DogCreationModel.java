@@ -20,6 +20,7 @@ import com.google.firebase.storage.UploadTask;
 import java.util.UUID;
 
 public class DogCreationModel implements IDogCreationContract.IModel{
+
     // --- Bennedict und Johanna ---
 
     FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
