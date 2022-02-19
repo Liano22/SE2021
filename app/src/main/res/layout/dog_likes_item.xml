@@ -79,7 +79,7 @@
         android:id="@+id/likesTossButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Wau"
+        android:text="Grrr"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/likesTakeButton"
         app:layout_constraintStart_toEndOf="@+id/dogPicture"
@@ -92,7 +92,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="32dp"
         android:layout_marginRight="32dp"
-        android:text="Grrr"
+        android:text="Wau"
         app:layout_constraintBottom_toBottomOf="@+id/likesTossButton"
         app:layout_constraintEnd_toEndOf="parent" />
 

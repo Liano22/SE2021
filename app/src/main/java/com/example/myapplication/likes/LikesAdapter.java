@@ -6,12 +6,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.R;
 import com.example.myapplication.dashboard.Dashboard;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,6 +42,7 @@ public class LikesAdapter extends RecyclerView.Adapter<LikesAdapter.ViewHolder> 
         private final TextView priceText;
         private final Button tossButton;
         private final Button takeButton;
+        private final ImageView dogImage;
 
         //Konstruktor der Klasse ViewHolder
         public ViewHolder(View view){
@@ -52,6 +55,7 @@ public class LikesAdapter extends RecyclerView.Adapter<LikesAdapter.ViewHolder> 
             priceText = (TextView) view.findViewById(R.id.dog_price);
             tossButton = view.findViewById(R.id.likesTossButton);
             takeButton = view.findViewById(R.id.likesTakeButton);
+            dogImage = view.findViewById(R.id.dogPicture);
         }
 
         public TextView getNameText() {
@@ -73,6 +77,8 @@ public class LikesAdapter extends RecyclerView.Adapter<LikesAdapter.ViewHolder> 
         public Button getTossButton(){return tossButton;};
 
         public Button getTakeButton(){return takeButton;};
+
+        public ImageView getDogImage(){return dogImage;}
 
 
     }
@@ -99,6 +105,8 @@ public class LikesAdapter extends RecyclerView.Adapter<LikesAdapter.ViewHolder> 
         viewHolder.getAgeText().setText(items.getDog_age() + " Jahre");
 
         viewHolder.getPriceText().setText(items.getDog_price() + "€");
+
+        Picasso.get().load(items.getImage()).fit().centerCrop().into(viewHolder.dogImage);
 
         viewHolder.getTossButton().setOnClickListener(new View.OnClickListener() {
             @Override

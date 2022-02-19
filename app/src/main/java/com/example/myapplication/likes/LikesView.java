@@ -30,7 +30,7 @@ public class LikesView extends AppCompatActivity implements ILikesContract.Likes
     private DatabaseReference database_liked_dogs_data;
     ArrayList<Like> likesList = new ArrayList<>();
     ArrayList<String> liked_dogs_ids;
-    String dog_id, name, race, age, price, selectedDog;
+    String dog_id, name, race, age, price, selectedDog, image;
 
     //Verbindung zum Presenter
     LikesPresenter likesPresenter = new LikesPresenter(this);
@@ -111,8 +111,11 @@ public class LikesView extends AppCompatActivity implements ILikesContract.Likes
                     race = dataSnapshot.child(id).child("race").getValue(String.class);
                     age = dataSnapshot.child(id).child("age").getValue(String.class);
                     price = dataSnapshot.child(id).child("price").getValue(String.class);
+                    image = dataSnapshot.child(id).child("pic").getValue(String.class);
 
-                    likesList.add(new Like(String.valueOf(name), String.valueOf(race), String.valueOf(age), String.valueOf(price)));
+                    Log.i("Bild", image);
+
+                    likesList.add(new Like(String.valueOf(name), String.valueOf(race), String.valueOf(age), String.valueOf(price), String.valueOf(image)));
                 }
                 adapter.notifyDataSetChanged();
             }

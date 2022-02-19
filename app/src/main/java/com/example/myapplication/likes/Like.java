@@ -2,6 +2,9 @@ package com.example.myapplication.likes;
 
 //Nils Behrens
 
+import android.util.Log;
+import android.widget.ImageView;
+
 public class Like {
 
     //Deklaration von Variablen
@@ -9,13 +12,16 @@ public class Like {
     private String dog_race;
     private String dog_age;
     private String dog_price;
+    private String dog_image;
 
     //Konstruktor der Klasse Like
-    public Like(String dog_name, String dog_race, String dog_age, String dog_price) {
+    public Like(String dog_name, String dog_race, String dog_age, String dog_price, String dog_image) {
         this.dog_name = dog_name;
         this.dog_race = dog_race;
         this.dog_age = dog_age;
         this.dog_price = dog_price;
+        this.dog_image = dog_image;
+
     }
 
     //Getter und Setter für die Klassenvariablen
@@ -50,6 +56,8 @@ public class Like {
     public void setDog_price(String dog_price) {
         this.dog_price = dog_price;
     }
+
+    public String getImage(){ return dog_image;}
 }
 
 //Nils Behrens
