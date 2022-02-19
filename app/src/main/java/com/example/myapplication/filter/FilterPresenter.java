@@ -2,6 +2,7 @@ package com.example.myapplication.filter;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.example.myapplication.DatabaseConnector;
 import com.example.myapplication.dogSearch.DogSearchView;
@@ -43,6 +44,15 @@ public class FilterPresenter implements IFilterContract.IPresenter {
             filterView.setErrorMessage("maxPrice", "Darf nicht leer sein.");
             return false;
         }
+
+        if (minPrice.length() > 4) {
+            minPrice = minPrice.substring(0,3);
+        }
+
+        if (maxPrice.length() > 4) {
+            maxPrice = maxPrice.substring(0,4);
+        }
+
         if (Integer.valueOf(minPrice) > Integer.valueOf(maxPrice)) {
             filterView.setErrorMessage("minPrice", "Mindestpreis muss kleiner als Höchstpreis sein.");
             return false;
