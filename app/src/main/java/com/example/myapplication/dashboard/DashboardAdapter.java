@@ -13,6 +13,7 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -85,6 +86,7 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.View
 
         viewHolder.getDogPicture().setImageResource(R.drawable.a_portrait_of_a_beagle_that_was_a_rescued_dog_2);
         viewHolder.getDogName().setText(items.getDogName());
+        Picasso.get().load(items.getImage()).fit().centerCrop().into(viewHolder.dogPicture);
 
         viewHolder.getMatchesButton().setOnClickListener(new View.OnClickListener() {
             @Override

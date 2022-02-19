@@ -26,7 +26,7 @@ public class DogSearchView extends AppCompatActivity {
     //Deklaration von Variablen
     private DogSearchAdapter dogSearchAdapter;
     private DatabaseReference databaseDogs;
-    private String searchDogName,rasseTextView, geschlechtTextView, alterTextView, papiereTextView;
+    private String searchDogName,rasseTextView, geschlechtTextView, alterTextView, papiereTextView, image;
     RecyclerView recyclerViewDogSearch;
     ArrayList<DogSearch> dogList = new ArrayList<>();
     String currentDog;
@@ -60,6 +60,7 @@ public class DogSearchView extends AppCompatActivity {
                     rasseTextView = ds.child("race").getValue(String.class);
                     geschlechtTextView = ds.child("gender").getValue(String.class);
                     alterTextView = ds.child("age").getValue(String.class);
+                    image = ds.child("pic").getValue(String.class);
                     Boolean papers = ds.child("papers").getValue(Boolean.class);
                     if (papers.equals(true)) {
                         papiereTextView = "ja";
@@ -87,7 +88,7 @@ public class DogSearchView extends AppCompatActivity {
 
 
 
-                    dogList.add(new DogSearch(searchDogName, rasseTextView, alterTextView, papiereTextView, geschlechtTextView));
+                    dogList.add(new DogSearch(searchDogName, rasseTextView, alterTextView, papiereTextView, geschlechtTextView, image));
                 }
                 dogSearchAdapter.notifyDataSetChanged();
             }

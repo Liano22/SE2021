@@ -20,16 +20,18 @@ import com.example.myapplication.matches.MatchesView;
 public class Dashboard extends AppCompatActivity {
 
     private String dogID;
+
     private String dogName;
+    private String image;
     private Button matchesButton;
     private Button likesButton;
     private Button searchButton;
     private ImageView dogPicture;
 
-    public Dashboard(String dogID, String hundeName) {
-
+    public Dashboard(String dogID, String hundeName, String image) {
         this.dogName = hundeName;
         this.dogID = dogID;
+        this.image = image;
         //this.dogPicture.setImageResource(profilePicture);
     }
 
@@ -87,6 +89,26 @@ public class Dashboard extends AppCompatActivity {
 
     public ImageView getDogPicture() {
         return dogPicture;
+    }
+
+    public String getDogID() {
+        return dogID;
+    }
+
+    public void setDogID(String dogID) {
+        this.dogID = dogID;
+    }
+
+    public void setDogName(String dogName) {
+        this.dogName = dogName;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
 }

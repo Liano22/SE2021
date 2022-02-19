@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.myapplication.R;
 import com.example.myapplication.likes.Like;
 import com.google.firebase.database.DatabaseReference;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +27,7 @@ public class DogSearchAdapter extends RecyclerView.Adapter<DogSearchAdapter.View
     private LayoutInflater myInflator;
     private DogSearchView myDogSearchView;
     private DatabaseReference database;
+
 
     public DogSearchAdapter(Context context, ArrayList<DogSearch> data) {
         this.myInflator = LayoutInflater.from(context);
@@ -114,22 +116,19 @@ public class DogSearchAdapter extends RecyclerView.Adapter<DogSearchAdapter.View
         // contents of the view with that element
         DogSearch items = dogData.get(position);
 
-
-        Log.d("test", viewHolder.getAlterTextView().toString());
         viewHolder.getAlterTextView().setText(items.getAlterTextView());
         viewHolder.getSearchDogName().setText(items.getSearchDogName());
         viewHolder.getRasseTextView().setText(items.getRasseTextView());
         viewHolder.getPapiereTextView().setText(items.getPapiereTextView());
         viewHolder.getGeschlechtTextView().setText(items.getGeschlechtTextView());
-        viewHolder.getSearchDogImage().setImageResource(R.drawable.a_portrait_of_a_beagle_that_was_a_rescued_dog_2);
 
+        Picasso.get().load(items.getImage()).fit().centerCrop().into(viewHolder.searchDogImage);
 
         viewHolder.getLikeButton().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 dogData.remove(viewHolder.getAdapterPosition());
                 notifyDataSetChanged();
-
                 // add a like
             }
         });

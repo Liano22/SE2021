@@ -11,16 +11,18 @@ public class DogSearch {
     private String geschlechtTextView;
     private String alterTextView;
     private String papiereTextView;
+    private String image;
     private Button likeButton;
     private Button dislikeButton;
     private ImageView searchDogImage;
 
-    public DogSearch(String searchDogName, String rasseTextView, String alterTextView, String papiereTextView, String geschlechtTextView) {
+    public DogSearch(String searchDogName, String rasseTextView, String alterTextView, String papiereTextView, String geschlechtTextView, String image) {
         this.searchDogName = searchDogName;
         this.rasseTextView = rasseTextView;
         this.geschlechtTextView = geschlechtTextView;
         this.alterTextView = alterTextView;
         this.papiereTextView = papiereTextView;
+        this.image = image;
         //this.likeButton = likeButton;
         //this.dislikeButton = dislikeButton;
         //this.searchDogImage = searchDogImage;
@@ -92,6 +94,14 @@ public class DogSearch {
 
     public ImageView getSearchDogImage() {
         return searchDogImage;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public void setSearchDogImage(ImageView searchDogImage) {

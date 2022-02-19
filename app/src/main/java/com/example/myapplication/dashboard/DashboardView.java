@@ -36,7 +36,7 @@ public class DashboardView extends AppCompatActivity implements IDashboardContra
     ArrayList<Dashboard> dogItems = new ArrayList<>();
     ArrayList<String> userDogsList = new ArrayList<>();
     List<String> userDogs;
-    String key, bio, name, currentUser;
+    String key, name, image, currentUser;
 
 
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -84,9 +84,10 @@ public class DashboardView extends AppCompatActivity implements IDashboardContra
                     for(DataSnapshot ds : dataSnapshot.getChildren()) {
                         key = ds.getKey();
                         name = ds.child("name").getValue(String.class);
+                        image = ds.child("pic").getValue(String.class);
 
                         if (userDogs.contains(key)) {
-                            dogItems.add(new Dashboard(key, name));
+                            dogItems.add(new Dashboard(key, name, image));
                         }
                     }
                 adapter.notifyDataSetChanged();
