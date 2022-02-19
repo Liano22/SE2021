@@ -26,7 +26,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
-
+//-- Johanna und Bennedict --
 public class DogCreationViewTest {
 
     @Rule
@@ -173,3 +173,5 @@ public class DogCreationViewTest {
 
     }
 }
+
+//-- Johanna und Bennedict --

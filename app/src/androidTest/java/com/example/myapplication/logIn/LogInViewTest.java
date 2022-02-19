@@ -22,6 +22,8 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 
+//-- Johanna und Bennedict --
+
 public class LogInViewTest {
 
     @Rule
@@ -73,3 +75,5 @@ public class LogInViewTest {
 
 
 }
+
+//-- Johanna und Bennedict --

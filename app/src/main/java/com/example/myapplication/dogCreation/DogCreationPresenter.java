@@ -54,7 +54,7 @@ public class DogCreationPresenter implements  IDogCreationContract.IPresenter{
         if(validateFields(name,age,race,bio,price)) {
 
             // Konstruktor von Dog aufrufen
-            newDog = new Dog(name, age, gender, race, pic, bio, price, hybrid, papers);
+            newDog = new Dog(username, name, age, gender, race, pic, bio, price, hybrid, papers);
 
             // Query erstellen und ListenerForSingleValueEvent hinzufügen
             Query dogId = dogCreationModel.getNextDogID();
@@ -167,6 +167,10 @@ public class DogCreationPresenter implements  IDogCreationContract.IPresenter{
      */
     public void savePicture(Uri imageUri, String key){
         dogCreationModel.uploadPicture(imageUri, key);
+    }
+
+    public void setPictureToken(String token){
+        dogCreationView.pictureToken = token;
     }
 
 

@@ -5,7 +5,7 @@ package com.example.myapplication.dogCreation;
 public class  Dog {
 
 
-    private String name, age, gender, race, pic, bio, price;
+    private String username, name, age, gender, race, pic, bio, price;
     private boolean hybrid, papers;
 
 
@@ -14,7 +14,8 @@ public class  Dog {
     }
 
     // wird bei der Erstellung eines neuen Hundes verwendet:
-    public Dog(String name, String age, String gender, String race, String pic, String bio, String price, boolean hybrid, boolean papers) {
+    public Dog(String username,String name, String age, String gender, String race, String pic, String bio, String price, boolean hybrid, boolean papers) {
+        this.username = username;
         this.name = name;
         this.age = age;
         this.gender = gender;
@@ -97,6 +98,14 @@ public class  Dog {
 
     public void setPapers(boolean papers) {
         this.papers = papers;
+    }
+
+    public void setUsername(String username){
+        this.username = username;
+    }
+
+    public String getUsername(){
+        return username;
     }
 
     // --- Johanna ---

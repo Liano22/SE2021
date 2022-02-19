@@ -52,7 +52,6 @@ public class DogCreationPresenterTest {
         mockModel = Mockito.mock(DogCreationModel.class);
         mockView = Mockito.mock(DogCreationView.class);
         dogCreationPresenterTest = new DogCreationPresenter(mockView, mockModel);
-        testDog = new Dog("Testine", "12", "weiblich", "Chihuahua", "12323534634534214", "Weltumrunderin","VB", false,true);
     }
 
     @Test

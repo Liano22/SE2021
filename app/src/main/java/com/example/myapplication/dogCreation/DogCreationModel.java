@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -100,6 +101,8 @@ public class DogCreationModel implements IDogCreationContract.IModel{
      * @param key Schlüssel für Verbindung zwischen Storage und Realtime Database - String
      */
     public void uploadPicture(Uri imageUri, String key){
+
+
         storageReference = storage.getReference();
 
         StorageReference riversRef = storageReference.child("images/" + key);
@@ -108,6 +111,14 @@ public class DogCreationModel implements IDogCreationContract.IModel{
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                 dogCreationPresenter.activateSnackbar("Bild erfolgreich hochgeladen.");
+                Task<Uri> url = taskSnapshot.getStorage().getDownloadUrl();
+                url.addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(Uri uri) {
+                        String imageUrl = uri.toString();
+                        dogCreationPresenter.setPictureToken(imageUrl);
+                    }
+                });
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override

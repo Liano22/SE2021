@@ -46,7 +46,7 @@ public class DogCreationView extends AppCompatActivity implements IDogCreationCo
 
 
     // Pfad für das Speichern des Hundebildes
-    String pictureKey;
+    String pictureToken, pictureKey;
 
     //Nicht-Klicken der Radiobuttons berücksichtigen
     //Weiblich ist der Default-Wert
@@ -117,9 +117,9 @@ public class DogCreationView extends AppCompatActivity implements IDogCreationCo
 
                 // die Einträge des Nutzers werden als Strings an den Presenter weitergereicht
                 dogCreationPresenter.saveDog(currentUser,name.getEditText().getText().toString(), ageString, gender,
-                        raceString,pictureKey, bio.getEditText().getText().toString(),
+                        raceString,pictureToken, bio.getEditText().getText().toString(),
                         price.getEditText().getText().toString(), hybrid.isChecked(), papers.isChecked());
-                Log.d("gender: ", gender);
+                Log.i("gender: ", currentUser);
             }
         });
 
