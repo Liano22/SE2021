@@ -67,7 +67,7 @@ public class DashboardView extends AppCompatActivity implements IDashboardContra
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 userDogsList.clear();
                 for (DataSnapshot ds : snapshot.getChildren()) {
-                    Log.d("test", ds.child("username").getValue(String.class));
+
                     if (ds.child("username").getValue(String.class).equals(currentUser)) {
                         userDogsList.add(ds.child("myDogs").getValue(String.class));
                     }
