@@ -44,6 +44,8 @@ public class DogSearchAdapter extends RecyclerView.Adapter<DogSearchAdapter.View
         private final TextView papiereTextView;
         private final ImageView searchDogImage;
 
+        private final TextView priceTextView;
+
         private Button likeButton;
         private Button dislikeButton;
 
@@ -58,6 +60,7 @@ public class DogSearchAdapter extends RecyclerView.Adapter<DogSearchAdapter.View
             alterTextView = (TextView) view.findViewById(R.id.alterTextView);
             papiereTextView = (TextView) view.findViewById(R.id.papiereTextView);
             searchDogImage = (ImageView) view.findViewById(R.id.searchDogImage);
+            priceTextView = (TextView) view.findViewById(R.id.priceTextView);
 
             likeButton = (Button) view.findViewById(R.id.likeButton);
             dislikeButton = (Button) view.findViewById(R.id.dislikeButton);
@@ -94,6 +97,10 @@ public class DogSearchAdapter extends RecyclerView.Adapter<DogSearchAdapter.View
         public ImageView getSearchDogImage() {
             return searchDogImage;
         }
+
+        public TextView getPriceTextView() {
+            return priceTextView;
+        }
     }
 
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
@@ -121,6 +128,7 @@ public class DogSearchAdapter extends RecyclerView.Adapter<DogSearchAdapter.View
         viewHolder.getRasseTextView().setText(items.getRasseTextView());
         viewHolder.getPapiereTextView().setText(items.getPapiereTextView());
         viewHolder.getGeschlechtTextView().setText(items.getGeschlechtTextView());
+        viewHolder.getPriceTextView().setText(items.getPriceTextView());
 
         Picasso.get().load(items.getImage()).fit().centerCrop().into(viewHolder.searchDogImage);
 

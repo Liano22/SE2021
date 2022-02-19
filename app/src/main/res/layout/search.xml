@@ -41,10 +41,10 @@
         android:text="Take"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.815"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/dislikeButton"
         app:layout_constraintTop_toBottomOf="@+id/searchDogImage"
-        app:layout_constraintVertical_bias="0.939" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/dislikeButton"
@@ -53,10 +53,10 @@
         android:text="Toss"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.101"
+        app:layout_constraintHorizontal_bias="0.15"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/searchDogImage"
-        app:layout_constraintVertical_bias="0.939" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/papiereHeadline"
@@ -64,13 +64,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginLeft="32dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginTop="24dp"
         android:text="Papiere:"
-        app:layout_constraintBottom_toTopOf="@+id/dislikeButton"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/AlterHeadline"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/AlterHeadline" />
 
     <TextView
         android:id="@+id/geschlechtHeadline"
@@ -78,7 +75,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginLeft="32dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="24dp"
         android:text="Geschlecht:"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rasseHeadline" />
@@ -100,7 +97,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginLeft="32dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="24dp"
         android:text="Alter:"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/geschlechtHeadline" />
@@ -110,8 +107,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:layout_marginEnd="164dp"
-        android:layout_marginRight="164dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
         android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/searchDogImage" />
@@ -120,9 +117,9 @@
         android:id="@+id/geschlechtTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="164dp"
-        android:layout_marginRight="164dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
         android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rasseTextView" />
@@ -131,9 +128,9 @@
         android:id="@+id/alterTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="164dp"
-        android:layout_marginRight="164dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
         android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/geschlechtTextView" />
@@ -142,14 +139,37 @@
         android:id="@+id/papiereTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="164dp"
-        android:layout_marginRight="164dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/alterTextView" />
+
+    <TextView
+        android:id="@+id/priceTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
         android:text="TextView"
         app:layout_constraintBottom_toTopOf="@+id/likeButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/alterTextView"
+        app:layout_constraintTop_toBottomOf="@+id/papiereTextView"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/preisHeadline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="24dp"
+        android:text="Preis:"
+        app:layout_constraintBottom_toTopOf="@+id/dislikeButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/papiereHeadline"
         app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

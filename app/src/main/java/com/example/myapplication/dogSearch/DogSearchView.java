@@ -19,14 +19,13 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class DogSearchView extends AppCompatActivity {
 
     //Deklaration von Variablen
     private DogSearchAdapter dogSearchAdapter;
     private DatabaseReference databaseDogs;
-    private String searchDogName,rasseTextView, geschlechtTextView, alterTextView, papiereTextView, image;
+    private String searchDogName, rasseTextView, geschlechtTextView, alterTextView, papiereTextView, image, priceTextView;
     RecyclerView recyclerViewDogSearch;
     ArrayList<DogSearch> dogList = new ArrayList<>();
     String currentDog;
@@ -38,8 +37,6 @@ public class DogSearchView extends AppCompatActivity {
 
         //Variablen von den Filter Einstellungen bekommen
         Filter filterSettings = getIntent().getParcelableExtra("filterSettings");
-
-        Log.d("filter Rasse", filterSettings.getRace());
 
         if (getIntent().hasExtra("dogID")) {
             Bundle extra = getIntent().getExtras();
@@ -54,41 +51,40 @@ public class DogSearchView extends AppCompatActivity {
 
             public void onDataChange(DataSnapshot dataSnapshot) {
                 dogList.clear();
-                for(DataSnapshot ds : dataSnapshot.getChildren()) {
+                for (DataSnapshot ds : dataSnapshot.getChildren()) {
 
                     searchDogName = ds.child("name").getValue(String.class);
                     rasseTextView = ds.child("race").getValue(String.class);
                     geschlechtTextView = ds.child("gender").getValue(String.class);
                     alterTextView = ds.child("age").getValue(String.class);
                     image = ds.child("pic").getValue(String.class);
+                    priceTextView = ds.child("price").getValue(String.class);
                     Boolean papers = ds.child("papers").getValue(Boolean.class);
+                    Log.d("gender", geschlechtTextView);
+
                     if (papers.equals(true)) {
                         papiereTextView = "ja";
                     } else {
                         papiereTextView = "nein";
                     }
 
-                    if (currentDog.equals(ds.getKey())) {
-                        currentDogGender = ds.child("gender").getValue(String.class);
-                    }
-
-                    /*
-                    if (rasseTextView.equals(filterSettings.getRace())) {
-                        if (Integer.parseInt(alterTextView) >= Integer.parseInt(filterSettings.getMaxPrice())) {
-                            if (papers.equals(filterSettings.isPapersAvailable())) {
-                                if (!geschlechtTextView.equals(currentDogGender)) {
-                                    dogList.add(new DogSearch(searchDogName, rasseTextView, alterTextView, papiereTextView, geschlechtTextView));
+                    if (!currentDog.equals(ds.getKey())) {
+                        if (geschlechtTextView.equals(currentDogGender) != true) {
+                            if (rasseTextView.equals(filterSettings.getRace())) {
+                                if (Integer.parseInt(filterSettings.getAge()) >= Integer.parseInt(alterTextView)) {
+                                    if (Integer.parseInt(priceTextView) >= Integer.parseInt(filterSettings.getMinPrice()) && Integer.parseInt(priceTextView) <= Integer.parseInt(filterSettings.getMaxPrice())) {
+                                        dogList.add(new DogSearch(searchDogName, rasseTextView, alterTextView, papiereTextView, geschlechtTextView, image, priceTextView));
+                                    }
                                 }
-
                             }
+                        } else {
+                            Log.d("test", "nicht hinzugefügt");
                         }
                     }
-                    
-                     */
 
 
 
-                    dogList.add(new DogSearch(searchDogName, rasseTextView, alterTextView, papiereTextView, geschlechtTextView, image));
+
                 }
                 dogSearchAdapter.notifyDataSetChanged();
             }

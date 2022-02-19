@@ -36,7 +36,8 @@ public class DashboardView extends AppCompatActivity implements IDashboardContra
     ArrayList<Dashboard> dogItems = new ArrayList<>();
     ArrayList<String> userDogsList = new ArrayList<>();
     List<String> userDogs;
-    String key, name, image, currentUser;
+    String key, name, image, gender, currentUser;
+
 
 
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -45,6 +46,8 @@ public class DashboardView extends AppCompatActivity implements IDashboardContra
         if (getIntent().hasExtra("currentUser")) {
             Bundle extra = getIntent().getExtras();
             currentUser = extra.getString("currentUser");
+        } else {
+            Log.d("Kein Extra!", "Intent überreicht keinen user");
         }
 
         setContentView(R.layout.dashboard_activity);
@@ -64,6 +67,7 @@ public class DashboardView extends AppCompatActivity implements IDashboardContra
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 userDogsList.clear();
                 for (DataSnapshot ds : snapshot.getChildren()) {
+                    Log.d("test", ds.child("username").getValue(String.class));
                     if (ds.child("username").getValue(String.class).equals(currentUser)) {
                         userDogsList.add(ds.child("myDogs").getValue(String.class));
                     }
@@ -85,9 +89,10 @@ public class DashboardView extends AppCompatActivity implements IDashboardContra
                         key = ds.getKey();
                         name = ds.child("name").getValue(String.class);
                         image = ds.child("pic").getValue(String.class);
+                        gender = ds.child("gender").getValue(String.class);
 
                         if (userDogs.contains(key)) {
-                            dogItems.add(new Dashboard(key, name, image));
+                            dogItems.add(new Dashboard(key, name, image, gender));
                         }
                     }
                 adapter.notifyDataSetChanged();
