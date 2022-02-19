@@ -60,14 +60,20 @@ public class LogInView extends AppCompatActivity implements ILogInContract.IView
         });
     }
 
+
     /**
      * Ausgabe von Fehlermeldungen, die vom Presenter übergeben werden.
+     * @param field Eingabefeld - String
      * @param ErrorMessage Fehlermeldung - String
      */
     @Override
-    public void setErrorMessage(String ErrorMessage) {
-        password.setError(ErrorMessage);
-        username.setError(ErrorMessage);
+    public void setErrorMessage(String field, String ErrorMessage) {
+        if(field.equals("password")) {
+            password.setError(ErrorMessage);
+        }
+        if(field.equals("username")) {
+            username.setError(ErrorMessage);
+        }
     }
 
     /**

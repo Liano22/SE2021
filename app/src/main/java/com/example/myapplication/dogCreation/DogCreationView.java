@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.Debug;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -57,7 +58,7 @@ public class DogCreationView extends AppCompatActivity implements IDogCreationCo
     DogCreationPresenter dogCreationPresenter = new DogCreationPresenter(this);
 
 
-    // für die Weiterleitung zurück zu Dashboard
+    // Für die Weiterleitung zurück zu Dashboard
     Intent intentDashboardFromDogCreation;
     String currentUser;
 

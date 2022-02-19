@@ -53,24 +53,24 @@ public class LogInPresenterTest {
     @Test
     public void validateUsernameViewNeverCalledTest() {
         logInPresenterTest.validateUsername("TestUser");
-        verify(mockView, never()).setErrorMessage("Benutzername oder Passwort darf nicht leer sein");
+        verify(mockView, never()).setErrorMessage("username","Benutzername darf nicht leer sein");
     }
 
     @Test
     public void validateUsernameViewCalledNullTest() {
         logInPresenterTest.validateUsername("TestUser");
-        verify(mockView).setErrorMessage(null);
+        verify(mockView).setErrorMessage("username",null);
     }
 
     @Test
     public void validateUsernameViewCalledEmptyTest() {
         logInPresenterTest.validateUsername("");
-        verify(mockView).setErrorMessage("Benutzername oder Passwort darf nicht leer sein");
+        verify(mockView).setErrorMessage("username","Benutzername darf nicht leer sein");
     }
     @Test
     public void validateUsernameViewNeverCalledNullTest() {
         logInPresenterTest.validateUsername("");
-        verify(mockView, never()).setErrorMessage(null);
+        verify(mockView, never()).setErrorMessage("username",null);
     }
 
     @Test
@@ -86,24 +86,24 @@ public class LogInPresenterTest {
     @Test
     public void validatePasswordViewNeverCalledTest() {
         logInPresenterTest.validatePassword("TestPassword");
-        verify(mockView, never()).setErrorMessage("Benutzername oder Passwort darf nicht leer sein");
+        verify(mockView, never()).setErrorMessage("password","Passwort darf nicht leer sein");
     }
 
     @Test
     public void validatePasswordViewCalledNullTest() {
         logInPresenterTest.validatePassword("TestPassword");
-        verify(mockView).setErrorMessage(null);
+        verify(mockView).setErrorMessage("password",null);
     }
 
     @Test
     public void validatePasswordViewCalledEmptyTest() {
         logInPresenterTest.validatePassword("");
-        verify(mockView).setErrorMessage("Benutzername oder Passwort darf nicht leer sein");
+        verify(mockView).setErrorMessage("password","Passwort darf nicht leer sein");
     }
     @Test
-    public void validatePasswordeViewNeverCalledNullTest() {
+    public void validatePasswordViewNeverCalledNullTest() {
         logInPresenterTest.validatePassword("");
-        verify(mockView, never()).setErrorMessage(null);
+        verify(mockView, never()).setErrorMessage("password",null);
     }
 
     @Test

@@ -6,7 +6,7 @@ import com.google.firebase.database.Query;
 
 public interface ILogInContract {
     interface IView{
-        void setErrorMessage(String ErrorMessage);
+        void setErrorMessage(String field,String ErrorMessage);
         void changeToDashboard(String username);
     }
 

@@ -26,7 +26,7 @@ public class LogInPresenter implements ILogInContract.IPresenter{
         logInModel = new LogInModel();
     }
 
-    public LogInPresenter(LogInView view, LogInModel logInModel) {
+    public LogInPresenter(LogInView logInView, LogInModel logInModel) {
         this.logInView = logInView;
         this.logInModel = logInModel;
     }
@@ -40,10 +40,10 @@ public class LogInPresenter implements ILogInContract.IPresenter{
     public Boolean validateUsername(String username) {
 
         if(username.isEmpty()){
-            logInView.setErrorMessage("Benutzername oder Passwort darf nicht leer sein");
+            logInView.setErrorMessage("username","Benutzername darf nicht leer sein");
             return false;
         } else {
-            logInView.setErrorMessage(null);
+            logInView.setErrorMessage("username",null);
             return true;
         }
     }
@@ -56,10 +56,10 @@ public class LogInPresenter implements ILogInContract.IPresenter{
     @Override
     public Boolean validatePassword(String password) {
         if(password.isEmpty()){
-            logInView.setErrorMessage("Benutzername oder Passwort darf nicht leer sein");
+            logInView.setErrorMessage("password","Passwort darf nicht leer sein");
             return false;
         } else {
-            logInView.setErrorMessage(null);
+            logInView.setErrorMessage("password",null);
             return true;
         }
     }
@@ -100,20 +100,22 @@ public class LogInPresenter implements ILogInContract.IPresenter{
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(snapshot.exists()){ //Konnte ein Nutzer gefunden und gespeichert werden?
 
-                    logInView.setErrorMessage(null);
+                    logInView.setErrorMessage("username",null);
+                    logInView.setErrorMessage("password",null);
 
                     String passwordFromDB = snapshot.child(username).child("password").getValue(String.class); //Passwort aus DB
 
                     if(passwordFromDB.equals(password)){ //Gleichen die Passwörter einander?
-                        logInView.setErrorMessage(null);
                         logInView.changeToDashboard(username);
                     }
                     else{
-                        logInView.setErrorMessage("Benutzername oder Passwort falsch");
+                        logInView.setErrorMessage("username","Benutzername oder Passwort falsch");
+                        logInView.setErrorMessage("password","Benutzername oder Passwort falsch");
                     }
                 }
                 else {
-                    logInView.setErrorMessage("Benutzername oder Passwort falsch");
+                    logInView.setErrorMessage("username","Benutzername oder Passwort falsch");
+                    logInView.setErrorMessage("password","Benutzername oder Passwort falsch");
                 }
             }
 

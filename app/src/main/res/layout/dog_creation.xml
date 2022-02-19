@@ -97,6 +97,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/dogNameTextInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Name"
@@ -118,6 +119,7 @@
         app:layout_constraintTop_toBottomOf="@+id/dogPicCreation">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/dogBioTextInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Bio"
@@ -139,6 +141,7 @@
         app:layout_constraintTop_toBottomOf="@+id/dogBio">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/dogPriceTextInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Preis"
