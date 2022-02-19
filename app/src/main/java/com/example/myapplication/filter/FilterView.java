@@ -27,7 +27,7 @@ public class FilterView extends AppCompatActivity implements IFilterContract.IVi
     private Spinner raceSpinner, ageSpinner;
     private EditText priceFrom, priceTo;
     Button updateFilterPreferences;
-    String dogID;
+    String dogID, dogGender;
     String papersAvailable = "optional";
     RadioGroup papersCheckGroup;
     RadioButton papersCheckBtn;
@@ -40,6 +40,7 @@ public class FilterView extends AppCompatActivity implements IFilterContract.IVi
         if (getIntent().hasExtra("dogID")) {
             Bundle extra = getIntent().getExtras();
             dogID = extra.getString("dogID");
+            dogGender = extra.getString("dogGender");
         }
         updateFilterPreferences = findViewById(R.id.preferences_button);
         raceSpinner = findViewById(R.id.rasse_spinner);
@@ -76,6 +77,7 @@ public class FilterView extends AppCompatActivity implements IFilterContract.IVi
                     Filter filter = new Filter(race, age, minPrice, maxPrice, papersAvailable);
                     searchIntent.putExtra("filterSettings", filter);
                     searchIntent.putExtra("dogID", dogID);
+                    searchIntent.putExtra("dogGender", dogGender);
                     startActivity(searchIntent);
                 }
             }

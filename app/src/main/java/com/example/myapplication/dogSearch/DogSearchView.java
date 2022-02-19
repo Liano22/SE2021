@@ -41,6 +41,7 @@ public class DogSearchView extends AppCompatActivity {
         if (getIntent().hasExtra("dogID")) {
             Bundle extra = getIntent().getExtras();
             currentDog = extra.getString("dogID");
+            currentDogGender = extra.getString("dogGender");
         }
 
         recyclerViewDogSearch = findViewById(R.id.searchView);
