@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.R;
-import com.example.myapplication.dashboard.Dashboard;
 import com.example.myapplication.filter.Filter;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -25,10 +24,10 @@ public class DogSearchView extends AppCompatActivity {
     //Deklaration von Variablen
     private DogSearchAdapter dogSearchAdapter;
     private DatabaseReference databaseDogs;
-    private String searchDogName, rasseTextView, geschlechtTextView, alterTextView, papiereTextView, image, priceTextView;
+    private String searchDogName, rasseTextView, geschlechtTextView, alterTextView, papiereTextView, image, priceTextView, thisDogId, thisDogUser;
     RecyclerView recyclerViewDogSearch;
     ArrayList<DogSearch> dogList = new ArrayList<>();
-    String currentDog;
+    String currentDog, currentDogUser;
     String currentDogGender;
 
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -42,6 +41,7 @@ public class DogSearchView extends AppCompatActivity {
             Bundle extra = getIntent().getExtras();
             currentDog = extra.getString("dogID");
             currentDogGender = extra.getString("dogGender");
+            currentDogUser = extra.getString("dogUser");
         }
 
         recyclerViewDogSearch = findViewById(R.id.searchView);
@@ -54,6 +54,8 @@ public class DogSearchView extends AppCompatActivity {
                 dogList.clear();
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
 
+                    thisDogId = ds.getKey();
+                    thisDogUser = ds.child("username").getValue(String.class);
                     searchDogName = ds.child("name").getValue(String.class);
                     rasseTextView = ds.child("race").getValue(String.class);
                     geschlechtTextView = ds.child("gender").getValue(String.class);
@@ -74,7 +76,7 @@ public class DogSearchView extends AppCompatActivity {
                             if (rasseTextView.equals(filterSettings.getRace())) {
                                 if (Integer.parseInt(filterSettings.getAge()) >= Integer.parseInt(alterTextView)) {
                                     if (Integer.parseInt(priceTextView) >= Integer.parseInt(filterSettings.getMinPrice()) && Integer.parseInt(priceTextView) <= Integer.parseInt(filterSettings.getMaxPrice())) {
-                                        dogList.add(new DogSearch(searchDogName, rasseTextView, alterTextView, papiereTextView, geschlechtTextView, image, priceTextView));
+                                        dogList.add(new DogSearch(searchDogName, rasseTextView, alterTextView, papiereTextView, geschlechtTextView, image, priceTextView, thisDogId, currentDog, thisDogUser, currentDogUser));
                                     }
                                 }
                             }

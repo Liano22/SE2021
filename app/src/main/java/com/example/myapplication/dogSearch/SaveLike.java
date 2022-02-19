@@ -12,11 +12,16 @@ public class SaveLike {
     DatabaseReference reference;
 
 
-    //Schreibe Benutzer in die Datenbank
-    public void writeLikeToDatabase(LikeClass newLike, String usernameInput) {
+    public void writeNextMatchID(int newMatchId) {
+        reference = rootNode.getReference("nextMatchId");
+        reference.setValue(newMatchId);
+    }
+
+    //Schreibe Like in die Datenbank
+    public void writeLikeToDatabase(LikeClass newLike, String id) {
         rootNode = FirebaseDatabase.getInstance();
-        reference = rootNode.getReference("users");
-        reference.child(usernameInput).setValue(newLike);
+        reference = rootNode.getReference("matches");
+        reference.child(id).setValue(newLike);
     }
 
 }

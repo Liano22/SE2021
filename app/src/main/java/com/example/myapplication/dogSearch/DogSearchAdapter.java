@@ -9,11 +9,16 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.R;
 import com.example.myapplication.likes.Like;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -26,7 +31,8 @@ public class DogSearchAdapter extends RecyclerView.Adapter<DogSearchAdapter.View
     private List<DogSearch> limitedDogData;
     private LayoutInflater myInflator;
     private DogSearchView myDogSearchView;
-    private DatabaseReference database;
+    private DatabaseReference mDatabase;
+    private Integer matchId;
 
 
     public DogSearchAdapter(Context context, ArrayList<DogSearch> data) {
@@ -115,7 +121,6 @@ public class DogSearchAdapter extends RecyclerView.Adapter<DogSearchAdapter.View
     @Override
     public void onBindViewHolder(DogSearchAdapter.ViewHolder viewHolder, final int position) {
 
-
         //limitedDogData.add(dogData.get(0));
         Log.d("test", dogData.get(0).toString());
 
@@ -137,10 +142,28 @@ public class DogSearchAdapter extends RecyclerView.Adapter<DogSearchAdapter.View
             public void onClick(View v) {
                 dogData.remove(viewHolder.getAdapterPosition());
                 notifyDataSetChanged();
+
                 // add a like
-                LikeClass newLike = new LikeClass("1","2", "true", "false", "4", "8");
+                LikeClass newLike = new LikeClass(items.getSearchDogId(), items.getDogId(), "true", "false", items.getSearchUser(), items.getDogUser());
                 SaveLike saveLike = new SaveLike();
-                saveLike.writeLikeToDatabase(newLike, "1");
+
+                mDatabase = FirebaseDatabase.getInstance().getReference();
+                mDatabase.child("nextMatchId").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DataSnapshot> task) {
+                        if (!task.isSuccessful()) {
+                            Log.e("firebase", "Error getting data", task.getException());
+                        }
+                        else {
+                            Log.d("firebase", String.valueOf(task.getResult().getValue()));
+                            matchId = Integer.parseInt(String.valueOf(task.getResult().getValue()));
+                            saveLike.writeLikeToDatabase(newLike, String.valueOf(matchId));
+                            saveLike.writeNextMatchID(matchId + 1);
+                        }
+                    }
+                });
+
+
             }
         });
 

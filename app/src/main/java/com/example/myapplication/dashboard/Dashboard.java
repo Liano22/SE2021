@@ -24,16 +24,18 @@ public class Dashboard extends AppCompatActivity {
     private String dogName;
     private String image;
     private String gender;
+    private String user;
     private Button matchesButton;
     private Button likesButton;
     private Button searchButton;
     private ImageView dogPicture;
 
-    public Dashboard(String dogID, String hundeName, String image, String gender) {
+    public Dashboard(String dogID, String hundeName, String image, String gender, String user) {
         this.dogName = hundeName;
         this.dogID = dogID;
         this.image = image;
         this.gender = gender;
+        this.user = user;
         //this.dogPicture.setImageResource(profilePicture);
     }
 
@@ -61,6 +63,7 @@ public class Dashboard extends AppCompatActivity {
         Intent search = new Intent(context, FilterView.class);
         search.putExtra("dogID", this.dogID);
         search.putExtra("dogGender", this.gender);
+        search.putExtra("dogUser", this.user);
         context.startActivity(search);
     }
 

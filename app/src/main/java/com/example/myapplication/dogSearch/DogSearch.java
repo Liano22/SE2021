@@ -12,13 +12,17 @@ public class DogSearch {
     private String alterTextView;
     private String papiereTextView;
     private String image;
+    private String dogId;
+    private String searchDogId;
+    private String dogUser;
+    private String searchUser;
 
     private String priceTextView;
     private Button likeButton;
     private Button dislikeButton;
     private ImageView searchDogImage;
 
-    public DogSearch(String searchDogName, String rasseTextView, String alterTextView, String papiereTextView, String geschlechtTextView, String image, String priceTextView) {
+    public DogSearch(String searchDogName, String rasseTextView, String alterTextView, String papiereTextView, String geschlechtTextView, String image, String priceTextView, String dogId, String searchDogId, String dogUser, String searchUser) {
         this.searchDogName = searchDogName;
         this.rasseTextView = rasseTextView;
         this.geschlechtTextView = geschlechtTextView;
@@ -26,6 +30,11 @@ public class DogSearch {
         this.papiereTextView = papiereTextView;
         this.image = image;
         this.priceTextView = priceTextView;
+        this.dogId = dogId;
+        this.searchDogId = searchDogId;
+        this.dogUser = dogUser;
+        this.searchUser = searchUser;
+
         //this.likeButton = likeButton;
         //this.dislikeButton = dislikeButton;
         //this.searchDogImage = searchDogImage;
@@ -117,5 +126,37 @@ public class DogSearch {
 
     public void setPriceTextView(String priceTextView) {
         this.priceTextView = priceTextView;
+    }
+
+    public String getDogId() {
+        return dogId;
+    }
+
+    public void setDogId(String dogId) {
+        this.dogId = dogId;
+    }
+
+    public String getSearchDogId() {
+        return searchDogId;
+    }
+
+    public void setSearchDogId(String searchDogId) {
+        this.searchDogId = searchDogId;
+    }
+
+    public String getDogUser() {
+        return dogUser;
+    }
+
+    public void setDogUser(String dogUser) {
+        this.dogUser = dogUser;
+    }
+
+    public String getSearchUser() {
+        return searchUser;
+    }
+
+    public void setSearchUser(String searchUser) {
+        this.searchUser = searchUser;
     }
 }

@@ -92,7 +92,7 @@ public class DashboardView extends AppCompatActivity implements IDashboardContra
                         gender = ds.child("gender").getValue(String.class);
 
                         if (userDogs.contains(key)) {
-                            dogItems.add(new Dashboard(key, name, image, gender));
+                            dogItems.add(new Dashboard(key, name, image, gender, currentUser));
                         }
                     }
                 adapter.notifyDataSetChanged();
