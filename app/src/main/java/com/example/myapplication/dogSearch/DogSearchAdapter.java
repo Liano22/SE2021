@@ -138,6 +138,9 @@ public class DogSearchAdapter extends RecyclerView.Adapter<DogSearchAdapter.View
                 dogData.remove(viewHolder.getAdapterPosition());
                 notifyDataSetChanged();
                 // add a like
+                LikeClass newLike = new LikeClass("1","2", "true", "false", "4", "8");
+                SaveLike saveLike = new SaveLike();
+                saveLike.writeLikeToDatabase(newLike, "1");
             }
         });
 
