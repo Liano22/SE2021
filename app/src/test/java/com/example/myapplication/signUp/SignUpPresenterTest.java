@@ -11,6 +11,7 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
+
 //Ralf & Karl
 @RunWith(MockitoJUnitRunner.class)
 public class SignUpPresenterTest {
@@ -34,10 +35,18 @@ public class SignUpPresenterTest {
     }
 
     @Test
-    public void validateUsernameWrong() {
+    public void validateUsernameEmpty() {
         assertFalse(signUpPresenterTest.validateUsername(""));
-        assertFalse(signUpPresenterTest.validateUsername("fhrutzghvndbfhgzthfzrgthdjfh"));
+    }
+
+    @Test
+    public void validateUsernameHasSpaces() {
         assertFalse(signUpPresenterTest.validateUsername(" r a l f"));
+    }
+
+    @Test
+    public void validateUsernameTooLong() {
+        assertFalse(signUpPresenterTest.validateUsername("fhrutzghvndbfhgzthfzrgthdjfh"));
     }
 
     @Test
@@ -45,14 +54,22 @@ public class SignUpPresenterTest {
     }
 
     @Test
-    public void validatePassword() {
+    public void validatePasswordEmpty() {
         assertFalse(signUpPresenterTest.validatePassword(""));
     }
 
     @Test
-    public void validatePostalCode() {
+    public void validatePostalCodeEmpty() {
         assertFalse(signUpPresenterTest.validatePostalCode(""));
+    }
+
+    @Test
+    public void validatePostalCodeTooShort() {
         assertFalse(signUpPresenterTest.validatePostalCode("1234"));
+    }
+
+    @Test
+    public void validatePostalCodeTooLong() {
         assertFalse(signUpPresenterTest.validatePostalCode("123456"));
     }
 }
