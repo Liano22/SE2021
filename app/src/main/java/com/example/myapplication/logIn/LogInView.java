@@ -18,7 +18,7 @@ public class LogInView extends AppCompatActivity implements ILogInContract.IView
 
     //Deklaration von Variablen
     private TextInputLayout username, password;
-    private Button logInBtn, logInToSignUpBtn, searchBtn;
+    private Button logInBtn, logInToSignUpBtn;
     private LogInPresenter logInPresenter = new LogInPresenter(this);
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,11 +31,10 @@ public class LogInView extends AppCompatActivity implements ILogInContract.IView
         username = findViewById(R.id.usernameLogIn);
         password = findViewById(R.id.passwordLogIn);
 
-        searchBtn = findViewById(R.id.searchButton);
 
         //Intent: Wechsel zur Registrierung
         Intent intentSignUp = new Intent(this, SignUpView.class);
-        Intent intentSearch = new Intent(this, FilterView.class);
+
 
         logInBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,14 +49,7 @@ public class LogInView extends AppCompatActivity implements ILogInContract.IView
                 startActivity(intentSignUp); //Wechsel zur Registrierung
             }
         });
-
-        //TEST: Wechsel zu search
-        searchBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(intentSearch);
-            }
-        });
+        
     }
 
 
