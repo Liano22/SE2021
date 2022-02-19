@@ -62,8 +62,9 @@ public class DogSearchView extends AppCompatActivity {
                     alterTextView = ds.child("age").getValue(String.class);
                     image = ds.child("pic").getValue(String.class);
                     priceTextView = ds.child("price").getValue(String.class);
+                    likes = ds.child("likes").getValue(String.class);
                     Boolean papers = ds.child("papers").getValue(Boolean.class);
-                    Log.d("gender", geschlechtTextView);
+
 
                     if (papers.equals(true)) {
                         papiereTextView = "ja";
@@ -76,6 +77,7 @@ public class DogSearchView extends AppCompatActivity {
                             if (rasseTextView.equals(filterSettings.getRace())) {
                                 if (Integer.parseInt(filterSettings.getAge()) >= Integer.parseInt(alterTextView)) {
                                     if (Integer.parseInt(priceTextView) >= Integer.parseInt(filterSettings.getMinPrice()) && Integer.parseInt(priceTextView) <= Integer.parseInt(filterSettings.getMaxPrice())) {
+                                        
                                         dogList.add(new DogSearch(searchDogName, rasseTextView, alterTextView, papiereTextView, geschlechtTextView, image, priceTextView, thisDogId, currentDog, thisDogUser, currentDogUser));
                                     }
                                 }

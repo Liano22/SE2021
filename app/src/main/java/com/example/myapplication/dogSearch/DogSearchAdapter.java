@@ -159,6 +159,9 @@ public class DogSearchAdapter extends RecyclerView.Adapter<DogSearchAdapter.View
                             matchId = Integer.parseInt(String.valueOf(task.getResult().getValue()));
                             saveLike.writeLikeToDatabase(newLike, String.valueOf(matchId));
                             saveLike.writeNextMatchID(matchId + 1);
+                            //write like at dog
+                            //mDatabase.child("dogs").child(items.getDogId()).child("likes").setValue(items.getSearchDogId());
+                            saveLike.changeUserDogList(items.getDogId(), items.getSearchDogId());
                         }
                     }
                 });
