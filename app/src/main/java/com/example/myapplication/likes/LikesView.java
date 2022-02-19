@@ -70,12 +70,12 @@ public class LikesView extends AppCompatActivity implements ILikesContract.Likes
                 //Bei allen Likes (likes = true && match = false), die den gewünschten Hund enthalten, wird die ID des jeweils anderen Hundes zu liked_dog_ids hinzugefügt.
                 for(DataSnapshot ds : dataSnapshot.getChildren()) {
                     if(ds.child("dog_id_1").getValue(String.class).equals(selectedDog)) {
-                        if(ds.child("like").getValue(Boolean.class).equals(true) && ds.child("match").getValue(Boolean.class).equals(false)) {
+                        if(ds.child("like").getValue(String.class).equals("true") && ds.child("match").getValue(String.class).equals("false")) {
                             dog_id = ds.child("dog_id_2").getValue(String.class);
                             liked_dogs_ids.add(String.valueOf(dog_id));
                         }
                     } if(ds.child("dog_id_2").getValue(String.class).equals(selectedDog)) {
-                        if(ds.child("like").getValue(Boolean.class).equals(true) && ds.child("match").getValue(Boolean.class).equals(false)) {
+                        if(ds.child("like").getValue(String.class).equals("true") && ds.child("match").getValue(String.class).equals("false")) {
                             dog_id = ds.child("dog_id_1").getValue(String.class);
                             liked_dogs_ids.add(String.valueOf(dog_id));
                         }

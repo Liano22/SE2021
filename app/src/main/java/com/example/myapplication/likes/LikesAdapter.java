@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -37,6 +38,8 @@ public class LikesAdapter extends RecyclerView.Adapter<LikesAdapter.ViewHolder> 
         private final TextView raceText;
         private final TextView ageText;
         private final TextView priceText;
+        private final Button tossButton;
+        private final Button takeButton;
 
         //Konstruktor der Klasse ViewHolder
         public ViewHolder(View view){
@@ -47,6 +50,8 @@ public class LikesAdapter extends RecyclerView.Adapter<LikesAdapter.ViewHolder> 
             raceText = (TextView) view.findViewById(R.id.dog_race);
             ageText = (TextView) view.findViewById(R.id.dog_age);
             priceText = (TextView) view.findViewById(R.id.dog_price);
+            tossButton = view.findViewById(R.id.likesTossButton);
+            takeButton = view.findViewById(R.id.likesTakeButton);
         }
 
         public TextView getNameText() {
@@ -64,6 +69,12 @@ public class LikesAdapter extends RecyclerView.Adapter<LikesAdapter.ViewHolder> 
         public TextView getPriceText() {
             return priceText;
         }
+
+        public Button getTossButton(){return tossButton;};
+
+        public Button getTakeButton(){return takeButton;};
+
+
     }
 
     //Erstellung eines neuen Views für den Viewholder
@@ -88,6 +99,13 @@ public class LikesAdapter extends RecyclerView.Adapter<LikesAdapter.ViewHolder> 
         viewHolder.getAgeText().setText(items.getDog_age() + " Jahre");
 
         viewHolder.getPriceText().setText(items.getDog_price() + "€");
+
+        viewHolder.getTossButton().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
     }
 
     //Größe bzw. Umfang der matchesList abfragen
