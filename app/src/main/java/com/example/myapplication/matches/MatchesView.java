@@ -68,14 +68,14 @@ public class MatchesView extends AppCompatActivity implements IMatchesContract.M
                 //Bei allen Matches (match = true), die den gewünschten Hund enthalten, wird die ID des jeweils anderen Hundes zu matched_dog_ids hinzugefügt.
                 for(DataSnapshot ds : dataSnapshot.getChildren()) {
                     if(ds.child("dog_id_1").getValue(String.class).equals(selectedDog)) {
-                        if(ds.child("match").getValue(Boolean.class).equals(true)) {
+                        if(ds.child("match").getValue(String.class).equals("true")) {
                             dog_id = ds.child("dog_id_2").getValue(String.class);
                             matched_dogs_ids.add(String.valueOf(dog_id));
                         }
                     }
 
                     if(ds.child("dog_id_2").getValue(String.class).equals(selectedDog)) {
-                        if(ds.child("match").getValue(Boolean.class).equals(true)) {
+                        if(ds.child("match").getValue(String.class).equals("true")) {
                             dog_id = ds.child("dog_id_1").getValue(String.class);
                             matched_dogs_ids.add(String.valueOf(dog_id));
                         }
