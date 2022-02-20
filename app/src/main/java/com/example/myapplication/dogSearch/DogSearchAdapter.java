@@ -33,11 +33,13 @@ public class DogSearchAdapter extends RecyclerView.Adapter<DogSearchAdapter.View
     private DogSearchView myDogSearchView;
     private DatabaseReference mDatabase;
     private Integer matchId;
+    private Context context;
 
 
     public DogSearchAdapter(Context context, ArrayList<DogSearch> data) {
         this.myInflator = LayoutInflater.from(context);
         this.dogData = data;
+        this.context = context;
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -145,7 +147,7 @@ public class DogSearchAdapter extends RecyclerView.Adapter<DogSearchAdapter.View
 
                 // add a like
                 LikeClass newLike = new LikeClass(items.getSearchDogId(), items.getDogId(), "true", "false", items.getSearchUser(), items.getDogUser());
-                SaveLike saveLike = new SaveLike();
+                SaveLike saveLike = new SaveLike(context);
 
                 mDatabase = FirebaseDatabase.getInstance().getReference();
                 mDatabase.child("nextMatchId").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
@@ -162,6 +164,7 @@ public class DogSearchAdapter extends RecyclerView.Adapter<DogSearchAdapter.View
                             //write like at dog
                             //mDatabase.child("dogs").child(items.getDogId()).child("likes").setValue(items.getSearchDogId());
                             saveLike.changeUserDogList(items.getDogId(), items.getSearchDogId());
+                            saveLike.checkForLike(items.getSearchDogId(), items.getDogId());
                         }
                     }
                 });

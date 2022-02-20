@@ -2,6 +2,7 @@ package com.example.myapplication.dogSearch;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -105,6 +106,10 @@ public class DogSearchView extends AppCompatActivity {
         dogSearchAdapter = new DogSearchAdapter(this, dogList);
         recyclerViewDogSearch.setAdapter(dogSearchAdapter);
 
+    }
+
+    public void makeToast(String msg){
+        Toast.makeText(this, msg, Toast.LENGTH_LONG);
     }
 
 }
