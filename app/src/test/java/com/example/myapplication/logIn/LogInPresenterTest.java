@@ -40,72 +40,87 @@ public class LogInPresenterTest {
         logInPresenterTest = new LogInPresenter(mockView, mockModel);
     }
 
+    // TF-1: Eingabe eines Usernames in das Feld „Username“
     @Test
     public void validateUsernameAllRightBooleanTest() {
         assertTrue(logInPresenterTest.validateUsername("TestUser"));
     }
 
+    // TF-2: Keine Eingabe in das Feld „Username“
     @Test
     public void validateUsernameEmptyBooleanTest() {
         assertFalse(logInPresenterTest.validateUsername(""));
     }
 
+    // TF-3: Keine Fehlermeldung bei Eingabe eines „Usernames“
     @Test
     public void validateUsernameViewNeverCalledTest() {
         logInPresenterTest.validateUsername("TestUser");
         verify(mockView, never()).setErrorMessage("username","Benutzername darf nicht leer sein");
     }
 
+    // TF-3: Keine Fehlermeldung bei Eingabe eines „Usernames“
     @Test
     public void validateUsernameViewCalledNullTest() {
         logInPresenterTest.validateUsername("TestUser");
         verify(mockView).setErrorMessage("username",null);
     }
 
+    // TF-4: Fehlermeldung bei keiner Eingabe in das Feld „Username“
     @Test
     public void validateUsernameViewCalledEmptyTest() {
         logInPresenterTest.validateUsername("");
         verify(mockView).setErrorMessage("username","Benutzername darf nicht leer sein");
     }
+
+    // TF-4: Fehlermeldung bei keiner Eingabe in das Feld „Username“
     @Test
     public void validateUsernameViewNeverCalledNullTest() {
         logInPresenterTest.validateUsername("");
         verify(mockView, never()).setErrorMessage("username",null);
     }
 
+    // TF-5: Eingabe eines Passworts in das Feld „Passwort“
     @Test
     public void validatePasswordAllRightBooleanTest() {
         assertTrue(logInPresenterTest.validatePassword("TestPassword"));
     }
 
+    // TF-6: Keine Eingabe in das Feld „Passwort“
     @Test
     public void validatePasswordEmptyBooleanTest() {
         assertFalse(logInPresenterTest.validatePassword(""));
     }
 
-    @Test
-    public void validatePasswordViewNeverCalledTest() {
-        logInPresenterTest.validatePassword("TestPassword");
-        verify(mockView, never()).setErrorMessage("password","Passwort darf nicht leer sein");
-    }
-
+    // TF-6: Keine Eingabe in das Feld „Passwort“
     @Test
     public void validatePasswordViewCalledNullTest() {
         logInPresenterTest.validatePassword("TestPassword");
         verify(mockView).setErrorMessage("password",null);
     }
 
-    @Test
-    public void validatePasswordViewCalledEmptyTest() {
-        logInPresenterTest.validatePassword("");
-        verify(mockView).setErrorMessage("password","Passwort darf nicht leer sein");
-    }
+    // TF-6: Keine Eingabe in das Feld „Passwort“
     @Test
     public void validatePasswordViewNeverCalledNullTest() {
         logInPresenterTest.validatePassword("");
         verify(mockView, never()).setErrorMessage("password",null);
     }
 
+    // TF-7: Keine Fehlermeldung bei Eingabe eins Passwortes
+    @Test
+    public void validatePasswordViewNeverCalledTest() {
+        logInPresenterTest.validatePassword("TestPassword");
+        verify(mockView, never()).setErrorMessage("password","Passwort darf nicht leer sein");
+    }
+
+    // TF-7: Keine Fehlermeldung bei Eingabe eins Passwortes
+    @Test
+    public void validatePasswordViewCalledEmptyTest() {
+        logInPresenterTest.validatePassword("");
+        verify(mockView).setErrorMessage("password","Passwort darf nicht leer sein");
+    }
+
+    // TF-8: User aus Datenbank auslesen lassen
     @Test
     public void userExistsReadUserFromDatabaseTest() {
         query = Mockito.mock(Query.class);
@@ -114,6 +129,7 @@ public class LogInPresenterTest {
         verify(mockModel).readUserFromDatabase("testUsername", "username");
     }
 
+    // TF-9: User zum Auslesen freigeben
     @Test
     public void userExistValueEventListenerTest() {
         query = Mockito.mock(Query.class);
