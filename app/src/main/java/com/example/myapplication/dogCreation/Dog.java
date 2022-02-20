@@ -4,14 +4,10 @@ package com.example.myapplication.dogCreation;
 
 public class  Dog {
 
-
+    // Attribute
     private String username, name, age, gender, race, pic, bio, price;
     private boolean hybrid, papers;
 
-
-
-    public Dog() {
-    }
 
     // wird bei der Erstellung eines neuen Hundes verwendet:
     public Dog(String username,String name, String age, String gender, String race, String pic, String bio, String price, boolean hybrid, boolean papers) {
@@ -28,6 +24,7 @@ public class  Dog {
     }
 
 
+    // Getter und Setter
     public String getGender() {
         return gender;
     }
