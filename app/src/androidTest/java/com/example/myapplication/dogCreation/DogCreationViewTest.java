@@ -189,7 +189,7 @@ public class DogCreationViewTest {
     }
 
 
-    // TF-5: Es wird keines der Feld ausgefüllt
+    // TF-5: Es wird keines der Felder ausgefüllt
     @Test
     public void testNoEntries(){
         Espresso.onView(withId(R.id.dogSaveBtn)).perform(click());
