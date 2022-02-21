@@ -88,6 +88,11 @@ public class FilterView extends AppCompatActivity implements IFilterContract.IVi
 
     }
 
+    /**
+     * Error Handling
+     * @param field gibt an, wo die Error Message angezeigt wird
+     * @param errorMessage die Error Message als String
+     */
     public void setErrorMessage(String field, String errorMessage) {
 
         switch (field) {
@@ -98,6 +103,8 @@ public class FilterView extends AppCompatActivity implements IFilterContract.IVi
         }
     }
 
+    //Auslesen welcher Radiobutton ausgewählt ist (Papiere optional oder vorhanden)
+    //String ist am Ende "optional" oder "vorhanden"
     public void checkRadioButton(View view) {
         int radioId = papersCheckGroup.getCheckedRadioButtonId();
         papersCheckBtn = findViewById(radioId);

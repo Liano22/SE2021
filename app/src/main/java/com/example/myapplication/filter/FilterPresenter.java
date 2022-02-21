@@ -35,7 +35,17 @@ public class FilterPresenter implements IFilterContract.IPresenter {
         return filter;
     }*/
 
+    /**
+     * Prüfen der Filter-Eingaben
+     * @param race
+     * @param age
+     * @param minPrice
+     * @param maxPrice
+     * @param papersAvailable
+     * @return
+     */
     public boolean validateFields(String race, String age, String minPrice, String maxPrice, String papersAvailable) {
+        //Preise dürfen nicht leer sein, die anderen Sachen können garnicht leer sein.
         if (minPrice.isEmpty()) {
             filterView.setErrorMessage("minPrice", "Darf nicht leer sein.");
             return false;
@@ -44,15 +54,15 @@ public class FilterPresenter implements IFilterContract.IPresenter {
             filterView.setErrorMessage("maxPrice", "Darf nicht leer sein.");
             return false;
         }
-
+        //Mindest und Höchstpreise werden ab 5 Stellen auf 4 stellen gekürzt
         if (minPrice.length() > 4) {
-            minPrice = minPrice.substring(0,3);
+            minPrice = minPrice.substring(0,4);
         }
 
         if (maxPrice.length() > 4) {
             maxPrice = maxPrice.substring(0,4);
         }
-
+        //Mindest Preis darf nicht höher als höchstpreis sein
         if (Integer.valueOf(minPrice) > Integer.valueOf(maxPrice)) {
             filterView.setErrorMessage("minPrice", "Mindestpreis muss kleiner als Höchstpreis sein.");
             return false;
