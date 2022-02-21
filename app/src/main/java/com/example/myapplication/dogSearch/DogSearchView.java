@@ -1,5 +1,6 @@
 package com.example.myapplication.dogSearch;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
@@ -20,6 +21,15 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
+/**
+ * initialisiert die RecyclerView für die Search Funktion der App
+ * es werden alle Hunde aus der Datenbank geladen, die den Filtereinstellungen von filterSettings entsprechen
+ * diese werden in die ArrayList dogList gespeichert und an den DogSearchAdapter weitergereicht
+ *
+ * @author Kilian Mauson
+ */
+
+
 public class DogSearchView extends AppCompatActivity {
 
     //Deklaration von Variablen
@@ -27,7 +37,7 @@ public class DogSearchView extends AppCompatActivity {
     private DatabaseReference databaseDogs;
     private String searchDogName, rasseTextView, geschlechtTextView, alterTextView, papiereTextView, image, priceTextView, thisDogId, thisDogUser;
     RecyclerView recyclerViewDogSearch;
-    ArrayList<DogSearch> dogList = new ArrayList<>();
+    ArrayList<DogSearchModel> dogList = new ArrayList<>();
     String currentDog, currentDogUser;
     String currentDogGender;
 
@@ -78,8 +88,7 @@ public class DogSearchView extends AppCompatActivity {
                             if (rasseTextView.equals(filterSettings.getRace())) {
                                 if (Integer.parseInt(filterSettings.getAge()) >= Integer.parseInt(alterTextView)) {
                                     if (Integer.parseInt(priceTextView) >= Integer.parseInt(filterSettings.getMinPrice()) && Integer.parseInt(priceTextView) <= Integer.parseInt(filterSettings.getMaxPrice())) {
-
-                                        dogList.add(new DogSearch(searchDogName, rasseTextView, alterTextView, papiereTextView, geschlechtTextView, image, priceTextView, thisDogId, currentDog, thisDogUser, currentDogUser));
+                                        dogList.add(new DogSearchModel(searchDogName, rasseTextView, alterTextView, papiereTextView, geschlechtTextView, image, priceTextView, thisDogId, currentDog, thisDogUser, currentDogUser));
                                     }
                                 }
                             }
@@ -87,9 +96,6 @@ public class DogSearchView extends AppCompatActivity {
                             Log.d("test", "nicht hinzugefügt");
                         }
                     }
-
-
-
 
                 }
                 dogSearchAdapter.notifyDataSetChanged();

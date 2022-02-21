@@ -18,6 +18,11 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+/**
+ * ist zuständig für das Speichern eines Likes in der Datenbank, sobald auf den Wau-Button in der Suche geklickt wurde
+ *
+ * @author Kilian Mauson
+ */
 
 public class SaveLike {
 
@@ -30,19 +35,34 @@ public class SaveLike {
         this.context = context;
     }
 
-
+    /**
+     * setzt nextMatchId der Datenbank auf newMatchId
+     *
+     * @param newMatchId
+     */
     public void writeNextMatchID(int newMatchId) {
         reference = rootNode.getReference("nextMatchId");
         reference.setValue(newMatchId);
     }
 
-    //Schreibe Like in die Datenbank
+    /**
+     * schreibt eine Instanz der Like-KLasse als neuen Wert in die Datenbank an die Stelle id
+     *
+     * @param newLike
+     * @param id
+     */
     public void writeLikeToDatabase(LikeClass newLike, String id) {
         rootNode = FirebaseDatabase.getInstance();
         reference = rootNode.getReference("matches");
         reference.child(id).setValue(newLike);
     }
 
+    /**
+     * erweitert den "likes" Eintrag bei den gespeicherten Hunden um die jeweilige ID des Hundes der ein Like ausgesprochen hat
+     *
+     * @param goToDog
+     * @param IdToWrite
+     */
     public void changeUserDogList(String goToDog, String IdToWrite) {
         reference = rootNode.getReference("dogs/" + goToDog);
         Query dogs = reference;
@@ -68,6 +88,11 @@ public class SaveLike {
         });
     }
 
+
+    /**
+     * @author Bennedict Schweimer
+     */
+
     public void checkForLike(String meDog, String interestDog){
         reference = rootNode.getReference("dogs/" + meDog);
         Query dog = reference;
@@ -85,6 +110,7 @@ public class SaveLike {
                         Log.i("Match",like);
                         Log.i("Match", interestDog);
                         if (like.equals(interestDog)) {
+                            
                             Intent match = new Intent(context, Match.class);
                             match.putExtra("interestDog",interestDog);
                             context.startActivity(match);

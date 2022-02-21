@@ -23,7 +23,6 @@
         <activity android:name=".logIn.LogInView" />
         <activity android:name=".dogCreation.DogCreationView"
             android:windowSoftInputMode="stateVisible|adjustResize"/>
-        <activity android:name=".dashboard.DashboardPresenter" />
         <activity android:name=".matches.MatchesView" />
         <activity android:name=".likes.LikesView" />
         <activity android:name=".filter.FilterView" />

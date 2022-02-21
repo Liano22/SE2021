@@ -1,5 +1,12 @@
 package com.example.myapplication.dogSearch;
 
+/**
+ * besitzt alle Information um ein Like in die Datenbank zu schreiben
+ *
+ * @author Kilian
+ */
+
+
 public class LikeClass {
 
     private String dog_id_1, dog_id_2, like, match, user_id_1, user_id_2;

@@ -2,7 +2,6 @@ package com.example.myapplication.dashboard;
 
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,18 +17,29 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Für die Funktionen der einzelnen Items in der Dashboard RecyclerView zuständig
+ * initialisiert die Elemente der Item View und fügt ihnen die entsprechenden Eigenschaften zu
+ *
+ * @author Kilian Mauson
+ */
+
+
 public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.ViewHolder> {
 
 
-    private List<Dashboard> mData;
+    private List<DashboardModel> mData;
     private LayoutInflater mInflater;
 
 
-    public DashboardAdapter(Context context, ArrayList<Dashboard> data) {
+    public DashboardAdapter(Context context, ArrayList<DashboardModel> data) {
         this.mInflater = LayoutInflater.from(context);
         this.mData = data;
     }
 
+    /**
+     * Der Viewholder beinhaltet alle Views des jeweiligen Listeneintrags
+     */
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private final TextView dogName;
         private final Button matchesButton;
@@ -68,6 +78,13 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.View
         }
     }
 
+    /**
+     * setzt für jeden neuen Eintrag item_dashboard als Layout
+     *
+     * @param viewGroup
+     * @param viewType
+     * @return
+     */
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         // Create a new view, which defines the UI of the list item
         View view = LayoutInflater.from(viewGroup.getContext())
@@ -76,13 +93,19 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.View
         return new ViewHolder(view);
     }
 
-    // Replace the contents of a view (invoked by the layout manager)
+    /**
+     * definiert was gemacht werden soll, wenn der Serach, Likes oder Matches Button gedrückt wird
+     * füllt die Views mit konkreten Inhalten aus der übergebenen Liste mData
+     *
+     * @param viewHolder
+     * @param position
+     */
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, final int position) {
 
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
-        Dashboard items = mData.get(position);
+        DashboardModel items = mData.get(position);
 
         viewHolder.getDogPicture().setImageResource(R.drawable.a_portrait_of_a_beagle_that_was_a_rescued_dog_2);
         viewHolder.getDogName().setText(items.getDogName());
@@ -108,13 +131,6 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.View
                 items.goToSearch(v.getContext());
             }
         });
-        /*
-        viewHolder.getDogPicture().setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                items.goToDogProfile();
-            }
-        }); */
     }
 
     // Return the size of your dataset (invoked by the layout manager)

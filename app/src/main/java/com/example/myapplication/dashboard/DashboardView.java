@@ -24,16 +24,24 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class DashboardView extends AppCompatActivity implements IDashboardContract.DashboardView{
+/**
+ * Initialisiert die Recyclerview.
+ * Lädt alle Hunde des eingeloggten Users aus der Datenbank und speichert diese in dogItems ab
+ * Setzt DashboardAdapter als Adapter für die Recyclerview
+ *
+ * @author Kilian Mauson
+ */
+
+
+public class DashboardView extends AppCompatActivity {
 
     //Deklaration & teilweise Initialisierung von Variablen
-    private DashboardPresenter dashboardPresenter;
     private DashboardAdapter adapter;
     private DatabaseReference databaseDogs;
     private DatabaseReference databaseUser;
     Button addDogBtn;
     RecyclerView recyclerViewDashboard;
-    ArrayList<Dashboard> dogItems = new ArrayList<>();
+    ArrayList<DashboardModel> dogItems = new ArrayList<>();
     ArrayList<String> userDogsList = new ArrayList<>();
     List<String> userDogs;
     String key, name, image, gender, currentUser;
@@ -54,7 +62,6 @@ public class DashboardView extends AppCompatActivity implements IDashboardContra
 
         addDogBtn = findViewById(R.id.addDogBtn);
         recyclerViewDashboard =  findViewById(R.id.recyclerViewDashboard);
-        dashboardPresenter = new DashboardPresenter(this);
 
         Intent creation = new Intent(this, DogCreationView.class);
         creation.putExtra("currentUser", currentUser);
@@ -92,7 +99,7 @@ public class DashboardView extends AppCompatActivity implements IDashboardContra
                         gender = ds.child("gender").getValue(String.class);
 
                         if (userDogs.contains(key)) {
-                            dogItems.add(new Dashboard(key, name, image, gender, currentUser));
+                            dogItems.add(new DashboardModel(key, name, image, gender, currentUser));
                         }
                     }
                 adapter.notifyDataSetChanged();
@@ -121,8 +128,4 @@ public class DashboardView extends AppCompatActivity implements IDashboardContra
         recyclerViewDashboard.setAdapter(adapter);
     }
 
-    @Override
-    public void updateRecyclcerView() {
-        //lade alle Hunde in die Liste
-    }
 }

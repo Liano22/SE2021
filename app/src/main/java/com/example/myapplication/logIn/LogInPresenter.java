@@ -1,14 +1,10 @@
 package com.example.myapplication.logIn;
 
-import android.content.Intent;
 import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
-import com.example.myapplication.DatabaseConnector;
-import com.example.myapplication.dashboard.DashboardPresenter;
-import com.example.myapplication.dogCreation.DogCreationView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.Query;

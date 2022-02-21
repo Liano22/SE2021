@@ -17,7 +17,14 @@ import com.example.myapplication.filter.FilterView;
 import com.example.myapplication.likes.LikesView;
 import com.example.myapplication.matches.MatchesView;
 
-public class Dashboard extends AppCompatActivity {
+/**
+ * Klasse für die Einträge der Recyclerview im Dashboard
+ * enthält alle wichtigen Information zum Anzeigen eines Hundes, bzw. zum Weitergeben an andere Activities
+ *
+ * @author Kilian Mauson
+ */
+
+public class DashboardModel extends AppCompatActivity {
 
     private String dogID;
 
@@ -30,7 +37,7 @@ public class Dashboard extends AppCompatActivity {
     private Button searchButton;
     private ImageView dogPicture;
 
-    public Dashboard(String dogID, String hundeName, String image, String gender, String user) {
+    public DashboardModel(String dogID, String hundeName, String image, String gender, String user) {
         this.dogName = hundeName;
         this.dogID = dogID;
         this.image = image;

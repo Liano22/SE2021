@@ -10,7 +10,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.myapplication.DatabaseConnector;
 import com.example.myapplication.R;
 import com.example.myapplication.dashboard.DashboardView;
-import com.example.myapplication.dashboard.IDashboardContract;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
