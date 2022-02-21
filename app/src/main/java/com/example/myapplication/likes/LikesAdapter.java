@@ -102,7 +102,11 @@ public class LikesAdapter extends RecyclerView.Adapter<LikesAdapter.ViewHolder> 
 
         viewHolder.getRaceText().setText(items.getDog_race());
 
-        viewHolder.getAgeText().setText(items.getDog_age() + " Jahre");
+        if(items.getDog_age().equals("1")) {
+            viewHolder.getAgeText().setText("Alter: " + items.getDog_age() + " Jahr");
+        } else {
+            viewHolder.getAgeText().setText("Alter: " + items.getDog_age() + " Jahre");
+        }
 
         viewHolder.getPriceText().setText(items.getDog_price() + "€");
 

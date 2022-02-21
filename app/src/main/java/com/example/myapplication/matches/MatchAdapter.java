@@ -87,7 +87,11 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> 
 
         viewHolder.getRaceText().setText(item.getDog_race());
 
-        viewHolder.getAgeText().setText("Alter: " + item.getDog_age() + " Jahre");
+        if(item.getDog_age().equals("1")) {
+            viewHolder.getAgeText().setText("Alter: " + item.getDog_age() + " Jahr");
+        } else {
+            viewHolder.getAgeText().setText("Alter: " + item.getDog_age() + " Jahre");
+        }
 
         viewHolder.getPriceText().setText("Preis: " + item.getDog_price() + "€");
 
