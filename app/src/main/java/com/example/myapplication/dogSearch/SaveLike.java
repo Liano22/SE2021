@@ -5,12 +5,10 @@ package com.example.myapplication.dogSearch;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
-import com.example.myapplication.Match;
-import com.example.myapplication.signUp.User;
+import com.example.myapplication.matchDisplay.MatchView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -155,7 +153,9 @@ public class SaveLike {
                             }
 
                             //Starte die Matches Activity
-                            Intent match = new Intent(context, Match.class);
+
+                            Intent match = new Intent(context, MatchView.class);
+
                             match.putExtra("interestDog",interestDog);
                             context.startActivity(match);
                             return;
