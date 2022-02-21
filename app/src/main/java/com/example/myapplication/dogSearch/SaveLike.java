@@ -138,18 +138,15 @@ public class SaveLike {
                         Log.i("Match",like);
                         Log.i("Match", interestDog);
                         if (like.equals(interestDog)) {
-                            //gehe zu matches in dog
-                            //gehe für jeden Einrag in den jeweiligen match mit der gleichen id
-                            //vergleiche ob dog_id_2 == interestDog ist, falls ja, dann setze in dem Eintrag matches auf true
 
                             String matchesFromDB = snapshot.child("matches").getValue(String.class);
                             if (matchesFromDB == null) {
                                 return;
                             } else {
                                 String[] matches = matchesFromDB.split(",");
-                                for (String match : matches) {
-
-                                }
+                                String lastMatch = matches[matches.length-1];
+                                DatabaseReference referenceMatches = rootNode.getReference("matches/" + lastMatch);
+                                referenceMatches.child("match").setValue("true");
                             }
 
                             //Starte die Matches Activity
