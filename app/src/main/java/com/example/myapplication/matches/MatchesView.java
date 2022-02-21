@@ -29,7 +29,7 @@ public class MatchesView extends AppCompatActivity implements IMatchesContract.M
     private DatabaseReference database_matched_dogs_data;
     ArrayList<Match> matchesList = new ArrayList<>();
     ArrayList<String> matched_dogs_ids = new ArrayList<>();
-    String dog_id, name, race, age, price, selectedDog;
+    String dog_id, name, race, age, price, user_name, user_email, selectedDog;
 
     //Verbindung zum Presenter
     MatchesPresenter matchesPresenter = new MatchesPresenter(this);
@@ -97,8 +97,9 @@ public class MatchesView extends AppCompatActivity implements IMatchesContract.M
 
     public void setMatchInfo() {
 
-        //Erstellung einer Instanz des Hunde-Datensatz aus der Datenbank
-        database_matched_dogs_data = FirebaseDatabase.getInstance().getReference().child("dogs");
+        //Erstellung einer Instanz der Datenbank
+        //Man benötigt hierbei die komplette Datenbank, da man bei der Erstellung eines Matches sowohl auf die Hunde als auch auf die Nutzer zugreifen muss.
+        database_matched_dogs_data = FirebaseDatabase.getInstance().getReference();
         ValueEventListener matchedDogsListener = new ValueEventListener() {
 
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -107,12 +108,15 @@ public class MatchesView extends AppCompatActivity implements IMatchesContract.M
 
                     //Die gematchten Hunde werden anhand Ihrer IDs (matched_dog_ids) aus der Datenbank ausgelesen und Ihren Informationen werden zur matchesList hinzugefügt.
                     for(String id : matched_dogs_ids) {
-                        name = dataSnapshot.child(id).child("name").getValue(String.class);
-                        race = dataSnapshot.child(id).child("race").getValue(String.class);
-                        age = dataSnapshot.child(id).child("age").getValue(String.class);
-                        price = dataSnapshot.child(id).child("price").getValue(String.class);
+                        name = dataSnapshot.child("dogs").child(id).child("name").getValue(String.class);
+                        race = dataSnapshot.child("dogs").child(id).child("race").getValue(String.class);
+                        age = dataSnapshot.child("dogs").child(id).child("age").getValue(String.class);
+                        price = dataSnapshot.child("dogs").child(id).child("price").getValue(String.class);
+                        user_name = dataSnapshot.child("dogs").child(id).child("username").getValue(String.class);
 
-                        matchesList.add(new Match(String.valueOf(name), String.valueOf(race), String.valueOf(age), String.valueOf(price)));
+                        user_email = dataSnapshot.child("users").child(String.valueOf(user_name)).child("email").getValue(String.class);
+
+                        matchesList.add(new Match(String.valueOf(name), String.valueOf(race), String.valueOf(age), String.valueOf(price), String.valueOf(user_name), String.valueOf(user_email)));
                     }
                 adapter.notifyDataSetChanged();
             }

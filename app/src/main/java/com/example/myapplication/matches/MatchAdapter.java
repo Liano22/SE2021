@@ -39,6 +39,8 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> 
         private final TextView raceText;
         private final TextView ageText;
         private final TextView priceText;
+        private final TextView usernameText;
+        private final TextView useremailText;
 
         //Konstruktor der Klasse ViewHolder
         public ViewHolder(View view){
@@ -49,6 +51,8 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> 
             raceText = (TextView) view.findViewById(R.id.dog_race);
             ageText = (TextView) view.findViewById(R.id.dog_age);
             priceText = (TextView) view.findViewById(R.id.dog_price);
+            usernameText = (TextView) view.findViewById(R.id.user_name);
+            useremailText = (TextView) view.findViewById(R.id.user_email);
         }
 
         public TextView getNameText() {
@@ -65,6 +69,14 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> 
 
         public TextView getPriceText() {
             return priceText;
+        }
+
+        public TextView getUsernameText() {
+            return usernameText;
+        }
+
+        public TextView getUseremailText() {
+            return useremailText;
         }
     }
 
@@ -95,6 +107,9 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> 
 
         viewHolder.getPriceText().setText("Preis: " + item.getDog_price() + "€");
 
+        viewHolder.getUsernameText().setText(item.getUser_name());
+
+        viewHolder.getUseremailText().setText(item.getUser_email());
     }
 
     //Größe bzw. Umfang der matchesList abfragen
