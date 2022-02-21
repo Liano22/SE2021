@@ -114,8 +114,5 @@ public class DogSearchView extends AppCompatActivity {
 
     }
 
-    public void makeToast(String msg){
-        Toast.makeText(this, msg, Toast.LENGTH_LONG);
-    }
 
 }

@@ -1,12 +1,13 @@
+//-- Bennedict --
 package com.example.myapplication.matchDisplay;
 
-public class MatchPresenter {
+public class MatchDisplayPresenter implements IMatchDisplayContract.IPresenter{
 
-    MatchView matchView;
-    MatchModel matchModel = new MatchModel(this);
+    MatchDisplayView matchDisplayView;
+    MatchDisplayModel matchDisplayModel = new MatchDisplayModel(this);
 
-    public MatchPresenter(MatchView matchView){
-        this.matchView = matchView;
+    public MatchDisplayPresenter(MatchDisplayView matchDisplayView){
+        this.matchDisplayView = matchDisplayView;
     }
 
     /**
@@ -14,7 +15,7 @@ public class MatchPresenter {
      * @param interestDog ID des Hundes, mit dem gematched wurde
      */
     public void getValues(String interestDog){
-        matchModel.getValues(interestDog);
+        matchDisplayModel.getValues(interestDog);
     }
 
     /**
@@ -23,7 +24,8 @@ public class MatchPresenter {
      * @param email Die Email-Adresse des Hundebesitzers
      */
     public void setValues(String phoneNumber, String email){
-        matchView.setValues(phoneNumber,email);
+        matchDisplayView.setValues(phoneNumber,email);
     }
 
 }
+//-- Bennedict --

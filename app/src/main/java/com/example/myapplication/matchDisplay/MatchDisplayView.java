@@ -1,27 +1,24 @@
+//-- Bennedict --
 package com.example.myapplication.matchDisplay;
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.R;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
-import com.google.firebase.database.ValueEventListener;
 
-public class MatchView extends AppCompatActivity {
+public class MatchDisplayView extends AppCompatActivity implements IMatchDisplayContract.IView{
 
     String interestDog;
     TextView phoneView;
     TextView emailView;
-    MatchPresenter matchPresenter = new MatchPresenter(this);
+    ImageView logo;
+    MatchDisplayPresenter matchDisplayPresenter = new MatchDisplayPresenter(this);
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -30,6 +27,10 @@ public class MatchView extends AppCompatActivity {
 
         phoneView = findViewById(R.id.phoneMatch);
         emailView = findViewById(R.id.emailMatch);
+        logo = findViewById(R.id.logoMatch);
+
+        Drawable res = getResources().getDrawable(R.drawable.meet2breed_logo);
+        logo.setImageDrawable(res);
 
         if (getIntent().hasExtra("interestDog")) {
             Bundle extra = getIntent().getExtras();
@@ -37,7 +38,7 @@ public class MatchView extends AppCompatActivity {
         } else {
             Log.d("Kein Extra!", "Intent überreicht keinen Dog");
         }
-        matchPresenter.getValues(interestDog);
+        matchDisplayPresenter.getValues(interestDog);
     }
 
     /**
@@ -46,8 +47,9 @@ public class MatchView extends AppCompatActivity {
      * @param email Die Email-Adresse des Hundebesitzers
      */
     public void setValues(String phoneNumber, String email){
-        phoneView.setText("Telefonnumer: " + phoneNumber);
+        phoneView.setText("Telefonnummer: " + phoneNumber);
         emailView.setText("E-Mail Adresse: " + email);
     }
 
 }
+//-- Bennedict --

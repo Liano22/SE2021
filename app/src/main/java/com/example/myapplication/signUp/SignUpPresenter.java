@@ -17,6 +17,7 @@ public class SignUpPresenter implements ISignUpContract.IPresenter{
     //Konstruktor der Klasse SignUpPresenter
     public SignUpPresenter(SignUpView view){
         this.view = view;
+        this.model = new SignUpModel();
     }
 
     public SignUpPresenter(SignUpView signUpView, SignUpModel signUpModel){

@@ -27,7 +27,7 @@
         <activity android:name=".likes.LikesView" />
         <activity android:name=".filter.FilterView" />
         <activity android:name=".dogSearch.DogSearchView"/>
-        <activity android:name=".matchDisplay.MatchView"/>
+        <activity android:name=".matchDisplay.MatchDisplayView"/>
         <activity android:name=".dashboard.DashboardView">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

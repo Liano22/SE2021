@@ -39,8 +39,6 @@ public class LikesAdapter extends RecyclerView.Adapter<LikesAdapter.ViewHolder> 
         private final TextView raceText;
         private final TextView ageText;
         private final TextView priceText;
-        private final Button tossButton;
-        private final Button takeButton;
         private final ImageView dogImage;
 
         //Konstruktor der Klasse ViewHolder
@@ -52,8 +50,6 @@ public class LikesAdapter extends RecyclerView.Adapter<LikesAdapter.ViewHolder> 
             raceText = (TextView) view.findViewById(R.id.dog_race);
             ageText = (TextView) view.findViewById(R.id.dog_age);
             priceText = (TextView) view.findViewById(R.id.dog_price);
-            tossButton = view.findViewById(R.id.likesTossButton);
-            takeButton = view.findViewById(R.id.likesTakeButton);
             dogImage = view.findViewById(R.id.dogPicture);
         }
 
@@ -72,10 +68,6 @@ public class LikesAdapter extends RecyclerView.Adapter<LikesAdapter.ViewHolder> 
         public TextView getPriceText() {
             return priceText;
         }
-
-        public Button getTossButton(){return tossButton;};
-
-        public Button getTakeButton(){return takeButton;};
 
         public ImageView getDogImage(){return dogImage;}
 
@@ -111,12 +103,6 @@ public class LikesAdapter extends RecyclerView.Adapter<LikesAdapter.ViewHolder> 
 
         Picasso.get().load(items.getImage()).fit().centerCrop().into(viewHolder.dogImage);
 
-        viewHolder.getTossButton().setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
     }
 
     //Größe bzw. Umfang der matchesList abfragen

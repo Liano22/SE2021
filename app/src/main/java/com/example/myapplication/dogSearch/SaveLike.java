@@ -8,7 +8,7 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
-import com.example.myapplication.matchDisplay.MatchView;
+import com.example.myapplication.matchDisplay.MatchDisplayView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -154,7 +154,7 @@ public class SaveLike {
 
                             //Starte die Matches Activity
 
-                            Intent match = new Intent(context, MatchView.class);
+                            Intent match = new Intent(context, MatchDisplayView.class);
 
                             match.putExtra("interestDog",interestDog);
                             context.startActivity(match);

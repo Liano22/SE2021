@@ -1,3 +1,4 @@
+//-- Bennedict --
 package com.example.myapplication.matchDisplay;
 
 import android.util.Log;
@@ -11,14 +12,14 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
-public class MatchModel {
+public class MatchDisplayModel implements IMatchDisplayContract.IModel{
 
     FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
     DatabaseReference reference;
-    MatchPresenter matchPresenter;
+    MatchDisplayPresenter matchDisplayPresenter;
 
-    public MatchModel(MatchPresenter matchPresenter){
-        this.matchPresenter = matchPresenter;
+    public MatchDisplayModel(MatchDisplayPresenter matchDisplayPresenter){
+        this.matchDisplayPresenter = matchDisplayPresenter;
     }
     
     /**
@@ -43,7 +44,7 @@ public class MatchModel {
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             String phoneNumber = snapshot.child("phoneNumber").getValue(String.class);
                             String email = snapshot.child("email").getValue(String.class);
-                            matchPresenter.setValues(phoneNumber,email);
+                            matchDisplayPresenter.setValues(phoneNumber,email);
                         }
 
                         @Override
@@ -61,4 +62,6 @@ public class MatchModel {
         }
     }
 
+
 }
+//-- Bennedict --
