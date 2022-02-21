@@ -66,6 +66,11 @@ public class SignUpView extends AppCompatActivity implements ISignUpContract.IVi
 
     }
 
+    /**
+     * Error Handling
+     * @param field wird bestimmt durch Methode in Presenter
+     * @param msg Error Message, die angezeigt wird. (Kommt auch von Presenter)
+     */
     public void setErrorMessage(String field, String msg) {
         switch (field) {
             case "username":

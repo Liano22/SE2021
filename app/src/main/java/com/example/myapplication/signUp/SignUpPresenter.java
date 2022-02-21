@@ -7,7 +7,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-
+//Hier haben alle dran gearbeitet
 public class SignUpPresenter implements ISignUpContract.IPresenter{
 
     //Deklaration von Variablen
@@ -37,8 +37,6 @@ public class SignUpPresenter implements ISignUpContract.IPresenter{
 
         String noSpace = "\\A\\w{4,20}\\z";
 
-        //todo muss noch Anforderungen als Verzeichnis für Firebase erfüllen
-
         if(username.isEmpty()) {
             view.setErrorMessage("username", "Benutzername darf nicht leer sein");
             return false;
@@ -54,8 +52,7 @@ public class SignUpPresenter implements ISignUpContract.IPresenter{
     }
 
     //----------Karls kram-----------------------------------
-
-
+    //Prüfen ob der Nutzer in der Datenbank bereits existiert.
     public void userExists(String username, String firstName, String name, String email, String postalCode, String phoneNumber, String bio, String  password) {
 
         Query checkUser = model.readUserFromDatabase(username, "username");
@@ -63,7 +60,6 @@ public class SignUpPresenter implements ISignUpContract.IPresenter{
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(snapshot.exists() && snapshot.child(username).child("username").getValue(String.class).equals(username)) {
-                    //username.setError("Nutzername bereits vergeben");
                     view.setErrorMessage("username", "Nutzername bereits vergeben");
                     return;
                 } else {
@@ -79,9 +75,6 @@ public class SignUpPresenter implements ISignUpContract.IPresenter{
             }
         });
     }
-
-
-
     //----------Karls kram------------------------------------
 
     /**
@@ -108,7 +101,7 @@ public class SignUpPresenter implements ISignUpContract.IPresenter{
         }
 
     }
-
+    //In Deutschland sind alle Plz 5-stellig, also ist alles andere ungültig.
     public boolean validatePostalCode(String postalCode) {
         if (postalCode.length() == 5) {
             return true;
