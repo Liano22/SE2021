@@ -100,7 +100,6 @@ public class SaveLike {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 String likesFromDB = snapshot.child("likes").getValue(String.class);
-                Log.i("Likes",likesFromDB);
                 if(likesFromDB == null){
                     return;
                 }
