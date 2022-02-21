@@ -180,6 +180,9 @@ public class DogSearchAdapter extends RecyclerView.Adapter<DogSearchAdapter.View
                             saveLike.checkForLike(items.getSearchDogId(), items.getDogId());
                             Toast toast = Toast.makeText(context, text, duration);
                             toast.show();
+
+                            //schreibe die matchid als match in dogs
+                            saveLike.changeMatchesInDogs(items.getDogId(), String.valueOf(matchId));
                         }
 
                     }

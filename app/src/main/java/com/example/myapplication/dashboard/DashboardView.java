@@ -58,7 +58,7 @@ public class DashboardView extends AppCompatActivity {
             Log.d("Kein Extra!", "Intent überreicht keinen user");
         }
 
-        setContentView(R.layout.dashboard_activity);
+        setContentView(R.layout.dashboard);
 
         addDogBtn = findViewById(R.id.addDogBtn);
         recyclerViewDashboard =  findViewById(R.id.recyclerViewDashboard);

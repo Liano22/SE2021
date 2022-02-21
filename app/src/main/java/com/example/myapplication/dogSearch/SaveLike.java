@@ -88,6 +88,37 @@ public class SaveLike {
         });
     }
 
+    /**
+     * schreibe die Match id in den entsprechenden Hundeeintrag der Datenbank
+     *
+     * @param goToDog
+     * @param IdToWrite
+     */
+    public void changeMatchesInDogs(String goToDog, String IdToWrite) {
+        reference = rootNode.getReference("dogs/" + goToDog);
+        Query dogs = reference;
+        dogs.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                String dogsFromDB = snapshot.child("matches").getValue(String.class);
+                String appendDog;
+                if (dogsFromDB == null) {
+                    appendDog = IdToWrite + ",";
+                } else {
+                    appendDog = dogsFromDB + IdToWrite + ",";
+                }
+
+                reference = rootNode.getReference("dogs/" + goToDog + "/matches");
+                reference.setValue(appendDog);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.w("Error", error.toException().toString());
+            }
+        });
+    }
+
 
     /**
      * @author Bennedict Schweimer
@@ -110,7 +141,21 @@ public class SaveLike {
                         Log.i("Match",like);
                         Log.i("Match", interestDog);
                         if (like.equals(interestDog)) {
-                            
+                            //gehe zu matches in dog
+                            //gehe für jeden Einrag in den jeweiligen match mit der gleichen id
+                            //vergleiche ob dog_id_2 == interestDog ist, falls ja, dann setze in dem Eintrag matches auf true
+
+                            String matchesFromDB = snapshot.child("matches").getValue(String.class);
+                            if (matchesFromDB == null) {
+                                return;
+                            } else {
+                                String[] matches = matchesFromDB.split(",");
+                                for (String match : matches) {
+
+                                }
+                            }
+
+                            //Starte die Matches Activity
                             Intent match = new Intent(context, Match.class);
                             match.putExtra("interestDog",interestDog);
                             context.startActivity(match);
