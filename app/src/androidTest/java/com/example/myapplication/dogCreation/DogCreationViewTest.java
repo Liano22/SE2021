@@ -175,6 +175,9 @@ public class DogCreationViewTest {
         //Mischling
         Espresso.onView(withId(R.id.checkDogHybrid)).perform(click());
         Espresso.onView(withId(R.id.checkDogHybrid)).check(matches(isChecked()));
+
+        Espresso.closeSoftKeyboard();
+
         //Papiere
         Espresso.onView(withId(R.id.checkDogPapers)).perform(click());
         Espresso.onView(withId(R.id.checkDogPapers)).check(matches(isChecked()));
