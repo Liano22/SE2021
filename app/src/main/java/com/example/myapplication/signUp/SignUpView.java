@@ -7,13 +7,10 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.myapplication.DatabaseConnector;
 import com.example.myapplication.R;
 import com.example.myapplication.dashboard.DashboardView;
 import com.google.android.material.textfield.TextInputLayout;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-
+//Hier haben alle dran gearbeitet
 public class SignUpView extends AppCompatActivity implements ISignUpContract.IView {
 
     SignUpPresenter presenter = new SignUpPresenter(this);
@@ -21,9 +18,6 @@ public class SignUpView extends AppCompatActivity implements ISignUpContract.IVi
     //Deklaration von Variablen
     TextInputLayout username, firstName, name, email, postalCode, phoneNumber, bio, password;
     Button regBtn;
-    FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
-    DatabaseReference reference;
-    DatabaseConnector dbConnector = new DatabaseConnector();
 
     protected void onCreate(Bundle savedinstanceState) {
         super.onCreate(savedinstanceState);
@@ -43,8 +37,7 @@ public class SignUpView extends AppCompatActivity implements ISignUpContract.IVi
         //Senden des neuen Nutzers an die Datenbank:
         regBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                //rootNode = FirebaseDatabase.getInstance();
-                //reference = rootNode.getReference("users/");
+
 
                 String usernameInput = username.getEditText().getText().toString();
                 String firstNameInput = firstName.getEditText().getText().toString();
@@ -58,9 +51,7 @@ public class SignUpView extends AppCompatActivity implements ISignUpContract.IVi
                 if (presenter.validateUsername(usernameInput) && presenter.validatePassword(passwordInput) && presenter.validatePostalCode(postalCodeInput)) {
                     presenter.userExists(usernameInput, firstNameInput, nameInput, emailInput, postalCodeInput, phoneNumberInput, bioInput, passwordInput);
                 }
-
-
-                regBtn.setText("Geklickt");
+                
             }
         });
 
@@ -107,3 +98,4 @@ public class SignUpView extends AppCompatActivity implements ISignUpContract.IVi
     }
 
 }
+//Hier haben alle dran gearbeitet

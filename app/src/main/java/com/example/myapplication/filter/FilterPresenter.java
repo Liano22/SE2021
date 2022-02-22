@@ -1,13 +1,5 @@
 package com.example.myapplication.filter;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.util.Log;
-
-import com.example.myapplication.DatabaseConnector;
-import com.example.myapplication.dogSearch.DogSearchView;
-import com.example.myapplication.logIn.ILogInContract;
-
 public class FilterPresenter implements IFilterContract.IPresenter {
     //Ralf & Karl
 
@@ -15,7 +7,6 @@ public class FilterPresenter implements IFilterContract.IPresenter {
     Filter filter;
     FilterView filterView;
     FilterModel filterModel;
-    DatabaseConnector dbConnector = new DatabaseConnector();
 
 
     //Konstruktor der Klasse mit dessen Hilfe wir die Verbindung zwischen Presenter und View herstellen.
